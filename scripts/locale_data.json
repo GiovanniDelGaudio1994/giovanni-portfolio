@@ -201,7 +201,9 @@
       "Diploma tecnico — Geometra": "Technical diploma — Surveying",
       "Diploma conseguito nell'anno scolastico 2014/2015 nell'indirizzo Geometri (Costruzioni, Ambiente e Territorio).": "Completed a technical high-school diploma in the 2014/2015 school year, specialising in Surveying (Construction, Environment and Territory).",
       "Caricamento data…": "Loading date…",
-      "ORA IN ITALIA": "TIME IN ITALY"
+      "ORA IN ITALIA": "TIME IN ITALY",
+      "5 badge su Credly": "5 badges on Credly",
+      "Badge nel profilo Credly": "Badge on Credly profile"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -222,7 +224,9 @@
       "aria-label=\"Interessi personali\"": "aria-label=\"Personal interests\"",
       "alt=\"Sigillo dell’Università degli Studi di Salerno\"": "alt=\"University of Salerno seal\"",
       "alt=\"Logo ufficiale dell’Istituto di Istruzione Superiore Leonardo da Vinci di Sapri\"": "alt=\"Official emblem of Leonardo da Vinci Upper Secondary School, Sapri\"",
-      "aria-label=\"Data e ora italiane, fuso Europe/Rome\"": "aria-label=\"Italian date and time, Europe/Rome time zone\""
+      "aria-label=\"Data e ora italiane, fuso Europe/Rome\"": "aria-label=\"Italian date and time, Europe/Rome time zone\"",
+      "aria-label=\"Apri il profilo Credly con cinque badge digitali\"": "aria-label=\"Open the Credly profile with five digital badges\"",
+      "aria-label=\"Consulta i badge nel profilo Credly\"": "aria-label=\"Browse badges on Credly profile\""
     }
   },
   "legacybridge": {
