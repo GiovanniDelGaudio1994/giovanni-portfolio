@@ -22,7 +22,9 @@ Le modifiche al sito devono essere proposte tramite Pull Request **in questo rep
 
 ## Privacy e documenti
 
-Le immagini delle certificazioni sono materiale documentale dell'autore. **Attenzione:** alcuni attestati integrali presenti in `assets/certificates/full/` possono includere codici identificativi e QR visibili. È opportuno limitare la distribuzione pubblica dei documenti completi, mantenendo eventualmente le sole anteprime e i link di verifica ufficiali. La loro pubblicazione non equivale a una verifica indipendente delle credenziali.
+Gli **attestati restano apribili per intero sul sito**: il portfolio non sostituisce il documento completo con un badge ritagliato. La prova di autenticità più affidabile è il **collegamento ufficiale di verifica** dell'ente che ha emesso la credenziale (per esempio Credly o Coursera), dove disponibili. Il collegamento deve essere personale, pubblico e riconducibile all'effettivo titolare; non inventare link o dichiarare verificati attestati privi di verifica esterna.
+
+I codici o QR che **servono alla verifica pubblica** non vanno oscurati indiscriminatamente: possono essere indispensabili per un selezionatore. Prima della pubblicazione di nuovi documenti controllare separatamente che non contengano dati non necessari, come indirizzi, contatti privati, date di nascita o identificativi amministrativi. I file già pubblicati rimangono invariati in questa revisione.
 
 Non pubblicare password, token, dati sanitari, copie integrali di documenti d'identità, configurazioni locali o informazioni personali non necessarie al portfolio.
 
