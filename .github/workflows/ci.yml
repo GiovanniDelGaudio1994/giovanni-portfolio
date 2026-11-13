@@ -22,3 +22,4 @@ jobs:
         run: |
           python3 scripts/build_pages.py
           python3 scripts/audit_portfolio.py
+          python3 scripts/audit_public_pages.py

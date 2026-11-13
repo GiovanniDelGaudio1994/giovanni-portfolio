@@ -21,8 +21,10 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Build portfolio and all public demos
         run: python3 scripts/build_pages.py
-      - name: Audit bilingual pages and links
-        run: python3 scripts/audit_portfolio.py
+      - name: Audit all public pages and local links
+        run: |
+          python3 scripts/audit_portfolio.py
+          python3 scripts/audit_public_pages.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
