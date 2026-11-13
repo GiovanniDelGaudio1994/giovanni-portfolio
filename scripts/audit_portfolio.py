@@ -203,7 +203,7 @@ def main() -> int:
         if "href=\"/cv/\"" not in content:
             errors.append(f"{path}: missing printable résumé link")
     for page in (SITE / "cv/index.html", SITE / "cv/en/index.html"):
-        if not page.is_file() or "window.print()" not in page.read_text(encoding="utf-8"):
+        if not page.is_file() or "data-print" not in page.read_text(encoding="utf-8") or "cv.js" not in page.read_text(encoding="utf-8"):
             errors.append(f"{page}: printable résumé missing")
 
     for error in errors:
