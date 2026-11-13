@@ -208,7 +208,9 @@
       "CV professionale": "Professional résumé",
       "CV stampabile / PDF": "Printable résumé / PDF",
       "Sono Giovanni Del Gaudio, studente di Informatica all’Università degli Studi di Salerno. Sviluppo app Flutter, strumenti Python e applicazioni web: esplora demo, prove tecniche e progetti universitari documentati.": "I am Giovanni Del Gaudio, a Computer Science student at the University of Salerno. I build Flutter apps, Python tools and web applications: explore demos, technical evidence and documented university projects.",
-      "Gestionale palestra per corsi, prenotazioni e abbonamenti. La demo HTML usa dati di esempio: il codice PHP/MySQL applicativo è conservato in un repository privato.": "Gym management application for courses, bookings and memberships. The HTML demo uses sample data; the PHP/MySQL application source is kept in a private repository."
+      "Gestionale palestra per corsi, prenotazioni e abbonamenti. La demo HTML usa dati di esempio: il codice PHP/MySQL applicativo è conservato in un repository privato.": "Gym management application for courses, bookings and memberships. The HTML demo uses sample data; the PHP/MySQL application source is kept in a private repository.",
+      ", studente di Informatica all’": ", a Computer Science student at the ",
+      ". Sviluppo app Flutter, strumenti Python e applicazioni web: esplora demo, prove tecniche e progetti universitari documentati.": ". I build Flutter apps, Python tools and web applications: explore demos, technical evidence and documented university projects."
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
