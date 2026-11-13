@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FitZone</title>
+    <link rel="stylesheet" href="css/styles.css">
+<style id="fitzone-preview-style">
+#fitzone-preview-controls{box-sizing:border-box;position:relative;z-index:999;background:#18202a;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;font:12px/1.4 Arial,sans-serif;flex-wrap:wrap}
+#fitzone-preview-controls *{box-sizing:border-box}
+#fitzone-preview-controls span{letter-spacing:.035em;font-weight:700;white-space:normal}
+#fitzone-preview-controls .fitzone-preview-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#fitzone-preview-controls a{color:#fff!important;text-decoration:none!important;background:#37424c;padding:6px 8px;border-radius:6px;font:12px Arial,sans-serif}
+#fitzone-preview-controls a:hover,#fitzone-preview-controls a:focus{background:#f04e30}
+#fitzone-preview-note{box-sizing:border-box;background:#fff4ec;color:#542516;border-top:2px solid #f04e30;padding:16px;font:14px/1.5 Arial,sans-serif;text-align:center}
+@media(max-width:700px){#fitzone-preview-controls{padding:9px 12px}#fitzone-preview-controls .fitzone-preview-links{gap:4px}#fitzone-preview-controls a{padding:5px 6px}}
+</style></head>
+<body class="login-page"><div id="fitzone-preview-controls" role="navigation" aria-label="Navigazione anteprima"><span>SITO FIT ZONE ORIGINALE — anteprima frontend, senza database</span><div class="fitzone-preview-links"><a href="index.html">Home</a><a href="corsi.html">Corsi</a><a href="attivita.html">Attività</a><a href="istruttori.html">Istruttori</a><a href="calendario.html">Calendario</a><a href="abbonamenti.html">Abbonamenti</a><a href="prenotazioni.html">Prenotazioni</a><a href="profile.html">Profilo</a><a href="login.html">Accesso</a><a href="register.html">Registrazione</a></div></div>
+    <div class="auth-container">
+        <h2>Accedi</h2>
+                <form action="login.html" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Non hai un account? <a href="register.html">Registrati</a></p>
+        <p><a href="index.html">Torna alla home</a></p>
+    </div>
+<div id="fitzone-preview-note"><strong>Nota sulla demo:</strong> queste pagine sono renderizzate dai template PHP e CSS <strong>originali</strong> del progetto Fit Zone. Per funzionare su GitHub Pages i contenuti MySQL sono sostituiti da dati fittizi; accesso, registrazione, prenotazione e invio messaggi non salvano dati. <a href="https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/fit-zone/source/">Codice PHP originale revisionato</a>.</div><script>
+// Demo protetta: le richieste di login, registrazione e contatto non lasciano il browser.
+document.addEventListener('DOMContentLoaded',()=>{
+ for(const form of document.querySelectorAll('form')){
+  form.setAttribute('action','#');
+  form.addEventListener('submit',e=>{e.preventDefault();window.alert('Anteprima del sito originale: questa funzione richiede il backend PHP/MySQL. Non sono stati trasmessi dati.');});
+ }
+ document.querySelectorAll('a[href="index.html#fitzone-preview-note"]').forEach(a=>a.setAttribute('title','Pagina non presente nello ZIP originale'));
+});
+</script></body>
+</html>

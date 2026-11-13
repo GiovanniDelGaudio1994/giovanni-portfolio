@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Giovanni Del Gaudio">
+<meta name="description" content="Can a 2008 HP 550 run Windows 11? A real Core 2 Duo T5670 compatibility lab: x64 vs POPCNT and SSE4.2, disk diagnostics, Linux Live plans and measured results.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; style-src-attr 'none'; img-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LegacyBridge — Hardware Compatibility Lab">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="HP 550 and Windows 11: what blocks compatibility? | LegacyBridge">
+<meta property="og:description" content="A real 2008 HP 550 case study. Windows 10 boot observed, x64 CPU confirmed, modern instruction-set limits under investigation.">
+<meta property="og:url" content="https://giovannidelgaudio.it/legacybridge-demo/hp-550/en/">
+<meta property="og:image" content="https://giovannidelgaudio.it/portfolio/assets/projects/legacybridge-cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://giovannidelgaudio.it/legacybridge-demo/hp-550/en/">
+<link rel="alternate" hreflang="it" href="https://giovannidelgaudio.it/legacybridge-demo/hp-550/">
+<link rel="alternate" hreflang="en" href="https://giovannidelgaudio.it/legacybridge-demo/hp-550/en/">
+<link rel="alternate" hreflang="x-default" href="https://giovannidelgaudio.it/legacybridge-demo/hp-550/">
+<title>HP 550 and Windows 11: CPU limitations & tests | LegacyBridge</title>
+<link rel="stylesheet" href="../../site.css"><link rel="stylesheet" href="../../case-study.css">
+</head><body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="nav"><a class="logo" href="../../"><span class="mark" aria-hidden="true">⌁</span> Legacy<span>Bridge</span></a>
+<div class="navright"><span class="live-dot" aria-hidden="true"></span> CASE STUDY #001
+<div class="locale-switch" role="group" aria-label="Case study language">
+<a href="../" lang="it" hreflang="it">IT</a><span aria-hidden="true">/</span>
+<a href="./" lang="en" hreflang="en" aria-current="page">EN</a></div>
+</div></header>
+<main id="content" class="study">
+<div class="breadcrumbs"><a href="../../">LegacyBridge Lab</a> <span aria-hidden="true">/</span> HP 550 · Case study #001</div>
+<article>
+<header class="study-hero"><span class="eyebrow">REVERSE ENGINEERING RESEARCH · REAL HARDWARE</span>
+<h1>HP 550 and Windows 11: <em>what blocks compatibility?</em></h1>
+<p class="study-lead">Can a 2008 Intel Core 2 Duo notebook still be useful? We document a practical revival project, CPU instruction-set limitations and the challenges of running modern Windows versions. No disk modifications and no claims of unachieved results.</p>
+<div class="study-byline">By Giovanni Del Gaudio · Published 12 November 2026 · Status: research in progress</div>
+<img class="study-cover" src="../../../portfolio/assets/projects/legacybridge-cover.svg" alt="Original LegacyBridge cover: an older notebook symbolically connected with modern software" width="1280" height="720">
+</header>
+<div class="study-layout"><div class="study-main">
+<section id="observed"><h2>1. What we have actually observed</h2>
+<p>Our HP 550 boots <strong>Windows 10 Pro 1909, 32-bit</strong>. We identified its Intel Core 2 Duo T5670 processor at 1.80 GHz, about 3 GiB of RAM and a legacy BIOS. Importantly, the <strong>processor supports 64-bit instructions</strong> despite the installed Windows edition being 32-bit.</p>
+<table><caption>Device specifications from observed screens; no personal identifiers are published.</caption><tbody>
+<tr><th scope="row">Laptop</th><td>HP 550, 2008 generation</td></tr>
+<tr><th scope="row">CPU</th><td>Intel Core 2 Duo T5670, 1.80 GHz</td></tr>
+<tr><th scope="row">Memory</th><td>Approximately 3 GiB</td></tr>
+<tr><th scope="row">Booted OS</th><td>Windows 10 Pro 1909, 32-bit</td></tr>
+<tr><th scope="row">CPU architecture</th><td>x64: confirmed</td></tr>
+<tr><th scope="row">Firmware</th><td>Legacy BIOS</td></tr>
+<tr><th scope="row">Storage</th><td>SATA device reporting “SSD 4TB”; actual capacity unverified, MBR partitions</td></tr>
+</tbody></table>
+</section>
+<section id="limits"><h2>2. The real Windows 11 obstacle</h2>
+<p>Not every x64 processor supports every instruction expected by a recent 64-bit operating system. On newer Windows 11 releases, features such as <strong>POPCNT</strong> and <strong>SSE4.2</strong> are significant barriers for older processors. Based on its CPU generation, we expect both to be absent; a direct <code>CPUID</code> measurement on this specific HP 550 is still pending.</p>
+<p>Bypassing an installer hardware check cannot magically implement missing instructions. <strong>We have not booted Windows 11 on this laptop</strong>, and LegacyBridge is not presented as a working Windows 11 patcher.</p>
+</section>
+<section id="storage"><h2>3. Storage mystery: a drive claiming 4 TB</h2>
+<p>Windows reports a SATA device named “SSD 4TB”. Disk Management and DiskPart show an MBR partition layout and a capacity reported by its controller. <strong>Reported capacity does not establish actual physical storage capacity.</strong> This may reflect device identification, firmware behaviour or a discrepancy between advertised and real storage.</p>
+<p>Back up data before any invasive testing. We are not converting partitions to GPT, formatting the drive or carrying out heavy write tests before the files are safe.</p>
+</section>
+<section id="next"><h2>4. Next lab experiments</h2>
+<ol><li>Back up important data to a trusted device.</li><li>Boot a 64-bit Linux Live environment from USB without installing onto internal storage.</li><li>Measure CPU instruction flags using CPUID or Linux-provided features.</li><li>Document RAM, boot times, drivers, memory use and limitations.</li><li>Publish reproducible results, including unsuccessful tests.</li></ol>
+</section>
+<section id="opensource"><h2>5. Public code and license</h2>
+<p>LegacyBridge shares a <strong>small read-only PowerShell diagnostic probe</strong> for reporting CPU, memory, Windows version and disk model. The original public code is licensed under <strong>GNU AGPL-3.0-only</strong>. The full experimental lab remains separate, and no Windows ISOs, Microsoft DLLs or modified kernels are distributed.</p>
+<a class="study-link" href="https://github.com/GiovanniDelGaudio1994/forma-ai/tree/main/projects/legacybridge" rel="noopener noreferrer">View the public source and license ↗</a>
+</section>
+<section id="references"><h2>6. Technical references</h2><p>To separate verified findings from speculation, we cross-check our observations with official technical documentation and describe how measurements were obtained.</p><ul class="study-sources"><li><a href="https://www.microsoft.com/en-us/windows/windows-11-specifications">Microsoft · Official Windows 11 requirements ↗</a></li><li><a href="https://learn.microsoft.com/en-us/windows/privacy/required-diagnostic-events-fields-windows-11-24h2">Microsoft Learn · POPCNT and SSE4.2 compatibility diagnostics ↗</a></li><li><a href="https://www.intel.com/content/www/us/en/support/articles/000057621/processors.html">Intel · How to identify CPU instruction-set extensions ↗</a></li></ul></section>
+</div>
+<aside class="study-aside"><div class="aside-card"><span class="eyebrow">LAB #001</span><h3>Current status</h3>
+<div><span>Windows 10 boot</span><strong class="ok">Confirmed</strong></div>
+<div><span>x64 CPU</span><strong class="ok">Confirmed</strong></div>
+<div><span>POPCNT / SSE4.2</span><strong class="pending">Not measured</strong></div>
+<div><span>Linux Live</span><strong class="pending">Not tested</strong></div>
+<div><span>Windows 11</span><strong class="pending">Not booted</strong></div>
+<div><span>Actual SSD capacity</span><strong class="pending">Unverified</strong></div>
+</div>
+<div class="aside-card"><span class="eyebrow">RESOURCES</span><a href="../../">Interactive research demo ↗</a><a href="../">Leggi in italiano ↗</a><a href="https://github.com/GiovanniDelGaudio1994/forma-ai/tree/main/projects/legacybridge">Read-only GitHub probe ↗</a></div></aside></div>
+</article></main>
+<footer>© 2026 Giovanni Del Gaudio · LegacyBridge · Independent research, not affiliated with Microsoft, HP or Intel. <a href="../../">Back to the lab ↗</a></footer>
+</body></html>

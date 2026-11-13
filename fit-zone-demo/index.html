@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d2329">
+  <meta name="description" content="Fit Zone, demo frontend del gestionale palestra in PHP e MySQL: corsi, servizi, prenotazioni e abbonamenti.">
+  <title>Fit Zone | La tua palestra, sempre con te</title>
+  <link rel="stylesheet" href="css/fitzone-cover-ui.css">
+  <script src="script/fitzone-cover-ui.js" defer></script>
+</head>
+<body>
+  <a class="fz-skip" href="#contenuto">Vai al contenuto</a>
+  <div class="fz-demo-strip"><span class="fz-demo-dot"></span>Anteprima frontend del progetto originale · Dati dimostrativi, nessuna operazione reale <a href="#fz-demo-info">Scopri di più</a></div>
+  <header class="fz-header">
+    <div class="fz-container fz-nav">
+      <a class="fz-brand" href="index.html" aria-label="Fit Zone, torna alla home"><span class="fz-mark" aria-hidden="true"><svg viewBox="0 0 50 50" width="43" height="43" fill="none"><path d="M11 14 5 36M17 9 9 41M33 9 41 41M39 14 45 36" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M16 25h18" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg></span><span>Fit<span class="fz-brand-accent">Zone</span></span></a>
+      <button class="fz-menu-toggle" type="button" aria-label="Apri il menu" aria-controls="fz-nav-links" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="fz-nav-links" class="fz-nav-links" aria-label="Navigazione principale">
+        <a class="fz-active" aria-current="page" href="index.html">Home</a>
+        <a href="corsi.html">Corsi</a>
+        <a href="abbonamenti.html">Abbonamenti</a>
+        <a href="#services">La palestra</a>
+        <a href="#social">Contatti</a>
+        <a class="fz-link-muted" href="login.html">Accedi</a>
+        <a class="fz-nav-cta" href="register.html">Area Clienti</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenuto">
+    <section class="fz-hero" aria-labelledby="fz-hero-title">
+      <div class="fz-hero-image" role="img" aria-label="Sala pesi della palestra: fotografia utilizzata nel progetto originale"></div>
+      <div class="fz-container fz-hero-inner">
+        <div class="fz-hero-content">
+          <div class="fz-eyebrow">FIT ZONE <span></span> ALLENATI, PRENOTA, MIGLIORA</div>
+          <h1 id="fz-hero-title">La tua palestra,<br><em>sempre con te.</em></h1>
+          <p>Corsi, prenotazioni e abbonamenti in un unico posto. Scopri tutte le attività che Fit Zone mette a tua disposizione.</p>
+          <div class="fz-hero-actions"><a class="fz-button fz-button-primary" href="corsi.html"><span aria-hidden="true">▣</span> Prenota un corso <span aria-hidden="true">→</span></a><a class="fz-button fz-button-ghost" href="#courses">Esplora le attività</a></div>
+          <span class="fz-hero-fineprint">Esplora una demo con dati di esempio · Nessun pagamento o account reale</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fz-section fz-courses" id="courses" aria-labelledby="courses-heading">
+      <div class="fz-container">
+        <div class="fz-heading-row"><div><span class="fz-section-kicker">SCOPRI LE ATTIVITÀ</span><h2 id="courses-heading">I nostri corsi</h2><p>Dal cardio all'allenamento funzionale: trova il percorso che fa per te.</p></div><a href="corsi.html" class="fz-text-link">Vedi tutti i corsi <span aria-hidden="true">→</span></a></div>
+        <div class="fz-featured-grid">
+          <article class="fz-course-card"><a class="fz-course-image" href="corsi.html#spinning"><img src="images/spinning.webp" alt="Persone durante una lezione di spinning" loading="lazy"><span class="fz-course-badge">Cardio</span></a><div class="fz-course-info"><div><h3>Spinning</h3><p>Pedala, migliora la resistenza e supera i tuoi limiti.</p></div><a class="fz-course-arrow" href="corsi.html#spinning" aria-label="Scopri il corso Spinning">→</a></div></article>
+          <article class="fz-course-card"><a class="fz-course-image" href="corsi.html#hiit"><img src="images/hiit.webp" alt="Gruppo di persone durante un allenamento HIIT" loading="lazy"><span class="fz-course-badge">Alta intensità</span></a><div class="fz-course-info"><div><h3>HIIT</h3><p>Sessioni dinamiche per allenarti ad alta intensità.</p></div><a class="fz-course-arrow" href="corsi.html#hiit" aria-label="Scopri il corso HIIT">→</a></div></article>
+          <article class="fz-course-card"><a class="fz-course-image" href="corsi.html#functional"><img src="images/functional.webp" alt="Allenamento funzionale di gruppo" loading="lazy"><span class="fz-course-badge">Functional</span></a><div class="fz-course-info"><div><h3>Functional Training</h3><p>Forza, mobilità e movimento nella vita di tutti i giorni.</p></div><a class="fz-course-arrow" href="corsi.html#functional" aria-label="Scopri il corso Functional Training">→</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fz-section fz-section-soft" id="services" aria-labelledby="services-heading"><div class="fz-container"><span class="fz-section-kicker">UNO SPAZIO PER I TUOI OBIETTIVI</span><h2 id="services-heading">La palestra, a modo tuo</h2><p class="fz-section-lead">Allenamento personalizzato, sala pesi e corsi adatti a ogni livello.</p><div class="fz-service-grid">
+      <article class="fz-service-card"><img src="images/personaltrainer.webp" alt="Sessione con personal trainer" loading="lazy"><div><h3>Personal Trainer</h3><p>Programmi su misura e supporto di istruttori qualificati durante il tuo percorso.</p></div></article>
+      <article class="fz-service-card"><img src="images/pesi.webp" alt="Attrezzature per l'allenamento con pesi" loading="lazy"><div><h3>Sala Pesi</h3><p>Uno spazio dedicato ad allenamenti di forza, resistenza e benessere.</p></div></article>
+      <article class="fz-service-card"><img src="images/foto4.webp" alt="Attività sportive e allenamenti" loading="lazy"><div><h3>Corsi Fitness</h3><p>Yoga, Spinning, Zumba e tante attività da esplorare nel catalogo.</p></div></article>
+    </div></div></section>
+
+    <section class="fz-section fz-memberships" aria-labelledby="member-heading"><div class="fz-container fz-membership-inner"><div><span class="fz-section-kicker">IL TUO PERCORSO INIZIA QUI</span><h2 id="member-heading">Un abbonamento che segue il tuo ritmo.</h2><p>Esplora i piani e le opzioni disponibili nell'interfaccia del progetto.</p></div><a href="abbonamenti.html" class="fz-button fz-button-primary">Scopri gli abbonamenti <span aria-hidden="true">→</span></a></div></section>
+
+    <section class="fz-section" id="gallery" aria-labelledby="gallery-heading"><div class="fz-container"><span class="fz-section-kicker">DENTRO FIT ZONE</span><h2 id="gallery-heading">La nostra galleria</h2><div class="fz-gallery">
+      <img src="images/1.webp" loading="lazy" alt="Ambiente di allenamento della palestra"><img src="images/2.webp" loading="lazy" alt="Allenamento in sala fitness"><img src="images/3.webp" loading="lazy" alt="Attrezzi e attività sportiva"><img src="images/4.webp" loading="lazy" alt="Spazi della palestra"><img src="images/5.webp" loading="lazy" alt="Sessione di fitness">
+    </div></div></section>
+
+    <section class="fz-section fz-section-soft" id="about"><div class="fz-container fz-info-grid"><div><span class="fz-section-kicker">CHI SIAMO</span><h2>Un progetto per la gestione della palestra.</h2><p>Fit Zone è un progetto web personale sviluppato in PHP e MySQL: presenta corsi, istruttori, profili, abbonamenti e prenotazioni. Questa versione su GitHub Pages è una dimostrazione frontend, non il gestionale collegato a MySQL.</p><a href="https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/fit-zone/source/" class="fz-text-link">Scopri il codice sorgente PHP →</a></div>
+    <div class="fz-hours" id="opening-hours"><h3>Orari mostrati nella demo</h3><div><span>Lunedì – Venerdì</span><strong>06:00 – 22:00</strong></div><div><span>Sabato</span><strong>08:00 – 20:00</strong></div><div><span>Domenica</span><strong>09:00 – 18:00</strong></div><small>Orari esemplificativi, non relativi a una sede reale.</small></div></div></section>
+
+    <section class="fz-section fz-contact" id="social"><div class="fz-container fz-contact-grid"><div><span class="fz-section-kicker">RESTIAMO IN CONTATTO</span><h2>Parliamo dei tuoi obiettivi.</h2><p>Il form originale è riprodotto a scopo dimostrativo: non invia né memorizza i dati.</p><div id="location" class="fz-location"><strong>Dove siamo</strong><span>Sede dimostrativa · Nessun indirizzo o contatto reale</span></div></div><form class="fz-contact-form" data-demo-form><label>Nome<input type="text" name="name" placeholder="Il tuo nome" required autocomplete="name"></label><label>Email<input type="email" name="email" placeholder="nome@esempio.it" required autocomplete="email"></label><label>Messaggio<textarea name="message" placeholder="Scrivi qui il tuo messaggio..." required rows="4"></textarea></label><button type="submit" class="fz-button fz-button-primary">Invia (demo) <span aria-hidden="true">→</span></button><small>Il messaggio non verrà trasmesso.</small></form></div></section>
+
+    <section class="fz-section fz-section-soft" id="faq"><div class="fz-container"><span class="fz-section-kicker">HAI DELLE DOMANDE?</span><h2>Domande frequenti</h2><div class="fz-faq"><details><summary>Quali sono gli orari di apertura?</summary><p>Consulta gli orari dimostrativi nella sezione dedicata.</p></details><details><summary>Offrite corsi di gruppo?</summary><p>Il catalogo del progetto comprende Yoga, Spinning, Pilates, HIIT, Zumba, CrossFit e Functional Training.</p></details><details><summary>È possibile prenotare un corso?</summary><p>Il gestionale PHP include la prenotazione per gli utenti. In questa anteprima statica non vengono salvate prenotazioni.</p></details></div></div></section>
+  </main>
+  <footer class="fz-footer"><div class="fz-container"><div class="fz-footer-top"><a class="fz-brand" href="index.html"><span class="fz-brand-accent">Fit</span>Zone</a><div><a href="corsi.html">Corsi</a><a href="abbonamenti.html">Abbonamenti</a><a href="#about">Il progetto</a><a href="#social">Contatti</a></div></div><div class="fz-footer-bottom"><span>© 2026 Fit Zone · Progetto portfolio di Giovanni Del Gaudio</span><span id="fz-demo-info">Demo frontend · Nessun login, acquisto, invio o prenotazione reale.</span></div></div></footer>
+  <div class="fz-toast" id="fz-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

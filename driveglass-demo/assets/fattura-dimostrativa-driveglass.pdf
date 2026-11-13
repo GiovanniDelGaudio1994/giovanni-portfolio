@@ -1,0 +1,118 @@
+%PDF-1.4
+%DEMO
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 3022 >>
+stream
+0.050 0.086 0.153 rg
+0 704 595 138 re f
+0.190 0.760 0.980 rg
+0 700 595 4 re f
+1.000 1.000 1.000 rg
+BT /F2 22 Tf 44 786 Td (DRIVEGLASS) Tj ET
+0.590 0.800 0.960 rg
+BT /F1 9 Tf 45 765 Td (SMART VEHICLE COMPANION  /  DOCUMENT CENTER) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 18 Tf 44 730 Td (FATTURA DIMOSTRATIVA) Tj ET
+0.880 0.960 0.990 rg
+44 661 507 24 re f
+0.090 0.360 0.530 rg
+BT /F2 11 Tf 54 669 Td (ESEMPIO PUBBLICO - NON VALIDO AI FINI FISCALI) Tj ET
+0.070 0.430 0.650 rg
+BT /F2 10 Tf 44 628 Td (EMITTENTE FITTIZIO) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 12 Tf 44 609 Td (Officina Demo - esempio di servizio) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 9 Tf 44 591 Td (Nessuna partita IVA o sede reale) Tj ET
+0.070 0.430 0.650 rg
+BT /F2 10 Tf 334 628 Td (DESTINATARIO FITTIZIO) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 12 Tf 334 609 Td (Cliente dimostrativo) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 9 Tf 334 591 Td (Nessun dato personale incluso) Tj ET
+0.780 0.860 0.910 RG 1 w 44 568 m 551 568 l S
+0.100 0.200 0.320 rg
+BT /F2 10 Tf 44 543 Td (Numero:) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 109 543 Td (DEMO-2026-001) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 10 Tf 334 543 Td (Data:) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 380 543 Td (08/11/2026) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 10 Tf 44 519 Td (Veicolo:) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 109 519 Td (SUV dimostrativo - anno 2022) Tj ET
+0.065 0.150 0.260 rg
+44 462 507 29 re f
+1.000 1.000 1.000 rg
+BT /F2 10 Tf 55 472 Td (DESCRIZIONE) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 10 Tf 468 472 Td (IMPORTO) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 55 439 Td (Manutenzione ordinaria - controllo generale) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 470 439 Td (80,00 EUR) Tj ET
+0.860 0.910 0.950 RG 1 w 44 426 m 551 426 l S
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 55 406 Td (Filtro abitacolo e materiali) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 470 406 Td (26,15 EUR) Tj ET
+0.790 0.860 0.920 RG 1 w 44 391 m 551 391 l S
+0.100 0.200 0.320 rg
+BT /F1 11 Tf 348 361 Td (Imponibile) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 11 Tf 470 361 Td (106,15 EUR) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 11 Tf 348 338 Td (IVA indicativa 22%) Tj ET
+0.100 0.200 0.320 rg
+BT /F2 11 Tf 470 338 Td (23,35 EUR) Tj ET
+0.065 0.150 0.260 rg
+330 286 221 38 re f
+1.000 1.000 1.000 rg
+BT /F2 12 Tf 342 300 Td (TOTALE) Tj ET
+1.000 1.000 1.000 rg
+BT /F2 11 Tf 467 300 Td (129,50 EUR) Tj ET
+0.070 0.430 0.650 rg
+BT /F2 10 Tf 44 248 Td (NOTA IMPORTANTE) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 44 230 Td (Questo documento e una simulazione a scopo dimostrativo.) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 44 211 Td (Importi, fornitore, cliente e dati del veicolo sono inventati.) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 10 Tf 44 192 Td (Non utilizzare il file come fattura, prova di pagamento o ricevuta.) Tj ET
+0.780 0.860 0.910 RG 1 w 44 92 m 551 92 l S
+0.070 0.430 0.650 rg
+BT /F2 9 Tf 44 70 Td (DRIVEGLASS  /  PORTFOLIO DEMO  /  DOCUMENT CENTER) Tj ET
+0.100 0.200 0.320 rg
+BT /F1 9 Tf 44 53 Td (Documento di esempio statico: nessun accesso a dati locali o cloud.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000003330 00000 n 
+0000003400 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3475
+%%EOF

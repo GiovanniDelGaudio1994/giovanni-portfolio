@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Attività - FitZone</title>
+    <link rel="stylesheet" href="css/calendario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<style id="fitzone-preview-style">
+#fitzone-preview-controls{box-sizing:border-box;position:relative;z-index:999;background:#18202a;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;font:12px/1.4 Arial,sans-serif;flex-wrap:wrap}
+#fitzone-preview-controls *{box-sizing:border-box}
+#fitzone-preview-controls span{letter-spacing:.035em;font-weight:700;white-space:normal}
+#fitzone-preview-controls .fitzone-preview-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+#fitzone-preview-controls a{color:#fff!important;text-decoration:none!important;background:#37424c;padding:6px 8px;border-radius:6px;font:12px Arial,sans-serif}
+#fitzone-preview-controls a:hover,#fitzone-preview-controls a:focus{background:#f04e30}
+#fitzone-preview-note{box-sizing:border-box;background:#fff4ec;color:#542516;border-top:2px solid #f04e30;padding:16px;font:14px/1.5 Arial,sans-serif;text-align:center}
+@media(max-width:700px){#fitzone-preview-controls{padding:9px 12px}#fitzone-preview-controls .fitzone-preview-links{gap:4px}#fitzone-preview-controls a{padding:5px 6px}}
+</style></head>
+<body><div id="fitzone-preview-controls" role="navigation" aria-label="Navigazione anteprima"><span>SITO FIT ZONE ORIGINALE — anteprima frontend, senza database</span><div class="fitzone-preview-links"><a href="index.html">Home</a><a href="corsi.html">Corsi</a><a href="attivita.html">Attività</a><a href="istruttori.html">Istruttori</a><a href="calendario.html">Calendario</a><a href="abbonamenti.html">Abbonamenti</a><a href="prenotazioni.html">Prenotazioni</a><a href="profile.html">Profilo</a><a href="login.html">Accesso</a><a href="register.html">Registrazione</a></div></div>
+<div class="dashboard">
+    <aside class="sidebar">
+        <div class="logo">🏋 FitZone</div>
+        <ul class="menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="corsi.html"><i class="fas fa-dumbbell"></i> Corsi</a></li>
+            <li><a href="istruttori.html"><i class="fas fa-chalkboard-teacher"></i> Istruttori</a></li>
+            <li><a href="attivita.html"><i class="fas fa-running"></i> Attività</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profilo</a></li>
+            <li><a href="abbonamenti.html"><i class="fas fa-id-card"></i> Abbonamenti</a></li>
+            <li><a href="prenotazioni.html"><i class="fas fa-calendar-check"></i> Prenotazioni</a></li>
+            <li><a href="index.html#fitzone-preview-note"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="close-sidebar">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>Calendario Completo</h1>
+            
+            <!-- Barra di navigazione del calendario -->
+            <div class="calendario-nav">
+                <a href="?mese=10&anno=2026" class="nav-btn">
+                    <i class="fas fa-chevron-left"></i> Mese precedente
+                </a>
+                
+                <h2>Novembre 2026</h2>
+                
+                <a href="?mese=12&anno=2026" class="nav-btn">
+                    Mese successivo <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+            
+            <!-- Filtri per categoria -->
+            <div class="filtri-container">
+                <h3>Filtra per categoria</h3>
+                <form method="GET" action="calendario.html" class="filtri-form">
+                    <input type="hidden" name="mese" value="11">
+                    <input type="hidden" name="anno" value="2026">
+                    
+                    <div class="filtri-grid">
+                        <div class="filtro">
+                            <input type="radio" id="tutte" name="categoria" value="tutte" checked>
+                            <label for="tutte">Tutte</label>
+                        </div>
+                        
+                                                    <div class="filtro">
+                                <input type="radio" id="1" 
+                                       name="categoria" 
+                                       value="1"
+                                       >
+                                <label for="1">
+                                    Benessere                                </label>
+                            </div>
+                                                    <div class="filtro">
+                                <input type="radio" id="2" 
+                                       name="categoria" 
+                                       value="2"
+                                       >
+                                <label for="2">
+                                    Cardio                                </label>
+                            </div>
+                                            </div>
+                    
+                    <button type="submit" class="btn-filtro">Applica filtri</button>
+                </form>
+            </div>
+            
+            <!-- Griglia del calendario -->
+            <div class="calendario-grid">
+                <!-- Intestazione giorni della settimana -->
+                <div class="giorno-header">Lun</div>
+                <div class="giorno-header">Mar</div>
+                <div class="giorno-header">Mer</div>
+                <div class="giorno-header">Gio</div>
+                <div class="giorno-header">Ven</div>
+                <div class="giorno-header">Sab</div>
+                <div class="giorno-header">Dom</div>
+                
+                <div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno"><div class="numero-giorno">1</div></div><div class="giorno"><div class="numero-giorno">2</div></div><div class="giorno"><div class="numero-giorno">3</div></div><div class="giorno"><div class="numero-giorno">4</div></div><div class="giorno"><div class="numero-giorno">5</div></div><div class="giorno"><div class="numero-giorno">6</div></div><div class="giorno"><div class="numero-giorno">7</div></div><div class="giorno"><div class="numero-giorno">8</div></div><div class="giorno"><div class="numero-giorno">9</div></div><div class="giorno"><div class="numero-giorno">10</div></div><div class="giorno oggi"><div class="numero-giorno">11</div></div><div class="giorno"><div class="numero-giorno">12</div></div><div class="giorno"><div class="numero-giorno">13</div></div><div class="giorno"><div class="numero-giorno">14</div></div><div class="giorno"><div class="numero-giorno">15</div></div><div class="giorno"><div class="numero-giorno">16</div></div><div class="giorno"><div class="numero-giorno">17</div></div><div class="giorno"><div class="numero-giorno">18</div></div><div class="giorno"><div class="numero-giorno">19</div></div><div class="giorno"><div class="numero-giorno">20</div></div><div class="giorno"><div class="numero-giorno">21</div></div><div class="giorno"><div class="numero-giorno">22</div></div><div class="giorno"><div class="numero-giorno">23</div></div><div class="giorno"><div class="numero-giorno">24</div></div><div class="giorno"><div class="numero-giorno">25</div></div><div class="giorno"><div class="numero-giorno">26</div></div><div class="giorno"><div class="numero-giorno">27</div></div><div class="giorno"><div class="numero-giorno">28</div></div><div class="giorno"><div class="numero-giorno">29</div></div><div class="giorno"><div class="numero-giorno">30</div></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div><div class="giorno vuoto"></div>            </div>
+            
+            <!-- Legenda -->
+            <div class="legenda">
+                <div class="legenda-item">
+                    <div class="legenda-colore oggi-colore"></div>
+                    <div class="legenda-testo">Oggi</div>
+                </div>
+                <div class="legenda-item">
+                    <div class="legenda-colore sessione-colore"></div>
+                    <div class="legenda-testo">Sessione disponibile</div>
+                </div>
+            </div>
+            
+            <!-- Lista dettagliata delle sessioni del mese -->
+            <section class="lista-sessioni">
+                <h2>Sessioni di Novembre</h2>
+                
+                                    <div class="no-results">
+                        <p>Non ci sono sessioni programmate per questo mese.</p>
+                    </div>
+                            </section>
+            
+            <!-- Pulsante per tornare alle attività -->
+            <div class="azioni-footer">
+                <a href="attivita.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Torna alle attività
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+<div id="fitzone-preview-note"><strong>Nota sulla demo:</strong> queste pagine sono renderizzate dai template PHP e CSS <strong>originali</strong> del progetto Fit Zone. Per funzionare su GitHub Pages i contenuti MySQL sono sostituiti da dati fittizi; accesso, registrazione, prenotazione e invio messaggi non salvano dati. <a href="https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/fit-zone/source/">Codice PHP originale revisionato</a>.</div><script>
+// Demo protetta: le richieste di login, registrazione e contatto non lasciano il browser.
+document.addEventListener('DOMContentLoaded',()=>{
+ for(const form of document.querySelectorAll('form')){
+  form.setAttribute('action','#');
+  form.addEventListener('submit',e=>{e.preventDefault();window.alert('Anteprima del sito originale: questa funzione richiede il backend PHP/MySQL. Non sono stati trasmessi dati.');});
+ }
+ document.querySelectorAll('a[href="index.html#fitzone-preview-note"]').forEach(a=>a.setAttribute('title','Pagina non presente nello ZIP originale'));
+});
+</script></body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#248ae2"><meta name="description" content="GestioneFarmacia: ricostruzione interattiva dell'interfaccia desktop Java Swing, con dati fittizi e senza MySQL.">
+<title>GestioneFarmacia — Demo del gestionale Java Swing</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e8edf4;font:14px "Segoe UI",Arial,Helvetica,sans-serif;color:#202b36}button,input,select{font:inherit}button{cursor:pointer}a{color:#1866a9}
+.status{padding:9px 17px;background:#102c43;color:#d4f6ff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}.status a{color:#b2f0ff}.status strong{color:#c8f5d1}.macbar{height:35px;background:#f5f5f8;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid #bcc8d4;font-weight:700;color:#515761}.traffic{position:absolute;left:14px;display:flex;gap:7px}.traffic i{height:12px;width:12px;border-radius:50%;background:#ff625a}.traffic i:nth-child(2){background:#ffbf41}.traffic i:nth-child(3){background:#34c759}
+#login{max-width:1070px;margin:30px auto;background:#fff;box-shadow:0 12px 38px #2c446147;border:1px solid #a8c4db;border-radius:9px;overflow:hidden}.loginbody{min-height:470px;display:grid;grid-template-columns:1fr 1fr}.loginart{background:linear-gradient(145deg,#bdeafa 0%,#54bcf1 56%,#4c83d4 100%);position:relative;overflow:hidden}.loginart:before{content:"✚  ✚    ◯     ✚    ♡     ✚";position:absolute;font-size:75px;line-height:2.8;letter-spacing:25px;transform:rotate(-27deg) scale(1.4);top:-100px;left:-130px;color:#ffffff60}.loginart .medical{position:relative;font-size:96px;text-align:center;padding-top:95px;text-shadow:0 8px 20px #21588850}.loginart .medicaltext{position:relative;text-align:center;color:#f4fbff;font-size:30px;font-weight:800;text-shadow:0 3px 8px #23609470}.loginform{padding:40px 45px;display:flex;flex-direction:column;justify-content:center;gap:16px}.loginform h1{font-size:26px;margin:0;color:#1684cb}.loginform p{line-height:1.6;color:#566672;margin:0 0 8px}.loginform label{display:flex;flex-direction:column;gap:8px;font-weight:650}.loginform input{width:100%;height:40px;border:1px solid #a9b9c7;background:white;border-radius:4px;padding:0 12px}.primary{background:linear-gradient(#62b5ec,#238bd7);color:white;border:1px solid #176fb2;border-radius:4px;padding:11px 16px;font-weight:700}.danger{background:#ff475b;color:white;border:1px solid #d93245;border-radius:4px;padding:11px 16px;font-weight:700}.lightbtn{background:linear-gradient(#fcfcfd,#dce1e9);border:1px solid #b6c1cd;border-radius:5px;padding:8px 12px;color:#343c47}.lightbtn:hover{background:#dae9f8}.lightbtn:focus-visible,.primary:focus-visible,.danger:focus-visible{outline:3px solid #77c4ff}
+#app{max-width:1500px;margin:15px auto 28px;box-shadow:0 14px 45px #22405b38;border:1px solid #adb6c2;background:#d7d9de}.appbanner{height:57px;background:#218dea;color:white;display:grid;grid-template-columns:245px 1fr auto;align-items:center;padding:0 16px;gap:15px}.appbanner strong{font-size:22px;text-align:center}.clock{font-size:12px;text-align:right}.work{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:620px}.sidebar{background:#3446a0;display:flex;flex-direction:column;padding:0 0 24px}.sidebar button{margin:2px 4px;background:linear-gradient(#627dd4,#3344a6);border:1px solid #7389d0;color:#f5f7ff;border-radius:5px;padding:14px 11px;text-align:left;font-family:Georgia,serif;font-weight:700}.sidebar button.current{outline:2px solid #f0f7ff;background:linear-gradient(#3851b5,#253788)}.sidebar .exit{background:#ff594e;border-color:#e34a43;margin-top:6px;text-align:center}.workspace{min-width:0;background:#d8dadf;display:flex;flex-direction:column}.viewtitle{text-align:center;background:#d5d9e0;border-bottom:1px solid #c2c8d2;font-weight:800;padding:9px 12px;font-size:17px}.stage{flex:1;padding:15px;overflow:auto}.foot{display:flex;justify-content:center;gap:16px;padding:8px;border-top:1px solid #aeb4bf}.foot button:first-child{background:#79dc78;color:white}.foot button:nth-child(2){background:#ffc52e;color:#343130}.foot button{border:1px solid #b0b6bc;padding:7px 20px;border-radius:4px;font-weight:700}
+.section{background:#e5e5e8;border:1px solid #b1b7c3;border-radius:6px;margin-bottom:14px;padding:12px}.section h3{font-size:15px;margin:0 0 12px}.toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:12px}.toolbar button{white-space:normal}.query{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.query input{max-width:250px}.appfield{display:grid;grid-template-columns:minmax(150px,1fr) minmax(160px,2fr);align-items:center;gap:10px 15px;margin:5px 0}.appfield label{font-weight:600}.appfield input,.appfield select,.query input{height:30px;border:1px solid #afb7c3;background:#fff;padding:4px 7px;border-radius:2px;width:100%}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.tablewrap{max-height:390px;min-height:220px;overflow:auto;background:#d8dadf;border:1px solid #aeb4c0}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}thead{position:sticky;top:0;background:linear-gradient(#f8f8fa,#d9dde4)}td,th{padding:6px 9px;text-align:left;border-right:1px solid #b7bdc5;border-bottom:1px solid #c0c4cb}tbody tr:nth-child(even){background:#e6e8eb}tbody tr:hover{background:#c2d9f4}.summary{margin-top:12px;font-size:12px;color:#5c6570}.chip{display:inline-block;color:#164878;font-weight:650;background:#d2e6f8;border-radius:20px;padding:4px 9px}.notice{padding:12px;border:1px solid #a9c5dc;background:#e5f3ff;border-radius:5px;color:#2d5572;margin-bottom:12px}.mini{font-size:12px;color:#5e6873}.reportgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.reportcard{background:#f4f6f9;padding:16px;border:1px solid #b3c1d1;border-radius:7px}.reportcard b{font-size:26px;color:#1c76b2}.reportcard small{display:block;color:#556575;margin-top:10px}.hidden{display:none!important}.alert{margin:8px 0;color:#196c43}.code{font:12px monospace;white-space:pre-line}.footerpage{text-align:center;font-size:12px;color:#5d6574;padding:15px 8px 25px}
+@media(max-width:850px){.appbanner{grid-template-columns:60px 1fr}.appbanner strong{font-size:15px}.clock{display:none}.work{grid-template-columns:150px minmax(0,1fr)}.sidebar button{font:12px Arial;padding:10px 6px}.formgrid{grid-template-columns:1fr}.loginbody{grid-template-columns:1fr}.loginart{min-height:220px}.loginart .medical{padding-top:20px}.appfield{grid-template-columns:1fr}.reportgrid{grid-template-columns:1fr}}
+@media(max-width:540px){.work{display:block}.sidebar{flex-direction:row;overflow:auto;padding:4px}.sidebar button{flex:0 0 auto;min-width:125px}.stage{padding:9px}.appbanner{height:53px}.loginform{padding:26px}.reportgrid{grid-template-columns:1fr}}
+
+/* Visual fidelity update: source screenshot with functional fields overlaid. */
+#login{position:relative;max-width:520px;width:calc(100% - 24px);margin:30px auto 16px;aspect-ratio:321/315;background:#fff;overflow:hidden;box-shadow:0 12px 36px #22405b40;border:0;border-radius:0}
+#login .login-screenshot{width:100%;height:100%;object-fit:fill;display:block}
+#login .loginform{position:absolute;inset:0;display:block;padding:0;background:none;pointer-events:none}
+#login .loginform .screen-input{position:absolute;left:35.6%;width:40.8%;height:5.5%;background:#fff;border:0;border-radius:0;outline-offset:1px;padding:0 4px;color:#1a2837;pointer-events:auto;font-size:clamp(11px,1.4vw,16px);box-shadow:none}
+#login .loginform .screen-input.user{top:41.2%}
+#login .loginform .screen-input.pass{top:59.0%}
+#login .loginform button{position:absolute;left:22%;width:54.7%;height:8.6%;border:0;background:transparent;color:transparent;font-size:0;pointer-events:auto;cursor:pointer}
+#login .loginform button[type=submit]{top:71.7%}
+#login .loginform #resetlogin{top:84.1%}
+#login .loginform button:hover{box-shadow:inset 0 0 0 2px #16375a70}
+#login .loginform :focus-visible{outline:3px solid #ffb82e;outline-offset:2px}
+.demo-login-note{text-align:center;margin:0 auto 20px;max-width:530px;color:#596875;font-size:12px;padding:0 14px;line-height:1.6}
+.appbanner{display:block!important;height:auto!important;padding:0!important;background:#248eec;line-height:0;border-bottom:1px solid #8ab3d5}
+.appbanner img{display:block;width:100%;height:auto}
+@media(max-width:850px){#login{max-width:520px}.appbanner{height:auto!important}}
+@media(max-width:540px){#login .loginform .screen-input{font-size:12px}.appbanner{height:auto!important}}
+</style></head><body>
+<div class="status"><span>🎓 <strong>GestioneFarmacia</strong> — Progetto universitario di Basi di Dati · Demo riproduttiva delle finestre Java Swing</span><span>Solo dati fittizi · nessun MySQL · <a href="https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/gestione-farmacia/">Documentazione</a></span></div>
+<section id="login" aria-label="Login dimostrativo GestioneFarmacia">
+<img class="login-screenshot" src="assets/login-originale.svg" alt="Schermata Login Database originale: sfondo medico azzurro, logo farmacia, campi utente e password, pulsanti Accedi ed Esci" width="321" height="315">
+<form id="loginform" class="loginform" autocomplete="off">
+<label for="username" style="position:absolute;left:-10000px">Nome utente dimostrativo</label>
+<input id="username" class="screen-input user" name="username" value="demo" aria-label="Nome utente dimostrativo" autocomplete="off">
+<label for="password" style="position:absolute;left:-10000px">Password dimostrativa</label>
+<input id="password" class="screen-input pass" name="password" type="password" value="demo" aria-label="Password dimostrativa" autocomplete="off">
+<button type="submit" aria-label="Accedi alla demo" title="Accedi alla demo">Accedi alla demo</button>
+<button type="button" id="resetlogin" aria-label="Esci dalla demo e torna alla scheda del progetto" title="Esci dalla demo">Esci</button>
+</form></section>
+<p class="demo-login-note">Demo senza autenticazione reale. Premi <strong>Accedi</strong> per esplorare i moduli: nessun account MySQL o dato sanitario viene utilizzato.</p>
+<section id="app" class="hidden"><div class="macbar"><span class="traffic"><i></i><i></i><i></i></span>Gestione Farmacia</div><header class="appbanner"><img src="assets/topbar-originale.svg" width="522" height="27" alt="Barra originale blu Sistema di Gestione Farmaceutica, con icona del farmacista e indicazione di benvenuto"></header><div class="work">
+<nav class="sidebar" id="nav">
+<button data-page="farmaci" class="current">💊 Gestione Farmaci</button>
+<button data-page="pazienti">👥 Gestione Pazienti</button>
+<button data-page="clienti">🧑 Gestione Clienti</button>
+<button data-page="operatori">👨‍💼 Gestione Operatori</button>
+<button data-page="ricette">📝 Gestione Ricette</button>
+<button data-page="asl">🏥 Gestione ASL</button>
+<button data-page="medici">🩺 Gestione Medici</button>
+<button data-page="report">📊 Report</button>
+<button class="exit" id="exit">Esci</button>
+</nav><div class="workspace"><div id="viewtitle" class="viewtitle">Visualizza Farmaci</div><main id="stage" class="stage"></main><div class="foot"><button data-action="otc" id="showotc">💊 Da Banco</button><button data-action="rx" id="showrx">📄 Prescritti</button></div></div></div></section>
+<div class="footerpage">Prototipo dimostrativo realizzato dal materiale del corso · Copyright © 2026 Giovanni Del Gaudio · Nessun dato di pazienti reali · Non destinato all'uso sanitario.</div>
+<script>
+'use strict';
+const make=(id,...props)=>Object.assign({id},...props);
+const meds=[
+make("F0001",{maker:"DemoPharma",name:"Paracetamolo demo",qty:60,price:5.50,type:"OTC"}),
+make("F0002",{maker:"Esempio Salute",name:"Soluzione salina",qty:102,price:4.80,type:"OTC"}),
+make("F0003",{maker:"FarmacoTest",name:"Spray nasale demo",qty:90,price:6.00,type:"OTC"}),
+make("F0004",{maker:"DemoPharma",name:"Vitamine demo",qty:120,price:8.50,type:"OTC"}),
+make("F0005",{maker:"Esempio Salute",name:"Farmaco prescrizione A",qty:80,price:12.20,type:"ETICO"}),
+make("F0006",{maker:"FarmacoTest",name:"Farmaco prescrizione B",qty:25,price:9.99,type:"ETICO"})
+];
+const patients=[
+{id:"DEMO-P01",name:"Paziente",surname:"Esempio A",birth:"1990-01-01",address:"Indirizzo fittizio",email:"demo-a@example.invalid"},
+{id:"DEMO-P02",name:"Paziente",surname:"Esempio B",birth:"1985-05-12",address:"Indirizzo fittizio",email:"demo-b@example.invalid"},
+{id:"DEMO-P03",name:"Paziente",surname:"Esempio C",birth:"1976-09-03",address:"Indirizzo fittizio",email:"demo-c@example.invalid"}
+];
+const operators=[
+{id:"DEMO-O01",name:"Operatore A",hired:"2024-01-10",desk:1,revenue:180},
+{id:"DEMO-O02",name:"Operatore B",hired:"2024-03-11",desk:2,revenue:240},
+{id:"DEMO-O03",name:"Operatore C",hired:"2025-01-15",desk:1,revenue:160}
+];
+const doctors=[{id:"MED-001",name:"Medico Demo A"},{id:"MED-002",name:"Medico Demo B"}];
+const customers=[{id:"CLI-001",name:"Cliente Esempio A"},{id:"CLI-002",name:"Cliente Esempio B"}];
+const rx=[
+{id:"R0001",doctor:"Medico Demo A",issued:"2025-02-01",days:7,description:"Indicazioni dimostrative",patient:"Paziente Esempio A",med:"F0005"},
+{id:"R0002",doctor:"Medico Demo B",issued:"2025-02-11",days:10,description:"Solo per test",patient:"Paziente Esempio B",med:"F0006"}
+];
+const names={farmaci:"Visualizza Farmaci",pazienti:"Gestione Pazienti",clienti:"Gestione Clienti",operatori:"Gestione Operatori",ricette:"Gestione Ricette",asl:"Gestione ASL",medici:"Gestione Medici",report:"Report gestionali"};
+let page="farmaci",kind="OTC";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const currency=n=>Number(n).toLocaleString("it-IT",{style:"currency",currency:"EUR"});
+const btn=(label,action)=>'<button class="lightbtn" data-action="'+action+'">'+label+'</button>';
+const section=(title,body)=>'<div class="section"><h3>'+title+'</h3>'+body+'</div>';
+const field=(label,value='',type='text')=>'<div class="appfield"><label>'+esc(label)+'</label><input type="'+type+'" value="'+esc(value)+'" placeholder="Campo dimostrativo" /></div>';
+function table(headers,rows){if(!rows.length)return '<div class="notice">Nessun risultato trovato.</div>';return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
+const toolbar=(value)=>'<div class="toolbar">'+value+'</div>';
+function draw(){
+ $('viewtitle').textContent=names[page];$('showotc').classList.toggle('hidden',page!=="farmaci");$('showrx').classList.toggle('hidden',page!=="farmaci");
+ document.querySelectorAll("#nav [data-page]").forEach(b=>b.classList.toggle("current",b.dataset.page===page));
+ const out=$('stage');let html='';
+ if(page==="farmaci"){
+ html=toolbar(btn("Visualizza tutti","allmed")+btn("Solo OTC","otc")+btn("Solo ETICI","rx")+btn("Filtra per quantità","lowstock"))
+ +section("Farmaci "+(kind==="OTC"?"da banco (OTC)":kind==="ETICO"?"prescritti (ETICI)":"— catalogo completo"),table(["ID","Casa farmaceutica","Nome commerciale","Quantità","Prezzo","Tipo"],meds.filter(d=>kind==="ALL"||kind==="LOW"?kind!=="LOW"||d.qty<80:d.type===kind).map(d=>[d.id,d.maker,d.name,d.qty,currency(d.price),d.type])));
+ }
+ if(page==="pazienti"){
+ html=section("Dati Paziente",'<div class="formgrid"><div>'+field("Codice fiscale:","")+field("Nome:","")+field("Cognome:","")+field("Telefono:","")+'</div><div>'+field("Data di nascita (YYYY-MM-DD):","")+field("Indirizzo:","")+field("Sesso (M/F):","")+field("Email:","")+'</div></div>')
+ +toolbar(btn("Inserisci (demo)","sample")+btn("Aggiorna (demo)","sample")+btn("Elimina (demo)","sample")+btn("Ricerca medico e periodo","sample")+btn("Ricerca ricette paziente","torx")+btn("Mostra tutti","showall")+btn("Senza ricetta","sample"))
+ +table(["CF (fittizio)","Nome","Cognome","Data di nascita","Indirizzo","Email"],patients.map(p=>[p.id,p.name,p.surname,p.birth,p.address,p.email]));
+ }
+ if(page==="ricette"){
+ html=section("Gestione ricette",'<div class="formgrid"><div>'+field("NUM Ricetta:","")+field("Medico CF:","")+field("Data emissione (YYYY-MM-DD):","")+field("Durata assunzione:","")+field("Descrizione assunzione:","")+'</div><div>'+field("Paziente CF:","")+field("Farmaco ID:","")+field("Data inizio:","")+field("Data fine:","")+field("Durata:","")+'</div></div>')
+ +toolbar(btn("Crea Ricetta (demo)","sample")+btn("Aggiorna Ricetta (demo)","sample")+btn("Elimina Ricetta (demo)","sample")+btn("Ricerca per paziente","sample")+btn("Indietro","tofarmaci"))
+ +table(["NUM","Medico","Data emissione","Durata","Descrizione","Paziente","Farmaco"],rx.map(r=>[r.id,r.doctor,r.issued,r.days,r.description,r.patient,r.med]));
+ }
+ if(page==="operatori"){
+ html=section("Dati Operatore e registrazione vendite",'<div class="formgrid"><div>'+field("CF:","")+field("Nome:","")+field("Cognome:","")+field("Data assunzione:","")+field("Cassa ID:","")+'</div><div>'+field("Codice farmaco:","")+field("Quantità:","")+field("Prezzo totale:","")+field("Spesa:","")+'</div></div>')
+ +toolbar(btn("Inserisci","sample")+btn("Aggiorna","sample")+btn("Elimina","sample")+btn("Cerca per CF","sample")+btn("Visualizza tutti","showall")+btn("Operatori in cassa con incasso superiore alla media","above"))
+ +table(["CF (fittizio)","Nome","Data assunzione","Cassa ID","Incasso simulato"],operators.filter(o=>!window.onlyAbove||o.revenue>operators.reduce((a,b)=>a+b.revenue,0)/operators.length).map(o=>[o.id,o.name,o.hired,o.desk,currency(o.revenue)]));
+ }
+ if(page==="clienti")html=section("Gestione Clienti",toolbar(btn("Inserisci","sample")+btn("Aggiorna","sample")+btn("Elimina","sample"))+table(["Codice cliente","Nome"],customers.map(c=>[c.id,c.name])));
+ if(page==="asl")html=section("Gestione ASL",'<div class="notice">Modulo presente nel gestionale originale. Questa demo ne riproduce la navigazione con dati fittizi; nessun accredito reale viene elaborato.</div>'+table(["ASL","Stato"],[["ASL DEMO 001","Dati dimostrativi"],["ASL DEMO 002","Dati dimostrativi"]]));
+ if(page==="medici")html=section("Gestione Medici",toolbar(btn("Ricerca medico","sample"))+table(["Codice medico","Nominativo"],doctors.map(d=>[d.id,d.name])));
+ if(page==="report")html='<div class="reportgrid">'+[['Farmaci',meds.length],['Pazienti',patients.length],['Ricette',rx.length],['Operatori',operators.length],['Totale stock',meds.reduce((a,b)=>a+b.qty,0)],['Totale incassi simulati',currency(operators.reduce((a,b)=>a+b.revenue,0))]].map(([label,val])=>'<div class="reportcard"><b>'+esc(val)+'</b><small>'+esc(label)+'</small></div>').join('')+'</div>'+section('Indicatori didattici','<p>Questi report sono calcolati su dati inventati nella demo e non derivano dal database originale.</p>');
+ out.innerHTML=html+'<div class="summary">⚠️ Ricostruzione dimostrativa dal progetto Java Swing · Il contenuto è sintetico, non salvato su un database.</div>';
+}
+function goto(next){page=next;window.onlyAbove=false;draw();}
+document.querySelectorAll('#nav [data-page]').forEach(el=>el.addEventListener('click',()=>goto(el.dataset.page)));
+document.querySelector('.workspace').addEventListener('click',e=>{
+ const el=e.target.closest('button[data-action]');if(!el)return;
+ const action=el.dataset.action;
+ if(action==='otc'){kind='OTC';draw()}else if(action==='rx'){kind='ETICO';draw()}else if(action==='allmed'){kind='ALL';draw()}else if(action==='lowstock'){kind='LOW';draw()}else if(action==='torx'){goto('ricette')}else if(action==='tofarmaci'){goto('farmaci')}else if(action==='above'){window.onlyAbove=true;draw()}else if(action==='showall'){window.onlyAbove=false;draw()}else if(action==='sample'){alert('Azione illustrativa: questa demo non modifica dati reali e non usa MySQL.');}
+});
+$('loginform').addEventListener('submit',e=>{e.preventDefault();$('login').classList.add('hidden');$('app').classList.remove('hidden');draw();window.scrollTo(0,0);});
+$('exit').addEventListener('click',()=>{$('app').classList.add('hidden');$('login').classList.remove('hidden');window.scrollTo(0,0);});
+$('resetlogin').addEventListener('click',()=>{window.location.href='https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/gestione-farmacia/';});
+
+</script></body></html>

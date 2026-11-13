@@ -1,0 +1,571 @@
+{
+  "schema_version": 1,
+  "description": "Bilingual release notes grounded in published project and website changes. Historical entries link to GitHub commits.",
+  "entries": [
+    {
+      "date": "2026-11-13",
+      "project": "legacybridge",
+      "project_name": "LegacyBridge",
+      "version": "Ownership · 13.11.2026",
+      "type": "documentation",
+      "title": {
+        "it": "LegacyBridge: roadmap proprietaria e sonda storica AGPLv3",
+        "en": "LegacyBridge: proprietary roadmap and legacy AGPLv3 probe"
+      },
+      "changes": {
+        "it": [
+          "Aggiornata la documentazione IT/EN per riservare i futuri moduli indipendenti a uno sviluppo proprietario.",
+          "Chiarito che la piccola sonda PowerShell già distribuita conserva la precedente licenza AGPLv3; non vengono revocati i permessi già concessi."
+        ],
+        "en": [
+          "Updated Italian and English documentation to identify independent future modules as proprietary development.",
+          "Clarified that the previously released small PowerShell probe retains its AGPLv3 license; existing grants remain valid."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/legacybridge-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/b5a7938c800403818fb9549f7bd642163cc95e87"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "Licenses · 13.11.2026",
+      "type": "documentation",
+      "title": {
+        "it": "Licenze e diritti dei progetti chiariti su GitHub",
+        "en": "Clarified project licensing and rights on GitHub"
+      },
+      "changes": {
+        "it": [
+          "Pubblicate licenze GNU AGPLv3 separate per il codice originale di SignalScope e della nuova implementazione Meteo Bash 2D; LegacyBridge mantiene AGPLv3 per la sonda pubblica.",
+          "Documentato il diverso trattamento dei prodotti proprietari privati, del codice pubblico e dei contributi di terzi; aggiornato anche il profilo GitHub."
+        ],
+        "en": [
+          "Added separate GNU AGPLv3 licenses to original public SignalScope code and the new Meteo Bash 2D implementation; the public LegacyBridge probe remains AGPLv3.",
+          "Documented the distinction between private proprietary products, public code and third-party contributions; updated the GitHub profile as well."
+        ]
+      },
+      "url": "https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994#licenze-dei-progetti",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/350dbcee5639eb497f1c05b545691ff8647236a7"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "driveglass",
+      "project_name": "DriveGlass",
+      "version": "Demo · 13.11.2026",
+      "type": "feature",
+      "title": {
+        "it": "DriveGlass: video Full HD e prova del Passaporto digitale",
+        "en": "DriveGlass: Full HD demo and digital passport evidence"
+      },
+      "changes": {
+        "it": [
+          "Preparata la riproduzione Full HD della registrazione Flutter: il player userà il nuovo video dopo il caricamento del file MP4, con fallback sul filmato compresso.",
+          "Aggiunta l'anteprima HTML di un vero Passaporto digitale PDF generato dall'app il 9 novembre 2026; i dati sono dichiarati dall'utente e non certificati.",
+          "Aggiornate la scheda progetto nel portfolio e la documentazione della demo."
+        ],
+        "en": [
+          "Prepared Full HD playback of the original Flutter recording; the player will use the new MP4 once uploaded, falling back to the compressed clip.",
+          "Added an HTML preview based on an actual digital-passport PDF exported by the app on November 9, 2026; values are user-declared, not certified.",
+          "Updated the project's portfolio card and public demo documentation."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/driveglass-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/6b4341e7d0a0347452692feda993e2b9385bea32"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "Education · 13.11.2026",
+      "type": "fix",
+      "title": {
+        "it": "Logo originale Leonardo da Vinci di Sapri inserito",
+        "en": "Added the Leonardo da Vinci Sapri school emblem"
+      },
+      "changes": {
+        "it": [
+          "Sostituito il simbolo scolastico provvisorio con il logo fornito dall'autore, ritagliato dal banner senza ridisegnarlo.",
+          "Aggiornati testo alternativo, traduzione inglese e controlli automatici della pagina Formazione."
+        ],
+        "en": [
+          "Replaced the provisional school graphic with the supplied emblem, cropped from the original banner without redesign.",
+          "Updated alternative text, English localization and education-section regression checks."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#chi-sono"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "forma-ai",
+      "project_name": "FORMA AI",
+      "version": "Docs · 13.11.2026",
+      "type": "fix",
+      "title": {
+        "it": "Allineate demo 3D e roadmap di FORMA AI",
+        "en": "Aligned FORMA AI 3D demo with product roadmap"
+      },
+      "changes": {
+        "it": [
+          "Corretto il README: l'atlante 3D illustrativo uomo/donna è già nella demo pubblica.",
+          "Chiarito che esercizi validati, coach AI personalizzato e analisi biomeccanica rimangono separati o da sviluppare."
+        ],
+        "en": [
+          "Corrected the README: the illustrative male/female 3D atlas is already available in the public demo.",
+          "Clarified that validated exercises, personalized AI coaching and biomechanics analysis remain private or planned."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/forma-ai-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/3b72d838acf193360c83f6c5674ac96453b892b6"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "Architecture · 13.11.2026",
+      "type": "documentation",
+      "title": {
+        "it": "Preparata la separazione di portfolio e LegacyBridge",
+        "en": "Prepared standalone Portfolio and LegacyBridge repositories"
+      },
+      "changes": {
+        "it": [
+          "Documentato il piano di migrazione senza interrompere GitHub Pages o il dominio personalizzato.",
+          "Avviato il controllo qualità dei progetti con priorità, stato e verifiche da completare. I nuovi repository non sono ancora stati creati."
+        ],
+        "en": [
+          "Documented a staged migration plan that preserves the existing GitHub Pages domain.",
+          "Started an evidence-based project quality audit. The standalone repositories have not been created yet."
+        ]
+      },
+      "url": "https://github.com/GiovanniDelGaudio1994/forma-ai/blob/main/docs/GITHUB_REPOSITORY_REORGANIZATION.md",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/c426206822925dd8672516d091d0d1f5c8e3ecd4"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "UI · 13.11.2026",
+      "type": "feature",
+      "title": {
+        "it": "Navbar più chiara e diploma Geometra aggiornato",
+        "en": "Clearer navigation and updated Surveying diploma"
+      },
+      "changes": {
+        "it": [
+          "Riorganizzata la navigazione con icone, etichette più chiare, stato attivo e menu mobile a griglia.",
+          "Aggiornata la voce del diploma tecnico nell'indirizzo Geometri; il logo autentico dell'istituto è ancora da inserire."
+        ],
+        "en": [
+          "Redesigned navigation with icons, clearer labels, active section state and a mobile grid menu.",
+          "Clarified the technical high-school qualification in Surveying; the authentic school logo is still pending."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#chi-sono",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/031eb42eee9c15b4c554b07ffc027d2bef65db23"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.13",
+      "type": "feature",
+      "title": {
+        "it": "Percorso di studi e registro aggiornamenti",
+        "en": "Education timeline and release notes"
+      },
+      "changes": {
+        "it": [
+          "Aggiunta la timeline del diploma tecnico 2014/2015 a Sapri e degli studi in Informatica a UNISA dal 2016/2017.",
+          "Introdotte patch notes bilingui per documentare versioni, funzionalità, correzioni e aggiornamenti dei progetti."
+        ],
+        "en": [
+          "Added the education timeline: technical high-school diploma in Sapri (2014/2015) and ongoing Computer Science studies at UNISA since 2016/2017.",
+          "Introduced bilingual release notes to document versions, new features, fixes and project updates."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#chi-sono"
+    },
+    {
+      "date": "2026-11-13",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.13 QA",
+      "type": "fix",
+      "title": {
+        "it": "Verifiche automatiche per formazione e changelog",
+        "en": "Automated education and changelog checks"
+      },
+      "changes": {
+        "it": [
+          "Controlli CI per verificare timeline IT/EN, filtri per progetto e note generate."
+        ],
+        "en": [
+          "CI checks verify the bilingual timeline, project filters and generated notes."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#aggiornamenti",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/ffb9667f98"
+    },
+    {
+      "date": "2026-11-12",
+      "project": "legacybridge",
+      "project_name": "LegacyBridge",
+      "version": "Lab #001",
+      "type": "documentation",
+      "title": {
+        "it": "Pubblicato il caso studio HP 550",
+        "en": "Published the HP 550 case study"
+      },
+      "changes": {
+        "it": [
+          "Pubblicata la documentazione tecnica in italiano e inglese con risultati osservati e prove ancora da svolgere.",
+          "Esplicitati i limiti CPU per Windows 11 e la capacità fisica non verificata dell'unità SATA."
+        ],
+        "en": [
+          "Published bilingual technical documentation distinguishing observed findings from tests still pending.",
+          "Explained Windows 11 CPU limitations and the unverified physical capacity of the SATA device."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/legacybridge-demo/hp-550/"
+    },
+    {
+      "date": "2026-11-12",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.12",
+      "type": "feature",
+      "title": {
+        "it": "Portfolio e LegacyBridge disponibili in IT/EN",
+        "en": "Portfolio and LegacyBridge now in IT/EN"
+      },
+      "changes": {
+        "it": [
+          "Inserito un selettore IT/EN con preferenza memorizzata e contenuti tradotti.",
+          "Aggiunti URL distinti per lingua, metadati hreflang e controlli automatici della pubblicazione."
+        ],
+        "en": [
+          "Added an IT/EN language selector with a remembered preference and translated content.",
+          "Introduced separate language URLs, hreflang metadata and automated publishing checks."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/en/"
+    },
+    {
+      "date": "2026-11-12",
+      "project": "legacybridge",
+      "project_name": "LegacyBridge",
+      "version": "Public probe",
+      "type": "release",
+      "title": {
+        "it": "Primo laboratorio pubblico e sonda read-only",
+        "en": "Public lab preview and read-only probe"
+      },
+      "changes": {
+        "it": [
+          "Pubblicata la demo del laboratorio e una piccola sonda diagnostica PowerShell originale sotto AGPLv3.",
+          "Il codice sperimentale completo resta separato dalla parte pubblica."
+        ],
+        "en": [
+          "Published a lab demo and a small original read-only PowerShell probe under AGPLv3.",
+          "The complete experimental codebase remains separate from the public component."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/legacybridge-demo/"
+    },
+    {
+      "date": "2026-11-12",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.12 Stack",
+      "type": "feature",
+      "title": {
+        "it": "Tech Stack basato su progetti reali",
+        "en": "Project-backed technology stack"
+      },
+      "changes": {
+        "it": [
+          "Mappa delle tecnologie con percentuali di copertura nei progetti e barre accessibili senza JavaScript."
+        ],
+        "en": [
+          "Technology coverage reflects actual projects; progress bars remain accessible without JavaScript."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#approccio",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/1f6af45977"
+    },
+    {
+      "date": "2026-11-12",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.12 Security",
+      "type": "fix",
+      "title": {
+        "it": "Sicurezza e controlli automatici del sito",
+        "en": "Website security and automated checks"
+      },
+      "changes": {
+        "it": [
+          "Introdotte CSP, risorse CSS/JS locali, verifiche CI e controlli di regressione."
+        ],
+        "en": [
+          "Added CSP, first-party CSS/JS, CI verification and regression checks."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/8cce6a4f59"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.11 Pages",
+      "type": "release",
+      "title": {
+        "it": "Nuova homepage e infrastruttura SEO",
+        "en": "New homepage and SEO infrastructure"
+      },
+      "changes": {
+        "it": [
+          "Portfolio pubblicato alla radice del dominio con demo conservate, sitemap, robots.txt e URL canonical."
+        ],
+        "en": [
+          "Portfolio published at the domain root while keeping demos available; sitemap, robots.txt and canonical URLs added."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/8da91f5992"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.11 UI",
+      "type": "feature",
+      "title": {
+        "it": "Ritratto, animazioni e tema chiaro/scuro",
+        "en": "Portrait, animations and light/dark theme"
+      },
+      "changes": {
+        "it": [
+          "Inseriti ritratto, elementi animati e cambio tema accessibile, con miglioramenti responsive."
+        ],
+        "en": [
+          "Added the portrait, animations and accessible theme switching, with responsive improvements."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#chi-sono",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/13af4b760"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "2026.11.11 Credentials",
+      "type": "feature",
+      "title": {
+        "it": "Galleria delle 14 attestazioni",
+        "en": "Gallery of 14 credentials"
+      },
+      "changes": {
+        "it": [
+          "Pubblicate quattordici attestazioni con collegamenti alle evidenze e una presentazione professionale."
+        ],
+        "en": [
+          "Published fourteen credentials with supporting links and a professional presentation."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/#certificazioni",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/27f5fb50d"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "forma-ai",
+      "project_name": "FORMA AI",
+      "version": "Atlas 2026.11.11",
+      "type": "feature",
+      "title": {
+        "it": "Atlante 3D: modelli uomo/donna",
+        "en": "3D atlas: male/female models"
+      },
+      "changes": {
+        "it": [
+          "Aggiunta alla demo la selezione dei modelli anatomici 3D; introdotte anche illustrazioni HD."
+        ],
+        "en": [
+          "Added male/female 3D anatomy model selection and HD illustrations to the demo."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/atlante-3d.html",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/fdf1880ff"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "forma-ai",
+      "project_name": "FORMA AI",
+      "version": "Neon Edition",
+      "type": "feature",
+      "title": {
+        "it": "Restyling della demo FORMA AI",
+        "en": "FORMA AI demo redesign"
+      },
+      "changes": {
+        "it": [
+          "Presentazione Neon Edition con palette blu-viola e dashboard grafica; le funzioni AI avanzate restano in sviluppo."
+        ],
+        "en": [
+          "Neon Edition showcase with blue-purple visuals and dashboard; advanced AI features remain in development."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/forma-ai-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/14fc810e3"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "fit-zone",
+      "project_name": "Fit Zone",
+      "version": "v1.1 Responsive",
+      "type": "fix",
+      "title": {
+        "it": "Patch responsive per mobile e tablet",
+        "en": "Mobile and tablet responsive fixes"
+      },
+      "changes": {
+        "it": [
+          "Migliorati griglie, controlli touch e menu su resize e navigazione da tastiera."
+        ],
+        "en": [
+          "Improved grids, touch targets and menu behavior on resize and keyboard navigation."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/fit-zone-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/fed49fb1b"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "signalscope",
+      "project_name": "SignalScope",
+      "version": "Rules 2026.11.11",
+      "type": "feature",
+      "title": {
+        "it": "Motore di regole per segnali spiegabili",
+        "en": "Rule engine for explainable signals"
+      },
+      "changes": {
+        "it": [
+          "Aggiunta la classificazione a regole per scadenze e requisiti; i segnali necessitano verifica umana."
+        ],
+        "en": [
+          "Added rule-based signals for deadlines and eligibility; findings require human review."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/signalscope-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/e6d39dea1"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "meteo-bash2d",
+      "project_name": "Meteo Bash 2D",
+      "version": "Terminal 2026.11.11",
+      "type": "release",
+      "title": {
+        "it": "Terminale meteo Open-Meteo senza API key",
+        "en": "Keyless Open-Meteo terminal"
+      },
+      "changes": {
+        "it": [
+          "Client meteo Bash e demo live con compatibilità macOS Bash 3.2."
+        ],
+        "en": [
+          "Bash weather client and live demo, with macOS Bash 3.2 compatibility."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/meteo-bash2d-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/63df31125"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "e-wine",
+      "project_name": "e-Wine",
+      "version": "Demo 2026.11.11",
+      "type": "feature",
+      "title": {
+        "it": "E-commerce demo e-Wine",
+        "en": "e-Wine e-commerce demo"
+      },
+      "changes": {
+        "it": [
+          "Demo navigabile con catalogo e ruoli simulati; sorgenti Java/JSP originali mantenuti riservati."
+        ],
+        "en": [
+          "Navigable catalog with simulated roles; original Java/JSP application sources remain private."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/ewine-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/46c9e3afc"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "gestione-farmacia",
+      "project_name": "GestioneFarmacia",
+      "version": "Demo 2026.11.11",
+      "type": "feature",
+      "title": {
+        "it": "Demo ricostruita in stile Java Swing",
+        "en": "Java Swing-style reconstructed demo"
+      },
+      "changes": {
+        "it": [
+          "Interfaccia dimostrativa basata sul gestionale originale con dati sintetici."
+        ],
+        "en": [
+          "Demo interface inspired by the original management app, using synthetic data."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/gestione-farmacia-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/590122301"
+    },
+    {
+      "date": "2026-11-11",
+      "project": "irem",
+      "project_name": "RememberMe · iRem",
+      "version": "Prototype 2026.11.11",
+      "type": "feature",
+      "title": {
+        "it": "Prototipo universitario iRem navigabile",
+        "en": "Navigable iRem university prototype"
+      },
+      "changes": {
+        "it": [
+          "Pubblicati i mockup navigabili del progetto IUM; non è presentato come applicazione completa."
+        ],
+        "en": [
+          "Published navigable HCI project mockups; not presented as a complete application."
+        ]
+      },
+      "url": "https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/rememberme/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/e2e3c2636"
+    },
+    {
+      "date": "2026-11-10",
+      "project": "forma-ai",
+      "project_name": "FORMA AI",
+      "version": "Public demo 2026.11.10",
+      "type": "documentation",
+      "title": {
+        "it": "Codice privato e demo pubblica separati",
+        "en": "Private source separated from public demo"
+      },
+      "changes": {
+        "it": [
+          "Riorganizzata la repository pubblica per mostrare la demo senza esporre il codice applicativo completo."
+        ],
+        "en": [
+          "Restructured the public repository to showcase a demo without exposing the complete application source."
+        ]
+      },
+      "url": "https://giovannidelgaudio.it/forma-ai-demo/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/forma-ai/commit/54d78b248"
+    }
+  ]
+}

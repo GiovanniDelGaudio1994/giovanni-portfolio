@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0b20">
+<meta name="description" content="FORMA AI Muscle Atlas: demo 3D interattiva dei principali gruppi muscolari. Ruota il modello, seleziona muscoli e scopri esercizi illustrativi.">
+<title>FORMA AI — Muscle Atlas 3D</title>
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#070918;color:#faf7ff;--accent:#bb6bff;--muted:#a7a9c8;--border:#6e55a651}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 68% 35%,#51209b4a,transparent 50%),radial-gradient(ellipse at 0 100%,#2353a52e,transparent 48%),#070918}
+a{color:inherit}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #d397ff;outline-offset:3px}
+.shell{max-width:1510px;margin:auto;padding:22px clamp(15px,3vw,42px) 50px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{font-size:21px;font-weight:900;letter-spacing:.02em;text-decoration:none}.brand span{color:#ba68ff}
+.return{color:#cbbfe8;text-decoration:none;font-size:13px;border:1px solid #7355b655;padding:12px 16px;border-radius:13px;background:#b574ff10}.return:hover{background:#9a66ff20}
+.badge{display:inline-flex;align-items:center;gap:9px;color:#dbb6ff;border:1px solid #8852dc88;background:#7a46e62b;border-radius:30px;padding:9px 14px;font-size:11px;font-weight:850;letter-spacing:.12em}
+.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:#d68dff;box-shadow:0 0 12px #ae6bff}
+.intro{margin:35px 0 25px}.intro h1{font-size:clamp(36px,5.5vw,68px);letter-spacing:-.06em;line-height:1.04;margin:16px 0}.intro h1 em{font-style:normal;color:#bc73ff}.intro p{color:var(--muted);font-size:15px;line-height:1.75;max-width:750px}
+.layout{display:grid;grid-template-columns:minmax(0,1.36fr) minmax(290px,.78fr);gap:20px;align-items:stretch}
+.panel{border:1px solid var(--border);background:linear-gradient(155deg,#192044ef,#10142cee);border-radius:26px;box-shadow:0 24px 65px #0005,inset 0 1px #ffffff0b;min-width:0;overflow:hidden}
+.viewer{min-height:610px;position:relative;background:radial-gradient(ellipse at 50% 52%,#542d9555,transparent 48%),radial-gradient(ellipse at 70% 80%,#214eab26,transparent 43%),#0a0e25}
+.viewer:after{content:"";position:absolute;inset:13px;pointer-events:none;border:1px solid #aa81f01d;border-radius:20px}
+.viewer-head{position:absolute;z-index:2;left:22px;top:20px;right:22px;display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none}
+.viewer-head b{font-size:12px;letter-spacing:.13em;color:#dfccff}
+.view-chip{border:1px solid #8862d977;background:#27204abb;padding:8px 12px;border-radius:50px;font-size:11px;color:#e2cbff}
+#stage{position:absolute;inset:0;touch-action:none;cursor:grab;outline:none}
+#stage:active{cursor:grabbing}
+.overlay{position:absolute;bottom:17px;left:17px;right:17px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;z-index:3}
+.action{border:1px solid #945ce38c;color:#f7ebff;background:#302154d6;border-radius:12px;padding:10px 12px;font-weight:720;font-size:12px;backdrop-filter:blur(9px)}
+.action:hover,.action[aria-pressed="true"]{background:#7541cbdb;border-color:#c786ff}
+.hint{font-size:11px;color:#b8b1d2;margin-left:auto;background:#080b24b8;border-radius:10px;padding:9px}
+.fallback{position:absolute;inset:30% 10%;display:grid;place-content:center;text-align:center;color:#d4c6ec;line-height:1.8}
+.info{padding:26px;display:flex;flex-direction:column;gap:16px}
+.kicker{color:#bf78ff;font-size:11px;letter-spacing:.15em;font-weight:850}
+.info h2{font-size:clamp(26px,3vw,36px);letter-spacing:-.045em;margin:8px 0}
+.info p{color:#b4b0d0;font-size:13px;line-height:1.7;margin:0}
+.muscles{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0}
+.muscle{background:#222345;border:1px solid #6e5d9c7a;color:#c9c1e2;padding:9px 11px;border-radius:11px;font-size:12px;font-weight:700}
+.render-mode{display:flex;gap:7px;margin-top:11px;padding:6px;background:#13152e;border:1px solid #7357b955;border-radius:15px}
+.render-mode button{flex:1;border:1px solid transparent;background:none;color:#bdb2d8;font:inherit;font-size:12px;font-weight:800;padding:12px 9px;border-radius:10px;cursor:pointer}
+.render-mode button[aria-pressed="true"]{background:linear-gradient(110deg,#6156e4,#ad42de);border-color:#c780f3;color:white}
+#art-stage{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1;pointer-events:none}
+#art-stage.active{display:flex}
+#art-stage img{display:block;width:auto;height:86%;max-width:88%;object-fit:contain;filter:drop-shadow(0 0 30px #7d48e755)}
+#art-stage img[hidden]{display:none}
+#art-stage .pending-art{display:none;max-width:70%;font-size:14px;line-height:1.7;color:#d0c1e8;text-align:center}
+#art-stage.failed .pending-art{display:block}
+#art-stage.failed img{display:none}
+.viewer.art-active #stage{visibility:hidden}
+.viewer.art-active .overlay{opacity:.95}
+.viewer.art-active #front,.viewer.art-active #back,.viewer.art-active #spin{opacity:.45;pointer-events:none}
+.model-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.model-option{border:1px solid #7958b7;padding:14px 12px;border-radius:14px;background:#1b1c40;color:#d8ceef;font-weight:800;font-size:13px;cursor:pointer;transition:background .25s,border-color .25s}
+.model-option[aria-pressed="true"]{background:linear-gradient(115deg,#684ef3,#af42e6);color:#fff;border-color:#d28cff;box-shadow:0 7px 23px #9f49ea4b}
+.model-option:hover{border-color:#d091ff}
+#stage canvas{width:100%;height:100%;display:block}
+.muscle:hover{border-color:#d39aff;color:#fff}.muscle.active{background:linear-gradient(110deg,#6a49dd,#ab43e2);border-color:#cb86ff;color:white;box-shadow:0 7px 24px #9e4fe331}
+.exercise{border:1px solid #7959b16e;border-radius:16px;padding:16px;background:#6f49bd1e}
+.exercise strong{font-size:15px}.exercise p{margin-top:8px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.chip{font-size:10px;color:#cfc1ec;background:#ab79ff17;border:1px solid #9669d759;padding:6px 9px;border-radius:30px}
+.warning{margin-top:auto;border-top:1px solid #705a9f5c;padding-top:17px;font-size:12px!important;color:#a9a2c6!important}
+.bottom{margin-top:22px;border:1px solid #7860b852;border-radius:18px;background:#251a4838;padding:17px 20px;font-size:12px;line-height:1.65;color:#b5aed1}
+.bottom strong{color:#e1c7ff}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.viewer{min-height:540px}.info{padding:23px}.muscles{gap:8px}}
+@media(max-width:600px){.viewer{min-height:490px}.viewer-head{left:17px;right:17px}.overlay{bottom:12px;left:12px;right:12px}.action{padding:9px 10px}.hint{width:100%;text-align:center}.intro{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div class="shell">
+<header class="top"><a href="./" class="brand">FORMA <span>AI</span> <span style="font-weight:500;color:#9184b4">/ MUSCLE ATLAS</span></a><a href="./#dashboard" class="return">← Torna alla demo</a></header>
+<div class="intro"><span class="badge">EXPERIMENTAL 3D EXPERIENCE</span><h1>Esplora il corpo.<br><em>Comprendi il movimento.</em></h1><p>Il nostro primo atlante muscolare 3D interattivo. Ruota il modello, evidenzia i principali gruppi muscolari e consulta un esempio di esercizio. Nessuna registrazione richiesta.</p></div>
+<main class="layout">
+<section class="panel viewer" aria-label="Visualizzatore anatomico 3D dimostrativo"><div class="viewer-head"><b>◉ LIVE 3D VIEWER</b><span class="view-chip">Modello stilizzato · Demo</span></div><div id="art-stage" aria-label="Illustrazione anatomica HD selezionata"><img data-art="male" src="./assets/anatomia-uomo-neon.png" alt="Modello anatomico maschile illustrato con muscoli neon" hidden><img data-art="female" src="./assets/anatomia-donna-neon.png" alt="Modello anatomico femminile illustrato con muscoli neon" hidden><div class="pending-art">Le illustrazioni HD non sono ancora disponibili sul sito. Usa la modalità 3D.</div></div><div id="stage" tabindex="0" aria-label="Modello 3D. Trascina per ruotarlo, scorri per ingrandire, oppure utilizza i pulsanti di vista."></div><div class="overlay"><button class="action" id="front">Vista frontale</button><button class="action" id="back">Vista posteriore</button><button class="action" id="spin" aria-pressed="false">⟳ Auto rotazione</button><button class="action" id="reset">Ripristina</button><span class="hint">↔ Trascina · ⤢ Zoom · Tocca un muscolo</span></div></section>
+<aside class="panel info">
+<div><span class="kicker">INTERACTIVE MUSCLE MAP</span><h2 id="muscle-name">Pettorali</h2><p id="muscle-description">Muscoli anteriori del torace coinvolti in movimenti di spinta e adduzione dell'arto superiore.</p></div>
+<div><span class="kicker">MODALITÀ VISIVA</span><div class="render-mode" role="group" aria-label="Modalità di visualizzazione"><button type="button" data-render="art" aria-pressed="false">✦ Anatomia HD</button><button type="button" data-render="3d" aria-pressed="true">◇ Modello 3D</button></div></div><div><span class="kicker">SCEGLI MODELLO</span><div class="model-switch" id="model-switch" role="group" aria-label="Modello corporeo">
+<button type="button" class="model-option" data-model="male" aria-pressed="true">♂ Uomo 3D</button>
+<button type="button" class="model-option" data-model="female" aria-pressed="false">♀ Donna 3D</button>
+</div><p style="margin-top:10px;font-size:11px">Le immagini Anatomia HD sono render 2D; la rotazione e lo zoom 3D sono disponibili nella modalità Modello 3D.</p></div>
+<div><span class="kicker">SELEZIONA UN GRUPPO</span><div class="muscles" id="muscles"></div></div>
+<div class="exercise"><span class="kicker">ESEMPIO DI MOVIMENTO</span><div style="margin-top:10px"><strong id="exercise-title">Push-up facilitato</strong></div><p id="exercise-description">Esempio educativo di spinta a corpo libero, modificabile in base alle capacità individuali.</p><div class="chips"><span class="chip" id="exercise-area">Parte superiore</span><span class="chip">Solo esempio · Non prescrizione</span></div></div>
+<p class="warning">⚕️ Il modello è stilizzato e non rappresenta una ricostruzione anatomica clinicamente accurata. Schede ed esercizi sono illustrativi, non valutazioni tecniche, programmi personalizzati o indicazioni mediche.</p>
+</aside>
+</main>
+<div class="bottom"><strong>Privacy & tecnologia:</strong> visualizzazione 3D elaborata nel browser con WebGL e Three.js, caricato da CDN. Nessun dato sanitario, foto o video viene raccolto da questa demo. Il 3D richiede JavaScript, una connessione internet per la libreria e un browser compatibile con WebGL. <a href="https://github.com/GiovanniDelGaudio1994/forma-ai">Documentazione del progetto</a>.</div>
+</div>
+<script type="module" src="./assets/muscle-atlas-3d.js"></script>
+</body>
+</html>

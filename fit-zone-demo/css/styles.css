@@ -1,0 +1,586 @@
+/* styles.css */
+
+/*==============================
+  RESET & GLOBAL STYLES
+==============================*/
+:root {
+  --primary: #f04e30;
+  --primary-hover: #d5432a;
+  --gradient-start: #ff7e5f;
+  --gradient-end: #feb47b;
+  --text-dark: #333;
+  --text-light: #fff;
+  --bg-light: #f5f5f5;
+  --bg-white: #fff;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/*==============================
+  PRELOADER
+==============================*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*==============================
+  HEADER / HERO
+==============================*/
+.hero {
+  background: url('../images/header.webp') center/cover no-repeat;
+  color: var(--text-light);
+  padding: 60px 20px;
+  position: relative;
+}
+
+.hero nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero nav h1 {
+  font-size: 2rem;
+}
+
+.hero nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.hero nav ul li a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.hero nav ul li a:hover,
+.hero nav ul li a:focus {
+  color: var(--text-light);
+  background-color: var(--primary);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .hero nav ul {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .hero nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-top: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/*==============================
+  SECTIONS
+==============================*/
+.section {
+  padding: 60px 20px;
+  background-color: var(--bg-white);
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 1200px;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary);
+}
+
+.section p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/*==============================
+  CARDS
+==============================*/
+.services, .testimonials, .carousel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service-card, .testimonial {
+  background: var(--bg-white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  flex: 1 1 calc(25% - 40px);
+  min-width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover, .testimonial:hover {
+  transform: translateY(-10px);
+}
+
+/*==============================
+  CAROUSEL
+==============================*/
+.carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.carousel img {
+  min-width: 100%;
+  transition: transform 1s ease;
+  border-radius: 10px;
+}
+
+/*==============================
+  ANIMATIONS
+==============================*/
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*==============================
+  FOOTER
+==============================*/
+footer {
+  background-color: #222;
+  color: var(--text-light);
+  padding: 20px;
+  text-align: center;
+}
+
+/*==============================
+  CONTACT
+==============================*/
+.contact-section {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--gradient-start);
+  box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+  outline: none;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, #ff956f, #fec97b);
+  transform: translateY(-2px);
+}
+
+/*==============================
+  SOCIAL ICONS
+==============================*/
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-icons a {
+  font-size: 2rem;
+  color: #555;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--gradient-start);
+  transform: scale(1.2);
+}
+
+.social-icons a:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+}
+
+/*==============================
+  OPENING HOURS TABLE
+==============================*/
+.opening-hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.opening-hours-table th, .opening-hours-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.opening-hours-table th {
+  background-color: var(--primary);
+  color: white;
+  font-size: 1.1rem;
+}
+
+.opening-hours-table td {
+  background-color: var(--bg-white);
+  font-size: 1rem;
+}
+
+.opening-hours-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.opening-hours-table tr:hover {
+  background-color: #f0e4e4;
+}
+
+.opening-hours-table tr:hover td {
+  color: var(--primary);
+}
+
+/*==============================
+  LOGIN & REGISTRATION
+==============================*/
+body.auth-bg {
+  background: url('../images/registrazione.webp') center center / cover no-repeat fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page {
+  background: url('../images/login-bg.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.auth-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  width: 100%;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.auth-container h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-container input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(240, 78, 48, 0.4);
+  outline: none;
+}
+
+.auth-container button {
+  padding: 12px;
+  font-size: 1.1rem;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-container button:hover {
+  background: var(--primary-hover);
+}
+
+.auth-container p {
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.auth-container a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: #ffe6e6;
+  color: #cc0000;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.success-message {
+  background: #e6ffe6;
+  color: #008000;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Stili per i messaggi di errore e successo */
+.error-message {
+  color: red;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.success-message {
+  color: green;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Stile per i tab */
+.profile-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Aggiunta di stile per il contenuto dei tab */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-table th, .profile-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.profile-table th {
+  background-color: #f2f2f2;
+}
+
+/* Stile per le righe attive e scadute */
+.active {
+  color: green;
+}
+
+.expired {
+  color: red;
+}
+
+/* Modifica per migliorare il layout dei form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-submit {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.btn-cancel {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-cancel:hover {
+  background-color: #e53935;
+}
+/* Stile per il messaggio di errore */
+
+.error-message {
+  color: red;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
