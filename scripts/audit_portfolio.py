@@ -193,6 +193,19 @@ def main() -> int:
         if f'data-locale="{language}"' not in html:
             errors.append(f"{path}: locale link missing")
     
+    for path in (SITE / "index.html", SITE / "en/index.html", SITE / "portfolio/index.html", SITE / "portfolio/en/index.html"):
+        if not path.is_file():
+            errors.append(f"Missing portfolio page: {path}")
+            continue
+        content = path.read_text(encoding="utf-8")
+        if "projects/fit-zone/source" in content or "codice PHP consultabile" in content:
+            errors.append(f"{path}: stale public Fit Zone source references")
+        if "href=\"/cv/\"" not in content:
+            errors.append(f"{path}: missing printable résumé link")
+    for page in (SITE / "cv/index.html", SITE / "cv/en/index.html"):
+        if not page.is_file() or "window.print()" not in page.read_text(encoding="utf-8"):
+            errors.append(f"{page}: printable résumé missing")
+
     for error in errors:
         print("SECURITY AUDIT FAILED:", error, file=sys.stderr)
     if errors:

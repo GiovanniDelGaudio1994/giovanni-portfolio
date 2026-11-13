@@ -12,7 +12,7 @@
       "Non solo codice.": "Beyond code.",
       "Esperienze": "Digital experiences",
       "che funzionano": "that work.",
-      "Sono": "I'm",
+      "Sono": "I am",
       ", studente dell’": ", a student at the",
       "Università degli Studi di Salerno": "University of Salerno",
       "e sviluppatore software. Trasformo idee in applicazioni concrete, dal mobile al web.": "and a software developer. I turn ideas into practical applications, from mobile to the web.",
@@ -33,7 +33,7 @@
       "CONCEPT DI PRODOTTO · IN EVOLUZIONE": "PRODUCT CONCEPT · IN DEVELOPMENT",
       "Allenamenti, coaching assistito da AI e analisi dei progressi. Il mockup rappresenta la visione del prodotto; le funzioni avanzate sono previste per le prossime versioni.": "Workouts, AI-assisted coaching and progress analysis. The mockup shows the product vision; advanced capabilities are planned for future releases.",
       "Demo pubblica": "Public demo",
-      "Scheda tecnica": "Technical overview",
+      "Scheda tecnica": "Technical brief",
       "GESTIONALE WEB · DEMO PUBBLICA": "WEB MANAGEMENT SYSTEM · PUBLIC DEMO",
       "Gestionale palestra per corsi, prenotazioni e abbonamenti. Include una demo interattiva con dati di esempio e codice PHP consultabile.": "Gym management software for classes, bookings and memberships. Includes an interactive demo with sample data and publicly viewable PHP source.",
       "Gestione corsi": "Class management",
@@ -203,7 +203,14 @@
       "Caricamento data…": "Loading date…",
       "ORA IN ITALIA": "TIME IN ITALY",
       "5 badge su Credly": "5 badges on Credly",
-      "Badge nel profilo Credly": "Badge on Credly profile"
+      "Badge nel profilo Credly": "Badge on Credly profile",
+      "JUNIOR SOFTWARE DEVELOPER · FLUTTER · JAVA · PYTHON": "JUNIOR SOFTWARE DEVELOPER · FLUTTER · JAVA · PYTHON",
+      "CV professionale": "Professional résumé",
+      "CV stampabile / PDF": "Printable résumé / PDF",
+      "Sono Giovanni Del Gaudio, studente di Informatica all’Università degli Studi di Salerno. Sviluppo app Flutter, strumenti Python e applicazioni web: esplora demo, prove tecniche e progetti universitari documentati.": "I am Giovanni Del Gaudio, a Computer Science student at the University of Salerno. I build Flutter apps, Python tools and web applications: explore demos, technical evidence and documented university projects.",
+      "Gestionale palestra per corsi, prenotazioni e abbonamenti. La demo HTML usa dati di esempio: il codice PHP/MySQL applicativo è conservato in un repository privato.": "Gym management application for courses, bookings and memberships. The HTML demo uses sample data; the PHP/MySQL application source is kept in a private repository.",
+      ", studente di Informatica all’": ", a Computer Science student at the ",
+      ". Sviluppo app Flutter, strumenti Python e applicazioni web: esplora demo, prove tecniche e progetti universitari documentati.": ". I build Flutter apps, Python tools and web applications: explore demos, technical evidence and documented university projects."
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
