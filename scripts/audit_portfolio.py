@@ -101,7 +101,7 @@ def main() -> int:
         credly_profile = "https://www.credly.com/users/giovanni-del-gaudio/badges/credly"
         if html.count(credly_profile) != 6:
             errors.append(f"{path}: expected one Credly wallet link and five badge links")
-        if html.count('class="credential-credly-action"') != 5:
+        if html.count('class="credential-action credential-credly-action"') != 5:
             errors.append(f"{path}: expected Credly profile action for five matching badges")
         expected_badge_label = "Badge on Credly profile" if english else "Badge nel profilo Credly"
         if html.count(expected_badge_label) != 5:
