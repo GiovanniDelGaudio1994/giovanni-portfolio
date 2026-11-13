@@ -213,7 +213,8 @@
       ". Sviluppo app Flutter, strumenti Python e applicazioni web: esplora demo, prove tecniche e progetti universitari documentati.": ". I build Flutter apps, Python tools and web applications: explore demos, technical evidence and documented university projects.",
       "Caso studio tecnico": "Technical case study",
       "Caso studio Java e database": "Java and database case study",
-      "Caso studio Python": "Python case study"
+      "Caso studio Python": "Python case study",
+      "Caso studio tecnico ↗": "Technical case study ↗"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
