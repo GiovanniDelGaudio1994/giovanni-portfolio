@@ -313,7 +313,7 @@
 })();
 
 /* Release notes project filter — fully readable without JavaScript.
-   Progressive enhancement only: on JS-enabled pages show six latest by default;
+   Progressive enhancement only: on JS-enabled pages show four latest by default;
    filtering reveals every matching release. */
 (() => {
   'use strict';
@@ -330,7 +330,7 @@
     let matchIndex = 0;
     cards.forEach(card => {
       const matches = slug === 'all' || card.dataset.updateProject === slug;
-      card.hidden = !matches || (slug === 'all' && !expanded && matchIndex >= 6);
+      card.hidden = !matches || (slug === 'all' && !expanded && matchIndex >= 4);
       if (matches) matchIndex++;
     });
     buttons.forEach(button => {
@@ -338,7 +338,7 @@
       button.setAttribute('aria-pressed', String(active));
       button.classList.toggle('is-active', active);
     });
-    if (more) more.hidden = slug !== 'all' || expanded || cards.length <= 6;
+    if (more) more.hidden = slug !== 'all' || expanded || cards.length <= 4;
   };
   buttons.forEach(button => {
     button.addEventListener('click', () => applyFilter(button.dataset.updateFilter));
