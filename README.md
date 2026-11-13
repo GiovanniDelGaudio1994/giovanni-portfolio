@@ -1,8 +1,16 @@
 # Giovanni Del Gaudio — Developer Portfolio
 
-**Website:** https://giovannidelgaudio.it/
+**Sito ufficiale:** https://www.giovannidelgaudio.it/ · [Dominio senza www](https://giovannidelgaudio.it/) · [Repository dedicato](https://github.com/GiovanniDelGaudio1994/giovanni-portfolio)
 
 Bilingual developer portfolio and static public project demos. This repository is the designated home for changes to the website and its GitHub Pages deployment. Open **site-related Pull Requests here**, not in `forma-ai`.
+
+## GitHub Pages e workflow
+
+**Dominio personalizzato trasferito il 13 novembre 2026:** `www.giovannidelgaudio.it`, dal precedente repository `forma-ai` a `giovanni-portfolio`. GitHub ha accettato l'assegnazione sul nuovo Pages; verificare periodicamente il certificato HTTPS e il reindirizzamento del dominio apex.
+
+**Apri qui le Pull Request relative al sito**, alla navbar, alle traduzioni, ai progetti mostrati e agli aggiornamenti. Il repository `forma-ai` rimane dedicato al progetto FORMA AI e conserva la storia delle precedenti PR. I repository delle applicazioni complete restano privati.
+
+Il workflow `.github/workflows/pages.yml` pubblica automaticamente i commit su `main`. Il workflow di controllo verifica le modifiche anche nelle Pull Request.
 
 ## Contents
 
