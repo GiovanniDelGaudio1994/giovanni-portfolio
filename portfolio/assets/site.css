@@ -803,3 +803,12 @@ body.gdg-mouse-active .gdg-cursor-aura.is-over-action{scale:1.3;opacity:.79;filt
 @media(max-width:360px){.site-nav .rome-clock-nav{min-width:0}.rome-clock-nav .rome-clock-time{font-size:12px}}
 
 @media(max-width:380px){.rome-clock-nav .rome-clock-offset{display:none}}
+
+
+/* Credential issuer profiles: keep both verification destinations readable on mobile. */
+.credential-intro{flex-wrap:wrap}
+.credential-credly{border-color:rgba(56,190,166,.45);background:rgba(7,92,78,.55);color:#d5fff3}
+.credential-credly:hover{background:rgba(8,122,102,.65)}
+.credential-bottom:has(.credential-credly-action){display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.credential-credly-action{color:#a2f0dd}
+.credential-linkedin:focus-visible,.credential-action:focus-visible{outline:3px solid #8edaff;outline-offset:3px}
