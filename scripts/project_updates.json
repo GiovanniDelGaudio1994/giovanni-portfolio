@@ -3,6 +3,30 @@
   "description": "Bilingual release notes grounded in published project and website changes. Historical entries link to GitHub commits.",
   "entries": [
     {
+      "date": "2026-11-16",
+      "project": "headset-studio",
+      "project_name": "Headset Studio",
+      "version": "v0.2 · Liquid Glass design",
+      "type": "documentation",
+      "title": {
+        "it": "Headset Studio entra nel portfolio con due concept UI",
+        "en": "Headset Studio joins the portfolio with two UI concepts"
+      },
+      "changes": {
+        "it": [
+          "Aggiunta una scheda pubblica del prototipo Flutter macOS per cuffie Bluetooth.",
+          "Presentata una ricostruzione illustrativa del concept precedente e una demo grafica Liquid Glass; non sono demo operative del controllo hardware.",
+          "Documentato il test del controllo volume Mac e lo stato ancora pianificato di Audio Lab."
+        ],
+        "en": [
+          "Added a public project brief for the Flutter macOS Bluetooth headphones prototype.",
+          "Presented an illustrative reconstruction of the earlier concept and a Liquid Glass design demo; neither controls real hardware.",
+          "Documented the tested Mac volume control and the planned status of Audio Lab."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/headset-studio-demo/"
+    },
+    {
       "date": "2026-11-13",
       "project": "legacybridge",
       "project_name": "LegacyBridge",
