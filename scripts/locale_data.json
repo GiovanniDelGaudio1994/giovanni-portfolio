@@ -214,7 +214,18 @@
       "Caso studio tecnico": "Technical case study",
       "Caso studio Java e database": "Java and database case study",
       "Caso studio Python": "Python case study",
-      "Caso studio tecnico ↗": "Technical case study ↗"
+      "Caso studio tecnico ↗": "Technical case study ↗",
+      "LIQUID GLASS · CONCEPT DESKTOP": "LIQUID GLASS · DESKTOP CONCEPT",
+      "FLUTTER · DART · MACOS · BLUETOOTH": "FLUTTER · DART · MACOS · BLUETOOTH",
+      "Headset Studio": "Headset Studio",
+      "— Bluetooth Companion": "— Bluetooth Companion",
+      "App Flutter desktop per cuffie Bluetooth, provata su Mac con Marshall Major III: rilevamento e gestione del volume Mac. La nuova interfaccia Liquid Glass è una visione grafica: batteria e firmware nel mockup sono illustrativi, Audio Lab è in sviluppo.": "Flutter desktop app for Bluetooth headphones, tested on Mac with Marshall Major III: detection and Mac volume control. The new Liquid Glass interface is a design concept; battery and firmware values are illustrative, while Audio Lab remains in development.",
+      "Flutter macOS": "Flutter macOS",
+      "Controllo volume testato": "Volume control tested",
+      "Liquid Glass": "Liquid Glass",
+      "Esplora il concept": "Explore concept",
+      "Concept precedente": "Earlier concept",
+      "Scheda GitHub": "GitHub project page"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -237,7 +248,8 @@
       "alt=\"Logo ufficiale dell’Istituto di Istruzione Superiore Leonardo da Vinci di Sapri\"": "alt=\"Official emblem of Leonardo da Vinci Upper Secondary School, Sapri\"",
       "aria-label=\"Data e ora italiane, fuso Europe/Rome\"": "aria-label=\"Italian date and time, Europe/Rome time zone\"",
       "aria-label=\"Apri il profilo Credly con cinque badge digitali\"": "aria-label=\"Open the Credly profile with five digital badges\"",
-      "aria-label=\"Consulta i badge nel profilo Credly\"": "aria-label=\"Browse badges on Credly profile\""
+      "aria-label=\"Consulta i badge nel profilo Credly\"": "aria-label=\"Browse badges on Credly profile\"",
+      "Headset Studio: concept Liquid Glass per la dashboard delle cuffie Bluetooth": "Headset Studio: Liquid Glass Bluetooth headphones dashboard concept"
     }
   },
   "legacybridge": {
