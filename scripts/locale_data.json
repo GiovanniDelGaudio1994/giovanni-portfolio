@@ -225,7 +225,9 @@
       "Liquid Glass": "Liquid Glass",
       "Esplora il concept": "Explore concept",
       "Concept precedente": "Earlier concept",
-      "Scheda GitHub": "GitHub project page"
+      "Scheda GitHub": "GitHub project page",
+      "Mockup e video reali": "Mockup and real demo videos",
+      "Il mockup Liquid Glass illustra il restyling futuro; due registrazioni reali dell’app Flutter mostrano la versione attuale. Batteria e firmware nel concept sono illustrativi; Audio Lab è in sviluppo.": "The Liquid Glass mockup illustrates the upcoming redesign; two actual Flutter app recordings show the current version. Battery and firmware values in the concept are illustrative; Audio Lab remains in development."
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -249,7 +251,8 @@
       "aria-label=\"Data e ora italiane, fuso Europe/Rome\"": "aria-label=\"Italian date and time, Europe/Rome time zone\"",
       "aria-label=\"Apri il profilo Credly con cinque badge digitali\"": "aria-label=\"Open the Credly profile with five digital badges\"",
       "aria-label=\"Consulta i badge nel profilo Credly\"": "aria-label=\"Browse badges on Credly profile\"",
-      "Headset Studio: concept Liquid Glass per la dashboard delle cuffie Bluetooth": "Headset Studio: Liquid Glass Bluetooth headphones dashboard concept"
+      "Headset Studio: concept Liquid Glass per la dashboard delle cuffie Bluetooth": "Headset Studio: Liquid Glass Bluetooth headphones dashboard concept",
+      "Mockup originale Headset Studio: app per cuffie Bluetooth con pannelli Liquid Glass e cuffie over-ear": "Original Headset Studio mockup: Bluetooth headphones app with Liquid Glass panels and over-ear headphones"
     }
   },
   "legacybridge": {
