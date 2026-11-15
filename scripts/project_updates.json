@@ -3,7 +3,7 @@
   "description": "Bilingual release notes grounded in published project and website changes. Historical entries link to GitHub commits.",
   "entries": [
     {
-      "date": "2026-11-16",
+      "date": "2026-11-15",
       "project": "headset-studio",
       "project_name": "Headset Studio",
       "version": "v0.2 · Liquid Glass design",
