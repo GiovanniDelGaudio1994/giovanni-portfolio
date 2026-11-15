@@ -19,12 +19,26 @@ section.content{padding:10px 30px 35px;min-width:0}.top h1{font-size:clamp(1.45r
 .headphone-art{width:min(100%,390px);height:auto;filter:drop-shadow(0 22px 15px #395d84aa);position:relative;z-index:1}
 .promo{margin-top:22px;display:flex;gap:20px;align-items:center}.promo h2{margin:0 0 4px;font-size:1.4rem}.promo p{margin:0}.promo svg{flex-shrink:0}.toplinks{margin-top:15px;display:flex;flex-wrap:wrap;gap:15px;font-size:.9rem}
 @media(max-width:980px){.layout{grid-template-columns:1fr}aside{min-height:0;border-right:0;border-bottom:1px solid white}.nav{display:flex;flex-wrap:wrap;margin-top:15px;gap:6px}.version{margin-top:16px}.grid{grid-template-columns:1fr}.headphone-stage{min-height:300px;grid-row:1}}@media(max-width:540px){section.content{padding:10px 14px 20px}.top{display:block}.panel{padding:15px}.battery-card{display:block;text-align:center}.gauge{margin:auto}.stats{border:0;border-top:1px solid #9fb5d6;padding:14px 0 0;margin-top:20px;text-align:left}.controls{flex-wrap:wrap}.promo{align-items:start}}
+
+/* Editorial product screenshot and verified videos */
+.original-mockup{margin:25px 0 0;padding:12px;border:1.5px solid #fff;border-radius:26px;background:#ffffff83;box-shadow:0 9px 29px #77a2c43b}
+.original-mockup img{display:block;width:100%;height:auto;border-radius:17px}
+.original-mockup figcaption{font-size:.84rem;color:#48647f;padding:11px 6px 2px;line-height:1.5}
+.recordings{margin-top:28px}.recordings h2{font-size:clamp(1.35rem,2.5vw,1.85rem)}.recordings p{color:#435e80}
+.video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.recording{padding:15px;border-radius:25px;background:#ffffffe0;border:1px solid white;box-shadow:0 8px 28px #9bbce83d;min-width:0}
+.recording h3{font-size:1.12rem;margin:10px 0 4px}.recording p{font-size:.88rem;margin:0 0 12px}
+.recording video{width:100%;display:block;background:#0c1020;border-radius:14px;aspect-ratio:16/10;object-fit:contain}
+@media(max-width:740px){.video-grid{grid-template-columns:1fr}}
 </style></head><body><main class="shell">
 <div class="windowbar" aria-label="Anteprima finestra macOS"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
 <div class="layout"><aside><div class="mark" aria-hidden="true">🎧</div><div class="logo">Headset<span>Studio</span></div><div class="subtitle">Gestione Cuffie Bluetooth</div>
 <div class="nav" aria-label="Sezioni rappresentate nel concept"><div class="active">⌂ &nbsp; Dashboard</div><div>♧ &nbsp; Dispositivo</div><div>▥ &nbsp; Audio Lab</div><div>⚙ &nbsp; Impostazioni</div></div>
 <div class="version">v0.2.0 · macOS · anteprima design</div></aside>
 <section class="content"><div class="top"><div><h1>MAJOR III BLUETOOTH</h1><span class="tag">● Connesso · illustrativo</span></div><div class="toplinks"><a href="legacy.html">Concept precedente</a><a href="https://github.com/GiovanniDelGaudio1994/GiovanniDelGaudio1994/tree/main/projects/headset-studio">Scheda GitHub</a></div></div>
+<figure class="original-mockup">
+<img src="assets/headset-studio-liquid-glass.webp" alt="Mockup originale Headset Studio con pannelli Liquid Glass azzurro e lilla, cuffie over-ear, dashboard batteria e volume" width="1448" height="1086" fetchpriority="high">
+<figcaption><strong>Liquid Glass — concept ufficiale del prossimo restyling.</strong> È un'immagine di progetto: non mostra una build Flutter già convertita al nuovo stile.</figcaption></figure>
 <div class="grid"><div><div class="panel battery-card"><div><div class="gauge"><strong>90%</strong></div><p class="note">Livello batteria · mockup</p></div><div class="stats"><p>ᛒ &nbsp; Stato <small>Connesso (esempio)</small></p><p>▥ &nbsp; Protocollo <small>A2DP · AVRCP · HFP</small></p><p>ⓘ &nbsp; Firmware <small>0.0.0 (placeholder)</small></p></div></div>
 <div class="panel volume"><label for="volume">🔊 &nbsp; Volume Mac <output id="vol-text" for="volume">62%</output></label><input id="volume" type="range" min="0" max="100" value="62" oninput="document.getElementById('vol-text').textContent=this.value+'%'"><p class="note">Slider dimostrativo: non controlla l'audio del dispositivo dal browser.</p></div>
 <div class="controls"><div class="panel"><small>Uscita audio</small><strong>MAJOR III BLUETOOTH</strong></div><button class="btn" onclick="document.getElementById('feedback').textContent='Anteprima: nessun dispositivo reale interrogato'">↻ Aggiorna</button></div>
@@ -36,4 +50,12 @@ section.content{padding:10px 30px 35px;min-width:0}.top h1{font-size:clamp(1.45r
 <g transform="rotate(-12 99 309)"><rect x="39" y="223" width="112" height="159" rx="48" fill="#080c14" stroke="#444c58" stroke-width="9"/><rect x="53" y="239" width="90" height="128" rx="33" fill="url(#cup)" stroke="#656d76" stroke-width="3"/><circle cx="100" cy="302" r="8" fill="#a88052"/></g>
 <g transform="rotate(13 295 308)"><rect x="236" y="224" width="116" height="169" rx="47" fill="#060910" stroke="#505762" stroke-width="10"/><rect x="251" y="239" width="90" height="141" rx="33" fill="url(#cup)" stroke="#5c646f" stroke-width="3"/><circle cx="298" cy="317" r="10" fill="#c78a3f"/></g></svg></div></div>
 <div class="panel promo"><svg width="66" height="52" viewBox="0 0 66 52" aria-hidden="true"><path d="M2 28Q12 -7 24 28T46 28T64 20" fill="none" stroke="#65a5ff" stroke-width="4"/><path d="M2 40Q14 5 26 40T52 40T64 34" fill="none" stroke="#b283f5" stroke-width="4"/></svg><div><h2>Audio Lab · Prossimamente</h2><p>Equalizzatore, preset e personalizzazione audio: funzioni previste, non operative nel mockup.</p></div></div>
+
+<section class="recordings" aria-labelledby="recording-title">
+<h2 id="recording-title">Video demo dell'app Flutter reale</h2>
+<p>Registrazioni originali su macOS della precedente interfaccia scura. Distinte dal concept Liquid Glass, mostrano funzionalità effettivamente testate.</p>
+<div class="video-grid">
+<article class="recording"><video controls preload="metadata" playsinline poster="assets/connection-demo-poster.webp" aria-label="Breve registrazione del collegamento Bluetooth nell'app Headset Studio"><source src="assets/connection-demo.mp4" type="video/mp4">Il browser non supporta il video HTML5.</video><h3>01 — Connessione e dashboard</h3><p>Registrazione breve del programma avviato su Mac (circa 3 secondi).</p></article>
+<article class="recording"><video controls preload="metadata" playsinline poster="assets/full-demo-poster.webp" aria-label="Registrazione estesa dell'app Headset Studio con navigazione nelle sezioni e volume"><source src="assets/full-demo.mp4" type="video/mp4">Il browser non supporta il video HTML5.</video><h3>02 — Navigazione e controllo volume</h3><p>Dimostrazione di circa 36 secondi delle schermate dell'app e del volume Mac.</p></article>
+</div></section>
 </section></div></main></body></html>

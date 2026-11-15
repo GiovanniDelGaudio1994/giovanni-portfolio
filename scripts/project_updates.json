@@ -6,6 +6,30 @@
       "date": "2026-11-15",
       "project": "headset-studio",
       "project_name": "Headset Studio",
+      "version": "Video demo · 15.11.2026",
+      "type": "feature",
+      "title": {
+        "it": "Headset Studio: mockup Liquid Glass originale e due video dell’app",
+        "en": "Headset Studio: original Liquid Glass mockup and two app videos"
+      },
+      "changes": {
+        "it": [
+          "Inserito il mockup originale del nuovo restyling nella scheda portfolio e nella pagina del progetto.",
+          "Pubblicate due registrazioni dell’app Flutter macOS (circa 3 e 36 secondi) in una pagina demo dedicata.",
+          "Separata la dimostrazione reale dell’interfaccia precedente dal concept visivo Liquid Glass non ancora implementato nell’app."
+        ],
+        "en": [
+          "Added the original redesign mockup to the portfolio project card and project page.",
+          "Published two real macOS Flutter app recordings (around 3 and 36 seconds) on the dedicated demo page.",
+          "Clearly separated the earlier working app footage from the Liquid Glass visual concept, not yet implemented in Flutter."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/headset-studio-demo/"
+    },
+    {
+      "date": "2026-11-15",
+      "project": "headset-studio",
+      "project_name": "Headset Studio",
       "version": "v0.2 · Liquid Glass design",
       "type": "documentation",
       "title": {
