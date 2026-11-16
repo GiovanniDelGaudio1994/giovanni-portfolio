@@ -200,8 +200,8 @@ def main() -> int:
         content = path.read_text(encoding="utf-8")
         if "projects/fit-zone/source" in content or "codice PHP consultabile" in content:
             errors.append(f"{path}: stale public Fit Zone source references")
-        if "href=\"/cv/\"" not in content:
-            errors.append(f"{path}: missing printable résumé link")
+        if content.count('href="/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf" target="_blank"') < 2:
+            errors.append(f"{path}: missing direct PDF CV links opening in a new tab")
     # The approved Italian CV v4 is a self-contained A4 document with a native
     # print control and a real downloadable PDF. The English CV retains the old
     # toolbar until it receives its separate editorial review.
