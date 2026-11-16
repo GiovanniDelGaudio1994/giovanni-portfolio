@@ -225,7 +225,7 @@ def main() -> int:
                 errors.append(f"{path}: missing hero marker {marker}")
     portrait = SITE / "portfolio/assets/hero-portrait.jpg"
     shader = SITE / "portfolio/assets/hero-shader.js"
-    if not portrait.is_file() or not portrait.read_bytes().startswith(b"\\xff\\xd8\\xff"):
+    if not portrait.is_file() or not portrait.read_bytes().startswith(b"\xff\xd8\xff"):
         errors.append("Missing approved portrait JPEG")
     if not shader.is_file():
         errors.append("Missing local WebGL shader file")
