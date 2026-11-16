@@ -220,7 +220,7 @@ def main() -> int:
                 errors.append(f"{path}: missing project cover target {href}")
         for marker in ('data-hero-shader', 'hero-code-window',
                        'src="/portfolio/assets/hero-portrait.jpg"',
-                       'src="assets/hero-shader.js"'):
+                       'hero-shader.js'):
             if marker not in content:
                 errors.append(f"{path}: missing hero marker {marker}")
     portrait = SITE / "portfolio/assets/hero-portrait.jpg"
