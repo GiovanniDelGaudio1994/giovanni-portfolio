@@ -118,10 +118,10 @@ def generate_feed(lang: str) -> str:
         if entry.get("evidence_url"):
             evidence_url = entry["evidence_url"]
             if not re.fullmatch(
-                r"https://github[.]com/GiovanniDelGaudio1994/forma-ai/commit/[0-9a-f]{7,40}",
+                r"https://github[.]com/GiovanniDelGaudio1994/(?:forma-ai|giovanni-portfolio)/commit/[0-9a-f]{7,40}",
                 evidence_url,
             ):
-                raise ValueError("Changelog evidence URL must point to a public repository commit")
+                raise ValueError("Changelog evidence URL must point to an allowlisted public repository commit")
             evidence_link = (
                 '<a class="release-evidence" href="' + escape(evidence_url, quote=True)
                 + '" target="_blank" rel="noopener noreferrer">'

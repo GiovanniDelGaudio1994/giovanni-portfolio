@@ -138,8 +138,16 @@ def main() -> int:
             errors.append(f"{path}: Surveying diploma missing from Italian timeline")
         if 'id="aggiornamenti"' not in html or 'id="release-grid"' not in html:
             errors.append(f"{path}: release notes not rendered")
-        if 'data-release-feed' in html or html.count('class="release-card"') < 21:
-            errors.append(f"{path}: changelog placeholder or missing published entries")
+        if 'data-release-feed' in html or html.count('class="release-card"') < 32:
+            errors.append(f"{path}: changelog placeholder or missing 16-Nov releases")
+        expected_ux_titles = (
+            ("Portfolio: subtle light trails", "Mobile homepage: a more discreet")
+            if english else
+            ("Portfolio: scie luminose discrete", "Homepage mobile: finestra developer.ts")
+        )
+        for excerpt in expected_ux_titles:
+            if excerpt not in html:
+                errors.append(f"{path}: latest portfolio UX changelog missing: {excerpt}")
         if 'id="release-more"' not in html or 'class="release-summary"' not in html:
             errors.append(f"{path}: changelog archive expansion or summary missing")
         if html.count('class="release-evidence"') < 15:

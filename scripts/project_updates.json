@@ -3,6 +3,101 @@
   "description": "Bilingual release notes grounded in published project and website changes. Historical entries link to GitHub commits.",
   "entries": [
     {
+      "date": "2026-11-16",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "UX 2.5 · Light Trails",
+      "type": "feature",
+      "title": {
+        "it": "Portfolio: scie luminose discrete e nuove animazioni accessibili",
+        "en": "Portfolio: subtle light trails and accessible animations"
+      },
+      "changes": {
+        "it": [
+          "Aggiunti riflessi luminosi sulle copertine dei progetti al passaggio del cursore e indicatori che invitano ad aprirle anche su mobile.",
+          "Introdotto un fondale Aurora leggero nella sezione Aggiornamenti e microanimazioni nel pannello degli strumenti tecnici.",
+          "Gli effetti decorativi rispettano le preferenze di movimento ridotto e non richiedono nuove librerie JavaScript o WebGL."
+        ],
+        "en": [
+          "Added a light sweep on project covers on pointer hover and clearer cues to open them on mobile.",
+          "Introduced a lightweight Aurora background in Release Notes and micro-animations on the technology stack panel.",
+          "Decorative effects respect reduced-motion settings and do not require new JavaScript or WebGL libraries."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/#aggiornamenti"
+    },
+    {
+      "date": "2026-11-16",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "Mobile UX · 16.11.2026",
+      "type": "fix",
+      "title": {
+        "it": "Homepage mobile: finestra developer.ts più discreta",
+        "en": "Mobile homepage: a more discreet developer.ts panel"
+      },
+      "changes": {
+        "it": [
+          "Ridimensionata e riposizionata la piccola finestra di codice per evitare che copra il viso nella homepage da smartphone.",
+          "Conservate la vecchia foto profilo, le orbite, il comportamento responsive e il CV originale in PDF."
+        ],
+        "en": [
+          "Resized and repositioned the small code window so it no longer obscures the face on mobile.",
+          "Kept the original profile photo, orbital visuals, responsive layout and the original PDF résumé."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/giovanni-portfolio/commit/2ff3735ae7b4a3441d7152bfeb1e0044375b793a"
+    },
+    {
+      "date": "2026-11-16",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "UX 2.4 · Orbit Lab",
+      "type": "feature",
+      "title": {
+        "it": "Portfolio 2.4: foto precedente, WebGL e copertine cliccabili",
+        "en": "Portfolio 2.4: original portrait, WebGL and clickable covers"
+      },
+      "changes": {
+        "it": [
+          "Introdotto uno shader WebGL locale con effetti orbitali, affiancato dalle orbite CSS come fallback e da un piccolo pannello di codice decorativo.",
+          "Riorganizzate in formato più compatto le dieci copertine dei progetti, ora link accessibili con mouse, tastiera e tocco.",
+          "Ripristinata la precedente foto profilo GitHub nella homepage, lasciando la fotografia del CV nel solo curriculum."
+        ],
+        "en": [
+          "Added a local WebGL orbital shader with CSS fallback and a decorative code panel.",
+          "Made all ten compact project covers accessible links for mouse, keyboard and touch.",
+          "Restored the original GitHub profile picture in the homepage while leaving the CV portrait unchanged."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/#progetti",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/giovanni-portfolio/commit/dd2ce6074cddf404b563bba0edecdeb334c870de"
+    },
+    {
+      "date": "2026-11-16",
+      "project": "portfolio",
+      "project_name": "Portfolio",
+      "version": "CV HR v4 · 16.11.2026",
+      "type": "release",
+      "title": {
+        "it": "Curriculum HR v4: PDF originale consultabile nel browser",
+        "en": "HR résumé v4: original PDF opens in the browser"
+      },
+      "changes": {
+        "it": [
+          "Pubblicato il CV HR v4 approvato con la fotografia e i progetti documentati, in PDF A4 su due pagine.",
+          "Dal pulsante CV accanto a «Esplora i progetti» il documento si apre direttamente in una nuova scheda, senza download automatico."
+        ],
+        "en": [
+          "Published the approved two-page A4 HR résumé v4 with portrait and documented software projects.",
+          "The CV button next to Explore Projects opens the original PDF in a new browser tab, without forcing a download."
+        ]
+      },
+      "url": "https://www.giovannidelgaudio.it/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf",
+      "evidence_url": "https://github.com/GiovanniDelGaudio1994/giovanni-portfolio/commit/86464ce7641ae5a407b63115e6100d1fde0d96ca"
+    },
+    {
       "date": "2026-11-15",
       "project": "headset-studio",
       "project_name": "Headset Studio",

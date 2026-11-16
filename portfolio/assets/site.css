@@ -925,3 +925,81 @@ body.gdg-mouse-active .gdg-cursor-aura.is-over-action{scale:1.3;opacity:.79;filt
   .hero-code-window{width:138px;right:-2px;bottom:-9px;font-size:7.7px}
   .hero-code-content{padding:7px 8px}
 }
+
+
+/* Portfolio UX 2.5 — lightweight ambient effects, no external rendering libraries. */
+.releases{isolation:isolate;overflow:hidden}
+.releases::before,.releases::after{
+  content:"";position:absolute;pointer-events:none;z-index:0;border-radius:50%;
+  filter:blur(38px);opacity:.22;transform:translate3d(0,0,0)
+}
+.releases::before{
+  width:min(54vw,550px);height:min(54vw,550px);top:5%;left:-14%;
+  background:radial-gradient(circle,rgba(47,148,255,.45),rgba(77,81,198,.18) 44%,transparent 73%)
+}
+.releases::after{
+  width:min(48vw,490px);height:min(48vw,490px);bottom:5%;right:-14%;
+  background:radial-gradient(circle,rgba(75,210,238,.35),rgba(97,88,198,.15) 45%,transparent 73%)
+}
+.releases>.wrap{position:relative;z-index:1}
+.release-card{
+  position:relative;isolation:isolate;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)
+}
+.release-card:hover,.release-card:focus-within{
+  border-color:rgba(106,190,255,.62);
+  box-shadow:0 16px 46px rgba(20,93,160,.19);
+  transform:translateY(-3px)
+}
+/* The cover is a real link, not a click handler on the entire project card. */
+.dg-cover-link::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(112deg,transparent 31%,rgba(146,221,255,.15) 49%,transparent 66%);
+  transform:translateX(-160%);opacity:0;
+}
+.dg-cover-inner::after{
+  content:"Apri progetto ↗";position:absolute;z-index:3;right:12px;bottom:12px;
+  color:#eef8ff;background:rgba(5,21,42,.83);border:1px solid rgba(139,205,255,.36);
+  border-radius:100px;padding:7px 11px;font:700 10px/1.2 system-ui,sans-serif;
+  letter-spacing:.02em;pointer-events:none;opacity:.88;
+  box-shadow:0 5px 16px rgba(0,6,22,.25)
+}
+html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
+.dg-cover-link:hover .dg-cover-inner::after,.dg-cover-link:focus-visible .dg-cover-inner::after{
+  background:rgba(21,102,170,.92);border-color:rgba(148,225,255,.8)
+}
+.stack-map::after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(90deg,rgba(106,188,255,.065) 1px,transparent 1px),
+                   linear-gradient(0deg,rgba(106,188,255,.065) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(130deg,transparent 13%,black 76%);
+  -webkit-mask-image:linear-gradient(130deg,transparent 13%,black 76%);
+  opacity:.48
+}
+.stack-map>*{position:relative;z-index:1}
+.stack-row:hover .stack-icon,.stack-row:focus-within .stack-icon{
+  border-color:rgba(121,210,255,.82);box-shadow:0 0 0 3px rgba(52,145,233,.09),0 0 27px rgba(48,153,232,.21)
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .releases::before{animation:gdg-aurora-one 23s ease-in-out infinite alternate}
+  .releases::after{animation:gdg-aurora-two 28s ease-in-out infinite alternate}
+  .dg-cover-link:hover::before,.dg-cover-link:focus-visible::before{
+    opacity:1;transition:transform .75s var(--ease),opacity .25s;transform:translateX(145%)
+  }
+  .stack-icon{transition:border-color .26s,box-shadow .26s,transform .26s}
+  .stack-row:hover .stack-icon{transform:translateY(-2px)}
+}
+@keyframes gdg-aurora-one{to{transform:translate3d(10%,11%,0)}}
+@keyframes gdg-aurora-two{to{transform:translate3d(-9%,-9%,0)}}
+@media(max-width:700px){
+  .releases::before,.releases::after{filter:blur(20px);opacity:.15}
+  .dg-cover-inner::after{font-size:9px;padding:6px 10px;right:9px;bottom:9px}
+  .release-card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .releases::before,.releases::after{animation:none!important;transform:none!important}
+  .release-card{transition:none!important}
+  .dg-cover-link::before{display:none!important}
+  .stack-icon{transition:none!important;transform:none!important}
+}
