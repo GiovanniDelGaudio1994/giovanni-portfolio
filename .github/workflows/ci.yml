@@ -16,6 +16,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check portfolio/assets/site.js
+          node --check portfolio/assets/hero-shader.js
           node --check legacybridge-demo/site.js
           node --check portfolio/assets/theme-init.js
       - name: Build and audit
