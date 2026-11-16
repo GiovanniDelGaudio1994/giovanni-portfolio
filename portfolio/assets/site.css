@@ -812,3 +812,92 @@ body.gdg-mouse-active .gdg-cursor-aura.is-over-action{scale:1.3;opacity:.79;filt
 .credential-bottom:has(.credential-credly-action){display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
 .credential-credly-action{color:#a2f0dd}
 .credential-linkedin:focus-visible,.credential-action:focus-visible{outline:3px solid #8edaff;outline-offset:3px}
+
+
+/* Portfolio 2.4 — focused UX: compact cards and accessible full-cover links.
+   Explicit image anchors preserve independent actions within each card. */
+.dg-personal-grid{gap:clamp(15px,1.65vw,24px)}
+.dg-academic-grid{gap:clamp(13px,1.5vw,21px)}
+.dg-feature-card,.dg-academic-card{border-radius:19px}
+.dg-personal-grid .dg-feature-card .dg-card-copy{padding:23px 24px 26px}
+.dg-feature-card .dg-card-copy h4{font-size:clamp(22px,2.1vw,29px);margin:11px 0 12px}
+.dg-feature-card .dg-card-copy h4>span:not(.dg-forma-ai){font-size:clamp(12px,1.15vw,14px)}
+.dg-feature-card .dg-card-copy p{font-size:13px;line-height:1.62}
+.dg-personal-grid .dg-feature-card .dg-card-links{padding-top:16px;gap:10px}
+.dg-visual{height:clamp(165px,18.6vw,245px)}
+.dg-academic-copy{min-height:0;padding:20px}
+.dg-academic-copy h4{font-size:clamp(19px,1.7vw,23px)}
+.dg-academic-copy p{font-size:12.5px;line-height:1.6}
+.dg-academic-copy .dg-chips{margin:11px 0}
+.dg-academic-actions{gap:9px 12px}
+.dg-academic-photo{aspect-ratio:16/8.5}
+.dg-cover-link{position:absolute;inset:0;display:block;z-index:2;text-decoration:none;color:inherit;overflow:hidden;cursor:pointer}
+.dg-visual,.dg-academic-photo{position:relative}
+.dg-cover-inner{display:block;width:100%;height:100%;position:relative}
+.dg-cover-inner img{width:100%;height:100%;display:block;object-fit:contain}
+.dg-academic-photo .dg-cover-inner img{object-fit:cover}
+.dg-cover-inner .dg-preview-tag{pointer-events:none}
+.dg-cover-link:hover img{transform:scale(1.03)}
+.dg-cover-link:focus-visible{outline:3px solid #85d5ff;outline-offset:-4px;border-radius:inherit}
+@media(max-width:700px){
+  .dg-personal-grid,.dg-academic-grid{gap:18px}
+  .dg-visual{height:auto;aspect-ratio:16/9}
+  .dg-personal-grid .dg-feature-card .dg-card-copy{padding:20px 19px 22px}
+  .dg-feature-card .dg-card-copy h4{font-size:23px}
+  .dg-feature-card .dg-card-copy p{font-size:13px;line-height:1.65}
+  .dg-academic-copy{padding:19px}
+  .dg-academic-copy p{font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .dg-cover-link img{transition:none!important}
+  .dg-cover-link:hover img{transform:none!important}
+}
+
+/* The original CV portrait is shown inside the pre-existing moving orbits.
+   Decorative shader and terminal never intercept clicks or obscure the face. */
+.hero-visual-studio{isolation:isolate}
+.hero-shader-canvas{position:absolute;inset:-12%;width:124%;height:124%;z-index:0;pointer-events:none;opacity:.60;filter:saturate(1.05)}
+.hero-visual-studio .portrait-orbit{z-index:2}
+.hero-visual-studio .portrait-frame{z-index:3;width:min(78%,330px)}
+.hero-visual-studio .portrait-frame img{object-position:center}
+.hero-visual-studio .portrait-chip{z-index:5}
+.hero-visual-studio .orbit-point{z-index:5}
+.hero-code-window{position:absolute;z-index:6;bottom:5px;right:-19px;width:clamp(190px,44%,254px);
+  border:1px solid rgba(151,196,249,.35);border-radius:14px;overflow:hidden;pointer-events:none;
+  background:linear-gradient(145deg,rgba(19,34,61,.85),rgba(12,23,44,.78));backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);box-shadow:0 18px 40px rgba(0,4,15,.38);color:#d8ecff;
+  font:500 11px/1.75 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;transform:rotate(2deg)}
+.hero-code-bar{display:flex;align-items:center;gap:6px;padding:10px 13px;border-bottom:1px solid rgba(128,184,232,.22)}
+.hero-code-light{display:block;width:7px;height:7px;border-radius:50%}
+.hero-code-light.red{background:#fc5e69}.hero-code-light.yellow{background:#ffca59}.hero-code-light.green{background:#34d18a}
+.hero-code-file{margin-left:auto;color:#93b6df;font-size:10px}
+.hero-code-content{padding:12px 14px 15px;white-space:nowrap}
+.code-keyword{color:#bb90ff}.code-variable{color:#79baff}.code-string{color:#7ce6bb}
+.code-caret{display:inline-block;background:#81caff;width:5px;height:12px;margin-left:4px;vertical-align:-2px}
+@media(prefers-reduced-motion:no-preference){
+  .hero-code-window{animation:gdg-terminal-float 8s ease-in-out infinite}
+  .code-caret{animation:gdg-caret 1.4s steps(2,end) infinite}
+}
+@keyframes gdg-terminal-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes gdg-caret{50%{opacity:0}}
+@media(min-width:1101px){
+  .hero-visual-studio .portrait-frame{width:min(76%,356px)}
+}
+@media(max-width:1100px){
+  .hero-code-window{right:-8px;bottom:-3px;width:215px;font-size:10px}
+}
+@media(max-width:700px){
+  .hero-visual-studio{min-height:335px;margin-top:20px}
+  .hero-visual-studio .portrait-frame{width:min(73%,290px)}
+  .hero-code-window{right:0;bottom:0;width:min(56%,205px);font-size:9px}
+  .hero-code-content{padding:8px 10px 11px}
+  .hero-code-bar{padding:7px 10px}
+  .hero-shader-canvas{opacity:.38}
+}
+@media(max-width:390px){
+  .hero-code-window{width:176px;font-size:8px;right:-1px;bottom:-3px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-code-window,.code-caret{animation:none!important}
+  .hero-shader-canvas{display:none}
+}

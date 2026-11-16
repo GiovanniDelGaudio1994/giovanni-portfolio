@@ -47,7 +47,7 @@ class PortfolioAudit(HTMLParser):
             src = data.get("src")
             if src:
                 self.js_sources.add(src)
-                if "://" in src or not src.endswith(("/site.js", "/theme-init.js")):
+                if "://" in src or not src.endswith(("/site.js", "/theme-init.js", "/hero-shader.js")):
                     self.errors.append(f"Unapproved script source: {src}")
             elif data.get("type") != "application/ld+json":
                 self.errors.append("Executable inline <script>")
@@ -161,7 +161,7 @@ def main() -> int:
                          "Diploma tecnico — Geometra", "Studi attualmente in corso."):
                 if item not in html:
                     errors.append(f"{path}: missing Italian education/changelog text: {item}")
-        if len(page.js_sources) != 2 or len(page.css_sources) != 1:
+        if len(page.js_sources) != 3 or len(page.css_sources) != 1:
             errors.append(f"{path}: first-party JS/CSS assets missing")
         for asset in page.js_sources | page.css_sources:
             target = path.parent / asset
@@ -202,6 +202,33 @@ def main() -> int:
             errors.append(f"{path}: stale public Fit Zone source references")
         if 'href="/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf" target="_blank"' not in content:
             errors.append(f"{path}: missing direct CV PDF link opening in new tab")
+    # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
+    # local link. Preserve the approved original portrait and optional shader.
+    required_cover_targets = (
+        "/driveglass-demo/", "/forma-ai-demo/", "/headset-studio-demo/",
+        "/fit-zone-demo/", "/signalscope-demo/", "/meteo-bash2d-demo/",
+        "/legacybridge-demo/", "/gestione-farmacia-demo/",
+        "/portfolio/demos/irem/", "/ewine-demo/",
+    )
+    for path in (SITE / "index.html", SITE / "en/index.html",
+                 SITE / "portfolio/index.html", SITE / "portfolio/en/index.html"):
+        content = path.read_text(encoding="utf-8")
+        if content.count('class="dg-cover-link"') != len(required_cover_targets):
+            errors.append(f"{path}: project covers missing accessible links")
+        for href in required_cover_targets:
+            if f'class="dg-cover-link" href="{href}"' not in content:
+                errors.append(f"{path}: missing project cover target {href}")
+        for marker in ('data-hero-shader', 'hero-code-window',
+                       'src="/portfolio/assets/hero-portrait.jpg"',
+                       'hero-shader.js'):
+            if marker not in content:
+                errors.append(f"{path}: missing hero marker {marker}")
+    portrait = SITE / "portfolio/assets/hero-portrait.jpg"
+    shader = SITE / "portfolio/assets/hero-shader.js"
+    if not portrait.is_file() or not portrait.read_bytes().startswith(b"\xff\xd8\xff"):
+        errors.append("Missing approved portrait JPEG")
+    if not shader.is_file():
+        errors.append("Missing local WebGL shader file")
     # The approved Italian CV v4 is a self-contained A4 document with a native
     # print control and a real downloadable PDF. The English CV retains the old
     # toolbar until it receives its separate editorial review.
