@@ -91,6 +91,28 @@ def main() -> int:
             failures += 1
         links += len(audit.refs)
         images += audit.images
+    # Keep the reviewed CV requirements in both languages.
+    for relative, consent, interests in (
+        ("cv/index.html", "Regolamento UE 2016/679", "Palestra e jogging"),
+        ("cv/en/index.html", "EU Regulation 2016/679", "Gym and jogging"),
+    ):
+        cv = (SITE / relative).read_text(encoding="utf-8")
+        for required in ("skills-list", "tools-list", "project-category", "cv-consent", consent, interests):
+            if required not in cv:
+                print(f"AUDIT FAILED: {relative}: missing {required!r}", file=sys.stderr)
+                failures += 1
+        if cv.count('data-cv-icon="') != 10:
+            print(f"AUDIT FAILED: {relative}: expected 10 section/contact icons", file=sys.stderr)
+            failures += 1
+        for icon in ("profile", "education", "projects", "certificates", "contact",
+                     "location", "email", "github", "website", "linkedin"):
+            if f'data-cv-icon="{icon}"' not in cv:
+                print(f"AUDIT FAILED: {relative}: missing icon {icon!r}", file=sys.stderr)
+                failures += 1
+        for forbidden in ('class="accent"', 'class="tagline"'):
+            if forbidden in cv:
+                print(f"AUDIT FAILED: {relative}: unexpected {forbidden!r}", file=sys.stderr)
+                failures += 1
     if failures:
         print(f"Found {failures} errors in {len(pages)} public pages.", file=sys.stderr)
         return 1
