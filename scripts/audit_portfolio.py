@@ -47,7 +47,7 @@ class PortfolioAudit(HTMLParser):
             src = data.get("src")
             if src:
                 self.js_sources.add(src)
-                if "://" in src or not src.endswith(("/site.js", "/theme-init.js")):
+                if "://" in src or not src.endswith(("/site.js", "/theme-init.js", "/hero-shader.js")):
                     self.errors.append(f"Unapproved script source: {src}")
             elif data.get("type") != "application/ld+json":
                 self.errors.append("Executable inline <script>")
@@ -161,7 +161,7 @@ def main() -> int:
                          "Diploma tecnico — Geometra", "Studi attualmente in corso."):
                 if item not in html:
                     errors.append(f"{path}: missing Italian education/changelog text: {item}")
-        if len(page.js_sources) != 2 or len(page.css_sources) != 1:
+        if len(page.js_sources) != 3 or len(page.css_sources) != 1:
             errors.append(f"{path}: first-party JS/CSS assets missing")
         for asset in page.js_sources | page.css_sources:
             target = path.parent / asset
