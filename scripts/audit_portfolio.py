@@ -203,7 +203,7 @@ def main() -> int:
         if 'href="/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf" target="_blank"' not in content:
             errors.append(f"{path}: missing direct CV PDF link opening in new tab")
     # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
-    # local link. Preserve the approved original portrait and optional shader.
+    # local links; preserve the original GitHub portrait and progressive shader.
     required_cover_targets = (
         "/driveglass-demo/", "/forma-ai-demo/", "/headset-studio-demo/",
         "/fit-zone-demo/", "/signalscope-demo/", "/meteo-bash2d-demo/",
@@ -219,7 +219,7 @@ def main() -> int:
             if f'class="dg-cover-link" href="{href}"' not in content:
                 errors.append(f"{path}: missing project cover target {href}")
         for marker in ('data-hero-shader', 'hero-code-window',
-                       'src="/portfolio/assets/hero-portrait.jpg"',
+                       'src="https://avatars.githubusercontent.com/u/353828254?v=4"',
                        'hero-shader.js'):
             if marker not in content:
                 errors.append(f"{path}: missing hero marker {marker}")
