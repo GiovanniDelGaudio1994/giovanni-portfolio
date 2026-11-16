@@ -251,7 +251,7 @@ def build() -> None:
     assert (OUTPUT / "headset-studio-demo/legacy.html").exists()
     assert (OUTPUT / "driveglass-demo/index.html").exists()
     assert (OUTPUT / "cv/index.html").exists()
-    cv_pdf = OUTPUT / "cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf"
+    cv_pdf = OUTPUT / "cv/CV_Giovanni_Del_Gaudio_HR_2026_v5.pdf"
     assert cv_pdf.is_file() and cv_pdf.read_bytes().startswith(b"%PDF-"), "Approved CV PDF missing or invalid"
     assert (OUTPUT / "cv/en/index.html").exists()
     assert (OUTPUT / "driveglass-demo/assets/driveglass-real-demo-2026.mp4").exists()
