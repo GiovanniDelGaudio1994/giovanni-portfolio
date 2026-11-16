@@ -29,3 +29,12 @@
   .section{margin-bottom:12px}
   .main .section{margin-bottom:12px}
 }
+
+/* Consistent Lucide-style inline SVG icons for the selected minimal CV template. */
+.section-title .section-icon{width:19px;height:19px;flex:0 0 19px;display:inline-block;vertical-align:middle;color:#1477d5}
+.contact-row .contact-icon{flex:0 0 17px;width:17px;height:17px;display:inline-block;color:#0a61bf;margin-top:1px}
+.cv-head{background:linear-gradient(124deg,#f8fbff 12%,#fff 67%,#f1f7fd)}
+@media print{
+  .section-title .section-icon{width:14px;height:14px;flex-basis:14px}
+  .contact-row .contact-icon{width:13px;height:13px;flex-basis:13px}
+}
