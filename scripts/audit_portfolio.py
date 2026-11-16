@@ -202,9 +202,24 @@ def main() -> int:
             errors.append(f"{path}: stale public Fit Zone source references")
         if "href=\"/cv/\"" not in content:
             errors.append(f"{path}: missing printable résumé link")
-    for page in (SITE / "cv/index.html", SITE / "cv/en/index.html"):
-        if not page.is_file() or "data-print" not in page.read_text(encoding="utf-8") or "cv.js" not in page.read_text(encoding="utf-8"):
-            errors.append(f"{page}: printable résumé missing")
+    # The approved Italian CV v4 is a self-contained A4 document with a native
+    # print control and a real downloadable PDF. The English CV retains the old
+    # toolbar until it receives its separate editorial review.
+    cv_it = SITE / "cv/index.html"
+    cv_en = SITE / "cv/en/index.html"
+    cv_pdf = SITE / "cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf"
+    if not cv_it.is_file():
+        errors.append(f"{cv_it}: missing approved Italian CV")
+    else:
+        it = cv_it.read_text(encoding="utf-8")
+        if not all(x in it for x in ('onclick="window.print()"', 'CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf', 'Giovanni Del Gaudio')):
+            errors.append(f"{cv_it}: print/PDF or identity control missing")
+        if any(x in it for x in ("Profilo LinkedIn", "14 percorsi documentati", "Verifica attestati:")):
+            errors.append(f"{cv_it}: superseded CV wording found")
+    if not cv_pdf.is_file() or not cv_pdf.read_bytes().startswith(b"%PDF-"):
+        errors.append(f"{cv_pdf}: missing or invalid approved PDF")
+    if not cv_en.is_file() or "data-print" not in cv_en.read_text(encoding="utf-8") or "cv.js" not in cv_en.read_text(encoding="utf-8"):
+        errors.append(f"{cv_en}: English printable résumé missing")
 
     for error in errors:
         print("SECURITY AUDIT FAILED:", error, file=sys.stderr)
