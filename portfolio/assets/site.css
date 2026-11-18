@@ -1760,3 +1760,33 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
   }
 }
 /* Standard operating-system pointer; interactive links retain their normal hand cursor. */
+
+/* 2026-11-18 · Restore the original card-hover interaction.
+   Never render the circular target at the center of the project tree.
+   The branch and leaf details remain decorative; the pointer remains native. */
+.project-tree-edition .tree-node,
+.project-tree-edition .project-slider > article .tree-node,
+.project-tree-edition .project-slider > article:is(:hover,:focus-within) .tree-node {
+  display:none !important;
+}
+@media (hover:hover) and (pointer:fine) {
+  .project-tree-edition .dg-feature-card:hover,
+  .project-tree-edition .dg-wide-card:hover,
+  .project-tree-edition .dg-academic-card:hover {
+    transform:translateY(-6px);
+    border-color:rgba(74,180,255,.74);
+    box-shadow:0 22px 64px rgba(7,109,221,.16),0 0 25px rgba(49,143,253,.14);
+  }
+  .project-tree-edition .dg-feature-card:hover::before,
+  .project-tree-edition .dg-wide-card:hover::before,
+  .project-tree-edition .dg-academic-card:hover::before {
+    opacity:1;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .project-tree-edition .dg-feature-card:hover,
+  .project-tree-edition .dg-wide-card:hover,
+  .project-tree-edition .dg-academic-card:hover {
+    transform:none;
+  }
+}
