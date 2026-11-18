@@ -1249,11 +1249,11 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
   .project-tree-edition .projects-showcase .project-slider>article::before{
     top:50%;left:100%;right:auto;width:41px;height:2px;
     background:linear-gradient(90deg,#558aff,rgba(74,224,255,.8));
-    border:0;inset:auto auto auto 100%;transform:translateY(-50%);
+    border:0;transform:translateY(-50%);
   }
   .project-tree-edition .projects-showcase .project-slider>article:nth-child(even)::before{
     left:auto;right:100%;background:linear-gradient(270deg,#558aff,rgba(74,224,255,.8));
-    inset:auto 100% auto auto;
+    
   }
   .project-tree-edition .projects-showcase .project-slider>article::after{
     top:calc(50% - 7px);left:calc(100% + 33px);right:auto;
@@ -1261,11 +1261,11 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
     border:2px solid #cffaff;
     background:#4acaff;
     box-shadow:0 0 0 5px rgba(50,158,246,.15),0 0 22px #3acaef;
-    inset:auto auto auto calc(100% + 33px);
+    
     transform:translateY(-50%);
   }
   .project-tree-edition .projects-showcase .project-slider>article:nth-child(even)::after{
-    left:auto;right:calc(100% + 33px);inset:auto calc(100% + 33px) auto auto;
+    left:auto;right:calc(100% + 33px);
   }
   .project-tree-edition .projects-showcase .project-slider>article:hover{
     transform:translateY(-5px);
