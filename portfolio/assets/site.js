@@ -387,7 +387,7 @@
   const destinations = {
     projects: {href:'#progetti', text: en ? 'View projects ↗' : 'Vedi progetti ↗'},
     contact: {href:'#contatti', text: en ? 'Contact ↗' : 'Contatti ↗'},
-    cv: {href:'/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf', text:'CV PDF ↗'}
+    cv: {href:'/cv/CV_Giovanni_Del_Gaudio.pdf', text:'CV PDF ↗'}
   };
   const addLine = (message, className, link) => {
     const row = document.createElement('div');
