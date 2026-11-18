@@ -1017,27 +1017,6 @@ html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
   .hero-terminal{animation:none!important;transition:none!important}
 }
 
-/* Evolve the existing subtle cursor glow into a circuit reticle.
-   Never replace the operating-system pointer or capture clicks. */
-@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-  .gdg-cursor-aura{filter:none;opacity:0;background:radial-gradient(circle,rgba(71,165,245,.13) 0%,rgba(79,157,240,.045) 53%,transparent 73%)}
-  .gdg-cursor-aura::before{
-    content:"";position:absolute;inset:23px;border:1px solid rgba(112,208,250,.53);border-radius:50%;
-    background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(123,217,249,.28) 50%,transparent calc(50% + .5px)),
-               linear-gradient(0deg,transparent calc(50% - .5px),rgba(123,217,249,.28) 50%,transparent calc(50% + .5px));
-    box-shadow:0 0 14px rgba(68,182,255,.14)
-  }
-  .gdg-cursor-aura::after{
-    content:"";position:absolute;inset:13px;border:1px dashed rgba(119,203,255,.26);border-radius:50%
-  }
-  .gdg-cursor-aura.is-over-action::before{border-color:#88e8fa;box-shadow:0 0 16px rgba(77,210,255,.35)}
-  :root[data-theme="light"] .gdg-cursor-aura::before{border-color:rgba(42,104,163,.45);box-shadow:none}
-  :root[data-theme="light"] .gdg-cursor-aura::after{border-color:rgba(44,105,175,.23)}
-}
-
-
-
-
 /* Project Showcase v3 — a content-first lightweight slider, not a scroll animation.
    No library and no autoplay. Existing project covers and links remain intact. */
 .projects-showcase{padding:2px 0 14px;min-width:0}
