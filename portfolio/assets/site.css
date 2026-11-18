@@ -1838,3 +1838,18 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
     row-gap:122px;
   }
 }
+
+/* 2026-11-18 — one centred timeline node for each desktop project pair.
+   Cards in the same grid row stretch to equal height so both SVG branches
+   meet the same point. Odd cards own the single central dot; even cards
+   keep their branch and decorative leaf. Single cards keep their dot. */
+@media (min-width:901px) {
+  .project-tree-edition .projects-showcase .project-slider > article,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider > article {
+    align-self:stretch;
+  }
+  .project-tree-edition.tree-embellished .projects-showcase
+  .project-slider > article:nth-child(even) .tree-node {
+    display:none !important;
+  }
+}
