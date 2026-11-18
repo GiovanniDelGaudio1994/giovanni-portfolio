@@ -488,6 +488,11 @@
     });
   }, {rootMargin:'0px 0px 110px 0px',threshold:0.06});
   cards.forEach(card => watcher.observe(card));
+  // Animate the luminous trunk only while its section is near the viewport.
+  const treeVisibility = new IntersectionObserver(entries => {
+    tree.classList.toggle('is-tree-engaged',entries.some(entry => entry.isIntersecting));
+  },{rootMargin:'120px 0px 120px 0px',threshold:0});
+  treeVisibility.observe(tree);
 
   let pending = false;
   function updateTree() {
@@ -512,6 +517,8 @@
       cards.forEach(show);
       tree.classList.remove('js-tree');
       watcher.disconnect();
+      treeVisibility.disconnect();
+      tree.classList.remove('is-tree-engaged');
       tree.style.setProperty('--tree-growth','100%');
     }
   });

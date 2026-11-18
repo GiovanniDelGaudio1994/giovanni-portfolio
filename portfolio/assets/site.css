@@ -1132,3 +1132,145 @@ html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
  .devtree .dg-feature-card,.devtree .dg-academic-card{opacity:1!important;transform:none!important;transition:none!important}
  .devtree .dg-feature-card::before,.devtree .dg-academic-card::before,.devtree .dg-feature-card::after,.devtree .dg-academic-card::after{transition:none!important}
 }
+
+
+/* Project Tree v1.1 — mobile separation, legible branch headers and refined signal effects.
+   The supplied iPhone screenshot showed the university eyebrow and count colliding. */
+.devtree .dg-project-group-heading{
+  box-sizing:border-box;
+  isolation:isolate;
+  min-width:0;
+  overflow:visible;
+}
+.devtree .dg-project-group-heading>div{
+  min-width:0;
+  flex:1 1 auto;
+  align-items:center;
+}
+.devtree .dg-project-group-heading>div>div{
+  min-width:0;
+  flex:1 1 auto;
+}
+.devtree .dg-project-group-heading .eyebrow{
+  display:block;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:normal;
+  word-break:normal;
+  line-height:1.55;
+  letter-spacing:.09em;
+}
+.devtree .dg-project-group-heading h3{
+  max-width:100%;
+  line-height:1.14;
+  overflow-wrap:break-word;
+  margin-top:8px;
+}
+.devtree .dg-project-group-heading>span{
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+.devtree .dg-academic-heading{
+  margin-top:clamp(86px,9vw,132px);
+  margin-bottom:clamp(40px,5vw,62px);
+  border-color:rgba(107,210,241,.55);
+  background:
+    radial-gradient(ellipse at 93% 10%,rgba(53,183,228,.1),transparent 50%),
+    linear-gradient(120deg,#112946,#102038);
+}
+.devtree .dg-academic-heading::before{
+  content:"";
+  position:absolute;
+  top:-45px;
+  left:50%;
+  width:1px;
+  height:35px;
+  transform:translateX(-50%);
+  background:linear-gradient(transparent,rgba(94,225,227,.6));
+  pointer-events:none;
+}
+.devtree .dg-academic-heading .dg-unisa-small{
+  flex:0 0 46px;
+  width:46px;
+  height:46px;
+}
+.devtree .dg-academic-heading .dg-unisa-small img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.devtree .dg-feature-card.is-tree-visible,.devtree .dg-academic-card.is-tree-visible{
+  border-color:rgba(93,177,232,.48);
+  box-shadow:0 16px 48px rgba(2,9,29,.25),0 0 28px rgba(44,165,220,.06);
+}
+.devtree .dg-feature-card:focus-within,.devtree .dg-academic-card:focus-within{
+  box-shadow:0 0 0 2px rgba(141,238,255,.55),0 20px 44px rgba(7,66,106,.25);
+}
+/* Thin signal moving along lit nodes only — no extra canvas, GPU or dependencies. */
+@media (prefers-reduced-motion:no-preference){
+  .devtree.is-tree-engaged::after{
+    background:linear-gradient(180deg,#66f1d1,#3baefe 36%,#ab92ff 70%,#62e8dc);
+    background-size:100% 230%;
+    animation:devtree-signal-flow 6s linear infinite;
+  }
+  .devtree .dg-feature-card.is-tree-visible::after,.devtree .dg-academic-card.is-tree-visible::after{
+    animation:devtree-node-breathe 3.4s ease-in-out infinite;
+  }
+  @keyframes devtree-signal-flow{from{background-position:0 0}to{background-position:0 230%}}
+  @keyframes devtree-node-breathe{0%,100%{box-shadow:0 0 0 6px #123c56,0 0 12px rgba(75,227,212,.36)}50%{box-shadow:0 0 0 6px #123c56,0 0 25px rgba(75,227,212,.7)}}
+}
+@media(max-width:700px){
+  .devtree{padding-left:38px}
+  .devtree .dg-project-group-heading{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+    padding:18px 15px;
+    margin-top:44px;
+    margin-bottom:34px;
+  }
+  .devtree .dg-project-group-heading>div{gap:11px;align-items:center}
+  .devtree .dg-project-group-heading .eyebrow{
+    font-size:10px;
+    letter-spacing:.045em;
+    line-height:1.5;
+    margin:0 0 8px;
+    hyphens:none;
+  }
+  .devtree .dg-project-group-heading h3{
+    font-size:clamp(18px,4.8vw,22px);
+    letter-spacing:-.025em;
+    margin:0;
+  }
+  .devtree .dg-project-group-heading>span{
+    align-self:start;
+    font-size:10px;
+    letter-spacing:.025em;
+    padding:5px 0;
+  }
+  .devtree .dg-academic-heading{
+    margin-top:105px;
+    margin-bottom:48px;
+    padding:20px 15px;
+  }
+  .devtree .dg-academic-heading::before{left:16px;top:-55px;height:48px;transform:none}
+  .devtree .dg-academic-heading .dg-unisa-small{
+    width:37px;height:37px;flex:0 0 37px;
+  }
+  .devtree .dg-academic-heading .eyebrow{font-size:9px;letter-spacing:0;line-height:1.45}
+  .devtree .dg-academic-heading h3{font-size:clamp(18px,5vw,22px)}
+  .devtree .dg-academic-grid{gap:39px}
+  .devtree .dg-feature-card,.devtree .dg-academic-card{box-shadow:0 14px 34px rgba(0,6,21,.3)}
+  .devtree .dg-personal-grid{margin-bottom:0}
+  .devtree .dg-feature-card .dg-card-links{gap:12px}
+  .devtree .dg-feature-card .dg-action{min-height:42px}
+}
+@media(max-width:380px){
+  .devtree .dg-project-group-heading{grid-template-columns:minmax(0,1fr);gap:8px}
+  .devtree .dg-project-group-heading>span{justify-self:end;margin-top:-3px;padding:0}
+  .devtree .dg-academic-heading .eyebrow{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .devtree.is-tree-engaged::after,.devtree .dg-feature-card.is-tree-visible::after,.devtree .dg-academic-card.is-tree-visible::after{animation:none!important}
+}
