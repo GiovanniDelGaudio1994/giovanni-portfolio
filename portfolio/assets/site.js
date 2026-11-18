@@ -461,57 +461,59 @@
 })();
 
 
-/* Project graph: map actual project cards to nodes as the visitor scrolls.
-   Native anchor links stay functional without JavaScript. */
+
+/* Project tree: animated branch and leaf reveals, scroll-driven.
+   No external jQuery dependency: lightweight native effects, same visual idea.
+   Without JS the full cards and all links remain visible. */
 (() => {
   'use strict';
-  const graph = document.querySelector('[data-project-graph]');
-  if (!graph) return;
-  const nodes = [...graph.querySelectorAll('[data-graph-node]')];
-  const cards = nodes.map(node => document.getElementById(node.dataset.graphNode));
-  if (!nodes.length || cards.some(card => !card)) return;
-  const section = document.getElementById('progetti');
-  const counter = graph.querySelector('[data-graph-counter]');
-  const progress = graph.querySelector('[data-graph-progress]');
-  if (!section || !counter || !progress) return;
-  let scheduled = false;
-  let active = -1;
-  const update = () => {
-    scheduled = false;
-    const viewportAnchor = Math.min(window.innerHeight * .35, 260);
-    const sectionBox = section.getBoundingClientRect();
-    const visible = sectionBox.bottom > viewportAnchor &&
-      sectionBox.top < window.innerHeight - 60;
-    if (!visible) return;
-    let index = 0;
-    for (let i = 0; i < cards.length; i++) {
-      if (cards[i].getBoundingClientRect().top <= viewportAnchor) index = i;
-    }
-    if (index !== active) {
-      active = index;
-      nodes.forEach((node, i) => {
-        const selected = i === index;
-        node.classList.toggle('is-active', selected);
-        if (selected) node.setAttribute('aria-current', 'location');
-        else node.removeAttribute('aria-current');
-      });
-      counter.textContent = String(index + 1).padStart(2,'0') + ' / ' +
-        String(nodes.length).padStart(2,'0');
-    }
-    const first = cards[0].getBoundingClientRect().top + window.scrollY;
-    const last = cards[cards.length - 1].getBoundingClientRect().top + window.scrollY;
-    const distance = Math.max(1,last - first);
-    const ratio = Math.max(0, Math.min(1,(window.scrollY + viewportAnchor - first) / distance));
-    graph.style.setProperty('--graph-progress',(ratio * 100).toFixed(1) + '%');
-  };
-  const schedule = () => {
-    if (scheduled) return;
-    scheduled = true;
-    window.requestAnimationFrame(update);
-  };
+  const tree = document.querySelector('[data-project-tree]');
+  if (!tree) return;
+  const cards = [...tree.querySelectorAll('.dg-personal-grid > article, .dg-academic-grid > article')];
+  if (!cards.length) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const show = card => card.classList.add('is-tree-visible');
+  if (!('IntersectionObserver' in window) || motion.matches) {
+    cards.forEach(show);
+    tree.style.setProperty('--tree-growth','100%');
+    return;
+  }
+  // Cards exist and are readable immediately; enhancement starts only when observer works.
+  tree.classList.add('js-tree');
+  const watcher = new IntersectionObserver((entries,observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      show(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, {rootMargin:'0px 0px 110px 0px',threshold:0.06});
+  cards.forEach(card => watcher.observe(card));
+
+  let pending = false;
+  function updateTree() {
+    pending = false;
+    const box = tree.getBoundingClientRect();
+    const start = 98;
+    const end = Math.max(start,tree.offsetHeight - 110);
+    const viewportLine = Math.min(window.innerHeight * .62,window.innerHeight - 60);
+    const grown = Math.max(0,Math.min(end - start,viewportLine - box.top - start));
+    tree.style.setProperty('--tree-growth',Math.round(grown) + 'px');
+  }
+  function schedule() {
+    if (pending) return;
+    pending = true;
+    window.requestAnimationFrame(updateTree);
+  }
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   window.addEventListener('hashchange',schedule);
-  nodes.forEach(node => node.addEventListener('click',schedule));
-  update();
+  motion.addEventListener?.('change',event => {
+    if (event.matches) {
+      cards.forEach(show);
+      tree.classList.remove('js-tree');
+      watcher.disconnect();
+      tree.style.setProperty('--tree-growth','100%');
+    }
+  });
+  updateTree();
 })();
