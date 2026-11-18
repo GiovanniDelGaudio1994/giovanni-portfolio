@@ -1794,9 +1794,11 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
     row-gap:clamp(148px,13vw,208px);
     padding-block:66px 86px;
   }
+  /* SVG height is 62px and translateY(-50%) already centers its 31px path.
+     top:50% aligns the branch exactly with the 16px dot centered at 50%. */
   .project-tree-edition .project-slider > article .tree-twig,
   .project-tree-edition .project-slider > article:nth-child(even) .tree-twig {
-    top:calc(50% - 31px);
+    top:50%;
   }
   .project-tree-edition .project-slider > article .tree-node,
   .project-tree-edition .project-slider > article:nth-child(even) .tree-node {
