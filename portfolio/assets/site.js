@@ -489,13 +489,11 @@
     const branch = document.createElementNS(svgNS, 'path');
     branch.setAttribute('d', 'M0 31 C11 31 12 17 21 31 S33 31 41 31');
     twig.append(branch);
-    const node = document.createElement('span');
-    node.className = 'tree-node';
-    node.setAttribute('aria-hidden', 'true');
+    // Only the branch and the decorative bud remain: no circular spine node.
     const bud = document.createElement('span');
     bud.className = 'tree-bud';
     bud.setAttribute('aria-hidden', 'true');
-    card.append(twig, node, bud);
+    card.append(twig, bud);
   }
   section.classList.add('tree-embellished');
 
