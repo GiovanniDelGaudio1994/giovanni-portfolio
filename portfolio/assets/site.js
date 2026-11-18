@@ -515,9 +515,9 @@
 })();
 
 
-/* Developer Growth Tree — scroll progress and entrance choreography.
-   Native scroll only; no canvas/WebGL and no per-card repaint loops.
-   Runs only on desktop when the reader allows animation. */
+/* Developer Growth Tree — SVG branch draw, node buds and accessible viewport reveal.
+   Progressive enhancement: existing branches remain when JS is unavailable.
+   Desktop only; native mobile carousel, no scroll hijacking, reduced-motion fallback. */
 (() => {
   'use strict';
   const section = document.querySelector('#progetti.project-tree-edition');
@@ -526,16 +526,39 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const desktop = matchMedia('(min-width: 901px)');
   const cards = grids.flatMap(grid => [...grid.querySelectorAll(':scope > article')]);
+  const svgNS = 'http://www.w3.org/2000/svg';
   let ticking = false;
   let observer = null;
+
+  // Decorative markup is hidden from assistive technology and never receives focus.
+  for (const card of cards) {
+    if (card.querySelector('.tree-twig')) continue;
+    const twig = document.createElementNS(svgNS, 'svg');
+    twig.setAttribute('viewBox', '0 0 41 62');
+    twig.setAttribute('class', 'tree-twig');
+    twig.setAttribute('aria-hidden', 'true');
+    twig.setAttribute('focusable', 'false');
+    const branch = document.createElementNS(svgNS, 'path');
+    branch.setAttribute('d', 'M0 31 C11 31 12 17 21 31 S33 31 41 31');
+    twig.append(branch);
+    const node = document.createElement('span');
+    node.className = 'tree-node';
+    node.setAttribute('aria-hidden', 'true');
+    const bud = document.createElement('span');
+    bud.className = 'tree-bud';
+    bud.setAttribute('aria-hidden', 'true');
+    card.append(twig, node, bud);
+  }
+  section.classList.add('tree-embellished');
+
   const measure = () => {
     ticking = false;
     if (!desktop.matches || motion.matches) return;
-    const viewportCheckpoint = window.innerHeight * 0.63;
+    const checkpoint = window.innerHeight * 0.63;
     for (const grid of grids) {
       const rect = grid.getBoundingClientRect();
-      const fraction = Math.min(1, Math.max(0, (viewportCheckpoint - rect.top) / Math.max(1, rect.height)));
-      grid.style.setProperty('--tree-progress', (fraction * 100).toFixed(2) + '%');
+      const progress = Math.min(1, Math.max(0, (checkpoint - rect.top) / Math.max(1, rect.height)));
+      grid.style.setProperty('--tree-progress', (progress * 100).toFixed(2) + '%');
     }
   };
   const schedule = () => {
@@ -546,30 +569,33 @@
   const configure = () => {
     observer?.disconnect();
     observer = null;
-    if (desktop.matches && !motion.matches && 'IntersectionObserver' in window) {
+    const animate = desktop.matches && !motion.matches;
+    if (animate && 'IntersectionObserver' in window) {
       cards.forEach(card => {
-        card.classList.toggle('tree-visible',card.getBoundingClientRect().top < window.innerHeight * .97);
+        card.classList.toggle('tree-visible', card.classList.contains('tree-visible') ||
+          card.getBoundingClientRect().top < window.innerHeight * .96);
       });
-      observer = new IntersectionObserver((entries, obs) => {
+      observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('tree-visible');
-            obs.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) entry.target.classList.add('tree-visible');
+          entry.target.classList.toggle('tree-in-view', entry.isIntersecting);
         });
-      }, {rootMargin:'0px 0px 120px 0px',threshold:0.01});
-      cards.filter(card => !card.classList.contains('tree-visible')).forEach(card => observer.observe(card));
+      }, {rootMargin:'0px 0px -10% 0px',threshold:0.06});
+      cards.forEach(card => observer.observe(card));
       document.documentElement.classList.add('tree-motion-ready');
     } else {
       document.documentElement.classList.remove('tree-motion-ready');
-      cards.forEach(card => card.classList.add('tree-visible'));
+      cards.forEach(card => {
+        card.classList.add('tree-visible');
+        card.classList.remove('tree-in-view');
+      });
       grids.forEach(grid => grid.style.setProperty('--tree-progress','100%'));
     }
     schedule();
   };
-  window.addEventListener('scroll',schedule,{passive:true});
-  window.addEventListener('resize',schedule,{passive:true});
-  desktop.addEventListener?.('change',configure);
-  motion.addEventListener?.('change',configure);
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule, {passive:true});
+  desktop.addEventListener?.('change', configure);
+  motion.addEventListener?.('change', configure);
   configure();
 })();

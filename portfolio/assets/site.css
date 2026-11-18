@@ -1314,3 +1314,121 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
   .project-tree-edition .projects-showcase .project-slider>article,
   .project-tree-edition .projects-showcase .project-slider>article:hover{transform:none!important;opacity:1!important;transition:none!important}
 }
+
+
+/* PROJECT TREE — living connectors (progressive enhancement)
+   Existing CSS pseudo-connectors remain as fallback until JS creates the SVGs. */
+@media (min-width:901px) {
+  .project-tree-edition.tree-embellished .projects-showcase .project-slider > article::before,
+  .project-tree-edition.tree-embellished .projects-showcase .project-slider > article::after {
+    display:none;
+  }
+  .project-tree-edition.tree-embellished .projects-showcase .project-slider > article {
+    --branch-glow:rgba(68,224,255,.54);
+  }
+  .project-tree-edition .tree-twig {
+    position:absolute;
+    top:50%;
+    left:100%;
+    width:41px;
+    height:62px;
+    transform:translateY(-50%);
+    overflow:visible;
+    z-index:3;
+    pointer-events:none;
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-twig {
+    left:auto;
+    right:100%;
+    transform:translateY(-50%) scaleX(-1);
+  }
+  .project-tree-edition .tree-twig path {
+    fill:none;
+    stroke:#70dcff;
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-dasharray:85;
+    stroke-dashoffset:85;
+    opacity:.78;
+    filter:drop-shadow(0 0 4px var(--branch-glow));
+    transition:stroke-dashoffset .85s cubic-bezier(.2,.7,.25,1),
+      stroke .3s ease,filter .3s ease,opacity .3s ease;
+  }
+  .project-tree-edition .tree-node {
+    position:absolute;
+    top:calc(50% - 8px);
+    left:calc(100% + 33px);
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    border:2px solid #e3fcff;
+    background:radial-gradient(circle at 35% 30%,#e4ffff,#45ccff 52%,#5c83f8);
+    box-shadow:0 0 0 4px rgba(64,185,242,.13),0 0 18px rgba(77,212,255,.38);
+    z-index:4;
+    pointer-events:none;
+    opacity:0;
+    transform:scale(.4);
+    transition:opacity .32s ease .45s,transform .35s ease .45s,
+      box-shadow .3s ease;
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-node {
+    left:auto;right:calc(100% + 33px);
+  }
+  .project-tree-edition .tree-bud {
+    position:absolute;
+    top:calc(50% - 29px);
+    left:calc(100% + 14px);
+    width:14px;height:22px;
+    border-radius:85% 12% 85% 16%;
+    transform:rotate(-30deg) scale(.5);
+    transform-origin:70% 90%;
+    background:linear-gradient(145deg,rgba(225,255,255,.96),rgba(84,231,221,.82) 52%,rgba(132,122,255,.72));
+    border:1px solid rgba(228,255,255,.88);
+    box-shadow:inset 0 0 5px rgba(255,255,255,.66),0 0 12px rgba(86,227,230,.34);
+    opacity:0;
+    pointer-events:none;z-index:4;
+    transition:opacity .35s ease .55s,transform .55s cubic-bezier(.2,.9,.2,1) .55s,
+      box-shadow .3s ease;
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-bud {
+    left:auto;right:calc(100% + 14px);
+    transform:rotate(120deg) scale(.5);
+    transform-origin:20% 90%;
+  }
+  .project-tree-edition .project-slider > article.tree-visible .tree-twig path {stroke-dashoffset:0}
+  .project-tree-edition .project-slider > article.tree-visible .tree-node {
+    opacity:1;transform:scale(1);
+  }
+  .project-tree-edition .project-slider > article.tree-visible .tree-bud {
+    opacity:.85;transform:rotate(-30deg) scale(1);
+  }
+  .project-tree-edition .project-slider > article:nth-child(even).tree-visible .tree-bud {
+    transform:rotate(120deg) scale(1);
+  }
+  .project-tree-edition .project-slider > article.tree-in-view .tree-node {
+    box-shadow:0 0 0 6px rgba(71,198,251,.19),0 0 23px rgba(75,228,255,.7);
+  }
+  .project-tree-edition .project-slider > article:is(:hover,:focus-within) {
+    --branch-glow:rgba(94,230,255,.95);
+  }
+  .project-tree-edition .project-slider > article:is(:hover,:focus-within) .tree-twig path {
+    stroke:#bbffff;filter:drop-shadow(0 0 8px rgba(85,231,255,.95));opacity:1;
+  }
+  .project-tree-edition .project-slider > article:is(:hover,:focus-within) .tree-node {
+    opacity:1;transform:scale(1.18);
+    box-shadow:0 0 0 7px rgba(87,213,255,.24),0 0 28px #49daff;
+  }
+  .project-tree-edition .project-slider > article:is(:hover,:focus-within) .tree-bud {
+    opacity:1;box-shadow:inset 0 0 7px white,0 0 18px rgba(91,250,231,.8);
+  }
+}
+@media (max-width:900px) {
+  .project-tree-edition .tree-twig,
+  .project-tree-edition .tree-node,
+  .project-tree-edition .tree-bud {display:none}
+}
+@media (prefers-reduced-motion:reduce) {
+  .project-tree-edition .tree-twig path {stroke-dashoffset:0!important;transition:none!important}
+  .project-tree-edition .tree-node {opacity:1!important;transform:none!important;transition:none!important}
+  .project-tree-edition .tree-bud {opacity:.8!important;transition:none!important}
+}
