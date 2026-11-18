@@ -1790,3 +1790,25 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
     transform:none;
   }
 }
+
+/* 2026-11-18: shift the timeline ornaments lower for the last four
+   personal projects (Fit Zone, SignalScope, Meteo Bash 2D, LegacyBridge).
+   Keep the earlier cards, responsive grid and card hover unchanged. */
+@media (min-width:901px) {
+  .project-tree-edition .projects-showcase
+  .dg-personal-grid.project-slider > article:nth-child(n+4) .tree-twig {
+    top:calc(50% + 52px);
+  }
+  .project-tree-edition .projects-showcase
+  .dg-personal-grid.project-slider > article:nth-child(even):nth-child(n+4) .tree-twig {
+    top:calc(50% + 96px);
+  }
+  .project-tree-edition .projects-showcase
+  .dg-personal-grid.project-slider > article:nth-child(odd):nth-child(n+4) .tree-bud {
+    top:calc(50% - 30px);
+  }
+  .project-tree-edition .projects-showcase
+  .dg-personal-grid.project-slider > article:nth-child(even):nth-child(n+4) .tree-bud {
+    top:calc(50% + 141px);
+  }
+}
