@@ -1060,217 +1060,103 @@ html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
 
 
 
-/* Project tree: project cards are the leaves, not a separate navigation.
-   Vanilla intersection observers deliver jQuery-style scroll reveals without a dependency. */
-.devtree{--tree-growth:0%;position:relative;isolation:isolate;padding:1px 0 26px;margin:24px 0 10px}
-.devtree::before,.devtree::after{content:"";position:absolute;left:50%;width:3px;transform:translateX(-50%);top:98px;bottom:12px;border-radius:10px;pointer-events:none}
-.devtree::before{background:linear-gradient(#2a6696 0%,#2b466e 100%);opacity:.55}
-.devtree::after{bottom:auto;height:var(--tree-growth);max-height:calc(100% - 110px);background:linear-gradient(#70ebce 0%,#48b9ff 75%,#bc8eff);box-shadow:0 0 19px #4bd9fd55;transition:height .16s linear}
-.devtree-root{position:relative;z-index:2;margin:0 auto 66px;width:min(100%,640px);padding:18px 22px;display:flex;align-items:center;gap:15px;border-radius:20px;border:1px solid #5cbef188;background:linear-gradient(135deg,#122d4a,#07182f);color:#ecf9ff;box-shadow:0 17px 42px #07183352}
-.devtree-root-icon{flex:0 0 50px;height:50px;display:grid;place-items:center;border-radius:14px;background:#1b6682;color:#85fbd9;font-size:25px;box-shadow:0 0 20px #1cb9dd29}
-.devtree-root>div{display:flex;flex-direction:column;gap:3px}
-.devtree-code{font:600 10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#77dded;letter-spacing:.08em}
-.devtree-root strong{font-size:17px;letter-spacing:-.025em}
-.devtree-instruction{font-size:12px;color:#acc9e2}
-.devtree-scroll-hint{margin-left:auto;align-self:start;flex-shrink:0;color:#79e7d7;font:700 10px ui-monospace,Menlo,monospace;letter-spacing:.09em}
-.devtree .dg-project-group-heading{position:relative;z-index:2;max-width:min(100%,830px);margin:42px auto 32px;padding:17px 20px;border:1px solid #4284bd66;border-radius:16px;background:linear-gradient(120deg,#112946,#102038);box-shadow:0 14px 25px #07132927}
-.devtree .dg-personal-grid,.devtree .dg-academic-grid{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:42px;min-width:0;margin:0 0 62px;overflow:visible}
-.devtree .dg-feature-card,.devtree .dg-academic-card{position:relative;width:calc(50% - 62px);height:auto;overflow:visible;min-width:0;max-width:none;z-index:1;transition:transform .55s cubic-bezier(.21,.75,.33,1),opacity .55s ease,border-color .3s,box-shadow .3s}
-.devtree .dg-personal-grid article:nth-of-type(odd),.devtree .dg-academic-grid article:nth-of-type(odd){align-self:flex-start}
-.devtree .dg-personal-grid article:nth-of-type(even),.devtree .dg-academic-grid article:nth-of-type(even){align-self:flex-end}
-.devtree .dg-feature-card::before,.devtree .dg-academic-card::before{content:"";position:absolute;opacity:1;inset:auto;top:52px;left:auto;right:-65px;width:65px;height:3px;border:0;border-radius:0;z-index:-1;pointer-events:none;box-shadow:none;background:linear-gradient(90deg,#417cad,#4bd8e9);transition:background .35s,box-shadow .35s}
-.devtree .dg-feature-card::after,.devtree .dg-academic-card::after{content:"";position:absolute;inset:auto;top:41px;left:auto;right:-77px;width:22px;height:22px;border-radius:50%;border:3px solid #5dbed6;z-index:3;pointer-events:none;background:#15314e;box-shadow:0 0 0 6px #0e223b;transform:none;transition:border-color .3s,background .3s,box-shadow .3s}
-.devtree .dg-personal-grid article:nth-of-type(even)::before,.devtree .dg-academic-grid article:nth-of-type(even)::before{right:auto;left:-65px;background:linear-gradient(90deg,#4bd8e9,#417cad)}
-.devtree .dg-personal-grid article:nth-of-type(even)::after,.devtree .dg-academic-grid article:nth-of-type(even)::after{right:auto;left:-77px}
-.devtree .dg-feature-card.is-tree-visible::after,.devtree .dg-academic-card.is-tree-visible::after{background:#65eec8;border-color:#c7ffef;box-shadow:0 0 0 6px #123c56,0 0 22px #3cecb29c}
-.devtree .dg-feature-card.is-tree-visible::before,.devtree .dg-academic-card.is-tree-visible::before{box-shadow:0 0 11px #37e0e2b0}
-.devtree .dg-feature-card:hover,.devtree .dg-academic-card:hover{transform:translateY(-5px);z-index:4}
-.devtree .dg-feature-card .dg-visual,.devtree .dg-feature-card .dg-cover-inner,.devtree .dg-academic-card .dg-academic-photo{border-radius:23px 23px 0 0;overflow:hidden}
-.devtree .dg-feature-card .dg-card-copy,.devtree .dg-academic-card .dg-academic-copy{border-radius:0 0 23px 23px}
-.devtree .dg-feature-card .dg-visual{height:clamp(160px,19vw,260px)}
-.devtree .dg-feature-card .dg-card-copy{padding:clamp(18px,2vw,26px)}
-.devtree .dg-academic-grid{gap:52px}
-.devtree .dg-academic-card .dg-academic-photo{aspect-ratio:16/9}
-.devtree .dg-academic-card .dg-academic-copy{padding:20px}
-.devtree .dg-feature-card a:focus-visible,.devtree .dg-academic-card a:focus-visible{outline:3px solid #98f8df;outline-offset:3px}
-.devtree.js-tree .dg-feature-card:not(.is-tree-visible),.devtree.js-tree .dg-academic-card:not(.is-tree-visible){opacity:.34}
-.devtree.js-tree .dg-feature-card.is-tree-visible,.devtree.js-tree .dg-academic-card.is-tree-visible{opacity:1}
-@media(min-width:701px) and (prefers-reduced-motion:no-preference){
- .devtree.js-tree .dg-personal-grid article:nth-of-type(odd):not(.is-tree-visible),.devtree.js-tree .dg-academic-grid article:nth-of-type(odd):not(.is-tree-visible){transform:translateX(-16px)}
- .devtree.js-tree .dg-personal-grid article:nth-of-type(even):not(.is-tree-visible),.devtree.js-tree .dg-academic-grid article:nth-of-type(even):not(.is-tree-visible){transform:translateX(16px)}
-}
-@media(max-width:900px){
- .devtree .dg-feature-card,.devtree .dg-academic-card{width:calc(50% - 38px)}
- .devtree .dg-feature-card::before,.devtree .dg-academic-card::before{right:-40px;width:40px}
- .devtree .dg-feature-card::after,.devtree .dg-academic-card::after{right:-49px;width:18px;height:18px;top:44px}
- .devtree .dg-personal-grid article:nth-of-type(even)::before,.devtree .dg-academic-grid article:nth-of-type(even)::before{left:-40px}
- .devtree .dg-personal-grid article:nth-of-type(even)::after,.devtree .dg-academic-grid article:nth-of-type(even)::after{left:-49px}
-}
-@media(max-width:700px){
- .devtree{padding-left:40px;margin:20px 0 10px}
- .devtree::before,.devtree::after{left:16px;top:88px}
- .devtree-root{margin:0 0 37px -40px;width:calc(100% + 40px);padding:13px;gap:10px}
- .devtree-root-icon{flex-basis:38px;height:38px;font-size:19px}
- .devtree-root strong{font-size:14px}
- .devtree-code{font-size:9px}
- .devtree-instruction{font-size:10px}
- .devtree-scroll-hint{display:none}
- .devtree .dg-project-group-heading{margin:27px 0 23px;padding:13px;gap:8px}
- .devtree .dg-project-group-heading h3{font-size:21px}
- .devtree .dg-personal-grid,.devtree .dg-academic-grid{gap:30px;margin-bottom:38px}
- .devtree .dg-feature-card,.devtree .dg-academic-card,.devtree .dg-personal-grid article:nth-of-type(odd),.devtree .dg-personal-grid article:nth-of-type(even),.devtree .dg-academic-grid article:nth-of-type(odd),.devtree .dg-academic-grid article:nth-of-type(even){align-self:stretch;width:100%}
- .devtree .dg-feature-card::before,.devtree .dg-academic-card::before,
- .devtree .dg-personal-grid article:nth-of-type(even)::before,.devtree .dg-academic-grid article:nth-of-type(even)::before{left:-24px;right:auto;width:24px;top:46px}
- .devtree .dg-feature-card::after,.devtree .dg-academic-card::after,
- .devtree .dg-personal-grid article:nth-of-type(even)::after,.devtree .dg-academic-grid article:nth-of-type(even)::after{left:-33px;right:auto;width:18px;height:18px;top:38px}
- .devtree .dg-feature-card .dg-visual{height:auto;aspect-ratio:16/9}
- .devtree .dg-academic-card .dg-academic-copy{padding:18px}
- .devtree.js-tree .dg-feature-card:not(.is-tree-visible),.devtree.js-tree .dg-academic-card:not(.is-tree-visible){transform:none}
-}
-@media(prefers-reduced-motion:reduce){
- .devtree::after{transition:none}
- .devtree .dg-feature-card,.devtree .dg-academic-card{opacity:1!important;transform:none!important;transition:none!important}
- .devtree .dg-feature-card::before,.devtree .dg-academic-card::before,.devtree .dg-feature-card::after,.devtree .dg-academic-card::after{transition:none!important}
-}
 
-
-/* Project Tree v1.1 — mobile separation, legible branch headers and refined signal effects.
-   The supplied iPhone screenshot showed the university eyebrow and count colliding. */
-.devtree .dg-project-group-heading{
-  box-sizing:border-box;
-  isolation:isolate;
-  min-width:0;
-  overflow:visible;
+/* Project Showcase v3 — a content-first lightweight slider, not a scroll animation.
+   No library and no autoplay. Existing project covers and links remain intact. */
+.projects-showcase{padding:2px 0 14px;min-width:0}
+.projects-showcase-intro{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:15px 0 4px;border-top:1px solid rgba(120,165,224,.17)}
+.projects-showcase-kicker{font:700 11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#80cffa;letter-spacing:.1em}
+.projects-showcase-guide{font-size:12px;color:var(--muted)}
+.projects-showcase .dg-project-group-heading{margin:28px 0 15px;gap:16px}
+.projects-showcase .dg-project-group-heading .eyebrow{line-height:1.5}
+.projects-showcase .dg-project-group-heading>div{min-width:0}
+.projects-showcase .dg-project-group-heading>div>div{min-width:0}
+.projects-showcase .dg-project-group-heading h3{line-height:1.2;overflow-wrap:break-word}
+.projects-showcase .dg-project-group-heading>span{flex-shrink:0;white-space:nowrap}
+.project-slider-controls{display:flex;justify-content:flex-end;gap:10px;margin:0 0 14px;align-items:center}
+.project-slider-btn{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;
+ border:1px solid rgba(107,168,232,.44);background:rgba(29,58,98,.55);
+ color:#d4efff;font-size:21px;cursor:pointer;
+ transition:background-color .17s,border-color .17s,transform .17s}
+.project-slider-btn:hover{background:#2469a5;border-color:#86d7ff;transform:translateY(-1px)}
+.project-slider-btn:focus-visible{outline:3px solid #94e8ff;outline-offset:3px}
+.project-slider-btn:disabled{opacity:.35;cursor:default;transform:none}
+.projects-showcase .project-slider{
+ display:flex;flex-wrap:nowrap;gap:20px;overflow-x:auto;overflow-y:hidden;
+ scroll-snap-type:x mandatory;scroll-padding-inline:2px;overscroll-behavior-x:contain;
+ scrollbar-width:thin;scrollbar-color:rgba(108,184,255,.55) transparent;
+ padding:4px 4px 22px;margin:0;
+ -webkit-overflow-scrolling:touch;
 }
-.devtree .dg-project-group-heading>div{
-  min-width:0;
-  flex:1 1 auto;
-  align-items:center;
-}
-.devtree .dg-project-group-heading>div>div{
-  min-width:0;
-  flex:1 1 auto;
-}
-.devtree .dg-project-group-heading .eyebrow{
-  display:block;
-  max-width:100%;
-  white-space:normal;
-  overflow-wrap:normal;
-  word-break:normal;
-  line-height:1.55;
-  letter-spacing:.09em;
-}
-.devtree .dg-project-group-heading h3{
-  max-width:100%;
-  line-height:1.14;
-  overflow-wrap:break-word;
-  margin-top:8px;
-}
-.devtree .dg-project-group-heading>span{
-  flex:0 0 auto;
-  white-space:nowrap;
-}
-.devtree .dg-academic-heading{
-  margin-top:clamp(86px,9vw,132px);
-  margin-bottom:clamp(40px,5vw,62px);
-  border-color:rgba(107,210,241,.55);
-  background:
-    radial-gradient(ellipse at 93% 10%,rgba(53,183,228,.1),transparent 50%),
-    linear-gradient(120deg,#112946,#102038);
-}
-.devtree .dg-academic-heading::before{
-  content:"";
-  position:absolute;
-  top:-45px;
-  left:50%;
-  width:1px;
-  height:35px;
-  transform:translateX(-50%);
-  background:linear-gradient(transparent,rgba(94,225,227,.6));
-  pointer-events:none;
-}
-.devtree .dg-academic-heading .dg-unisa-small{
-  flex:0 0 46px;
-  width:46px;
-  height:46px;
-}
-.devtree .dg-academic-heading .dg-unisa-small img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-.devtree .dg-feature-card.is-tree-visible,.devtree .dg-academic-card.is-tree-visible{
-  border-color:rgba(93,177,232,.48);
-  box-shadow:0 16px 48px rgba(2,9,29,.25),0 0 28px rgba(44,165,220,.06);
-}
-.devtree .dg-feature-card:focus-within,.devtree .dg-academic-card:focus-within{
-  box-shadow:0 0 0 2px rgba(141,238,255,.55),0 20px 44px rgba(7,66,106,.25);
-}
-/* Thin signal moving along lit nodes only — no extra canvas, GPU or dependencies. */
-@media (prefers-reduced-motion:no-preference){
-  .devtree.is-tree-engaged::after{
-    background:linear-gradient(180deg,#66f1d1,#3baefe 36%,#ab92ff 70%,#62e8dc);
-    background-size:100% 230%;
-    animation:devtree-signal-flow 6s linear infinite;
-  }
-  .devtree .dg-feature-card.is-tree-visible::after,.devtree .dg-academic-card.is-tree-visible::after{
-    animation:devtree-node-breathe 3.4s ease-in-out infinite;
-  }
-  @keyframes devtree-signal-flow{from{background-position:0 0}to{background-position:0 230%}}
-  @keyframes devtree-node-breathe{0%,100%{box-shadow:0 0 0 6px #123c56,0 0 12px rgba(75,227,212,.36)}50%{box-shadow:0 0 0 6px #123c56,0 0 25px rgba(75,227,212,.7)}}
-}
+.projects-showcase .project-slider>article{position:relative;flex:0 0 clamp(290px,45%,550px);
+ width:auto;max-width:none;min-width:0;align-self:stretch;height:auto;
+ transform:none;opacity:1;scroll-snap-align:start;scroll-snap-stop:normal;overflow:hidden;
+ border-radius:22px;box-shadow:0 12px 34px rgba(3,12,31,.2)}
+.projects-showcase .dg-personal-grid .dg-feature-card{display:flex;flex-direction:column}
+.projects-showcase .dg-personal-grid .dg-feature-card .dg-card-copy{display:flex;flex:1;flex-direction:column}
+.projects-showcase .dg-personal-grid .dg-feature-card .dg-card-links{margin-top:auto}
+.projects-showcase .dg-academic-grid{margin-bottom:26px}
+.projects-showcase .dg-academic-grid>article{flex-basis:clamp(260px,31%,420px)}
+.projects-showcase .dg-academic-heading{margin-top:52px;display:flex;align-items:center;
+ padding:17px 20px;border:1px solid rgba(112,174,244,.22);border-radius:18px;
+ background:linear-gradient(110deg,rgba(23,46,79,.8),rgba(18,35,63,.45))}
+.projects-showcase .dg-academic-heading .dg-unisa-small{width:42px;height:42px;flex:0 0 42px}
+.projects-showcase .dg-academic-heading .dg-unisa-small img{width:100%;height:100%;object-fit:contain}
+.projects-showcase .dg-academic-heading .eyebrow{display:block;line-height:1.55;
+ white-space:normal;letter-spacing:.08em}
+.projects-showcase .dg-academic-heading h3{margin-top:4px}
+.projects-showcase .dg-feature-card .dg-visual{height:clamp(175px,22vw,260px)}
+.projects-showcase .dg-academic-card .dg-academic-photo{aspect-ratio:16/9}
+.projects-showcase .dg-feature-card::before,.projects-showcase .dg-academic-card::before{inset:0;
+ width:auto;height:auto;right:auto;left:auto;top:auto;opacity:0;border-radius:inherit;
+ background:radial-gradient(400px circle at var(--glow-x,50%) var(--glow-y,50%),rgba(45,152,255,.13),transparent 70%);
+ box-shadow:none;z-index:4}
+.projects-showcase .dg-feature-card::after,.projects-showcase .dg-academic-card::after{
+ inset:auto;top:-45%;bottom:-45%;left:-80%;right:auto;width:40%;height:auto;border:0;border-radius:0;
+ background:linear-gradient(90deg,transparent,rgba(140,211,255,.055),transparent);
+ opacity:1;transform:skewX(-18deg);z-index:2;box-shadow:none;animation:none}
+.projects-showcase .dg-feature-card:hover::after,.projects-showcase .dg-academic-card:hover::after{left:150%}
+.projects-showcase .dg-feature-card:hover,.projects-showcase .dg-academic-card:hover{
+ transform:translateY(-4px);border-color:rgba(97,186,246,.6)}
+html[data-theme="light"] .projects-showcase .dg-academic-heading{
+ background:linear-gradient(110deg,rgba(216,238,255,.9),rgba(233,243,255,.6))}
+html[data-theme="light"] .project-slider-btn{background:#e7f1ff;color:#275482}
+html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
 @media(max-width:700px){
-  .devtree{padding-left:38px}
-  .devtree .dg-project-group-heading{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
-    align-items:center;
-    gap:12px;
-    padding:18px 15px;
-    margin-top:44px;
-    margin-bottom:34px;
-  }
-  .devtree .dg-project-group-heading>div{gap:11px;align-items:center}
-  .devtree .dg-project-group-heading .eyebrow{
-    font-size:10px;
-    letter-spacing:.045em;
-    line-height:1.5;
-    margin:0 0 8px;
-    hyphens:none;
-  }
-  .devtree .dg-project-group-heading h3{
-    font-size:clamp(18px,4.8vw,22px);
-    letter-spacing:-.025em;
-    margin:0;
-  }
-  .devtree .dg-project-group-heading>span{
-    align-self:start;
-    font-size:10px;
-    letter-spacing:.025em;
-    padding:5px 0;
-  }
-  .devtree .dg-academic-heading{
-    margin-top:105px;
-    margin-bottom:48px;
-    padding:20px 15px;
-  }
-  .devtree .dg-academic-heading::before{left:16px;top:-55px;height:48px;transform:none}
-  .devtree .dg-academic-heading .dg-unisa-small{
-    width:37px;height:37px;flex:0 0 37px;
-  }
-  .devtree .dg-academic-heading .eyebrow{font-size:9px;letter-spacing:0;line-height:1.45}
-  .devtree .dg-academic-heading h3{font-size:clamp(18px,5vw,22px)}
-  .devtree .dg-academic-grid{gap:39px}
-  .devtree .dg-feature-card,.devtree .dg-academic-card{box-shadow:0 14px 34px rgba(0,6,21,.3)}
-  .devtree .dg-personal-grid{margin-bottom:0}
-  .devtree .dg-feature-card .dg-card-links{gap:12px}
-  .devtree .dg-feature-card .dg-action{min-height:42px}
+ .projects-showcase-intro{align-items:start;gap:5px;padding-top:12px}
+ .projects-showcase-guide{font-size:11px}
+ .projects-showcase .dg-project-group-heading{margin:27px 0 12px;gap:12px}
+ .projects-showcase .dg-project-group-heading>div{gap:11px;align-items:center}
+ .projects-showcase .dg-project-group-heading>span{align-self:start;font-size:10px;letter-spacing:.02em}
+ .projects-showcase .dg-project-group-heading .eyebrow{font-size:10px;letter-spacing:.04em;white-space:normal}
+ .projects-showcase .dg-project-group-heading h3{font-size:clamp(19px,5.1vw,24px);margin-top:5px}
+ .projects-showcase .dg-academic-heading{margin-top:43px;padding:16px 13px}
+ .projects-showcase .dg-academic-heading .dg-unisa-small{flex-basis:35px;width:35px;height:35px}
+ .projects-showcase .dg-academic-heading .eyebrow{font-size:9px;letter-spacing:.01em}
+ .projects-showcase .project-slider{gap:13px;margin-right:calc(-1 * max(12px, env(safe-area-inset-right)));padding-bottom:17px}
+ .projects-showcase .project-slider>article,
+ .projects-showcase .dg-academic-grid>article{
+   flex:0 0 min(87%,385px);width:auto;min-width:0;height:auto
+ }
+ .projects-showcase .dg-feature-card .dg-visual{height:auto;aspect-ratio:16/9}
+ .project-slider-controls{margin-bottom:10px}
+ .project-slider-btn{width:42px;height:42px}
+ .projects-showcase .project-slider>article:hover{transform:none}
+ /* Avoid decorative infinite animations on low-power mobile browsers. */
+ .hero-visual .orbit,.hero-visual .orbit-ring,
+ .hero-visual .portrait-frame,.hero-terminal,
+ .devtree,.projects-showcase .project-slider>article::after{animation:none!important}
+ .projects-showcase .project-slider>article::after{transition:none!important}
 }
 @media(max-width:380px){
-  .devtree .dg-project-group-heading{grid-template-columns:minmax(0,1fr);gap:8px}
-  .devtree .dg-project-group-heading>span{justify-self:end;margin-top:-3px;padding:0}
-  .devtree .dg-academic-heading .eyebrow{font-size:9px}
+ .projects-showcase .dg-academic-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+ .projects-showcase .dg-academic-heading>span{font-size:10px}
+ .projects-showcase .dg-academic-heading .eyebrow{line-height:1.4}
 }
 @media(prefers-reduced-motion:reduce){
- .devtree.is-tree-engaged::after,.devtree .dg-feature-card.is-tree-visible::after,.devtree .dg-academic-card.is-tree-visible::after{animation:none!important}
+ .projects-showcase .project-slider{scroll-behavior:auto}
+ .project-slider-btn{transition:none}
+ .projects-showcase .project-slider>article{transition:none}
 }
