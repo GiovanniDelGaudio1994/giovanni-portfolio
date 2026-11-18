@@ -459,3 +459,59 @@
     if (event.key === 'Escape') field.blur();
   });
 })();
+
+
+/* Project graph: map actual project cards to nodes as the visitor scrolls.
+   Native anchor links stay functional without JavaScript. */
+(() => {
+  'use strict';
+  const graph = document.querySelector('[data-project-graph]');
+  if (!graph) return;
+  const nodes = [...graph.querySelectorAll('[data-graph-node]')];
+  const cards = nodes.map(node => document.getElementById(node.dataset.graphNode));
+  if (!nodes.length || cards.some(card => !card)) return;
+  const section = document.getElementById('progetti');
+  const counter = graph.querySelector('[data-graph-counter]');
+  const progress = graph.querySelector('[data-graph-progress]');
+  if (!section || !counter || !progress) return;
+  let scheduled = false;
+  let active = -1;
+  const update = () => {
+    scheduled = false;
+    const viewportAnchor = Math.min(window.innerHeight * .35, 260);
+    const sectionBox = section.getBoundingClientRect();
+    const visible = sectionBox.bottom > viewportAnchor &&
+      sectionBox.top < window.innerHeight - 60;
+    if (!visible) return;
+    let index = 0;
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].getBoundingClientRect().top <= viewportAnchor) index = i;
+    }
+    if (index !== active) {
+      active = index;
+      nodes.forEach((node, i) => {
+        const selected = i === index;
+        node.classList.toggle('is-active', selected);
+        if (selected) node.setAttribute('aria-current', 'location');
+        else node.removeAttribute('aria-current');
+      });
+      counter.textContent = String(index + 1).padStart(2,'0') + ' / ' +
+        String(nodes.length).padStart(2,'0');
+    }
+    const first = cards[0].getBoundingClientRect().top + window.scrollY;
+    const last = cards[cards.length - 1].getBoundingClientRect().top + window.scrollY;
+    const distance = Math.max(1,last - first);
+    const ratio = Math.max(0, Math.min(1,(window.scrollY + viewportAnchor - first) / distance));
+    graph.style.setProperty('--graph-progress',(ratio * 100).toFixed(1) + '%');
+  };
+  const schedule = () => {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('hashchange',schedule);
+  nodes.forEach(node => node.addEventListener('click',schedule));
+  update();
+})();
