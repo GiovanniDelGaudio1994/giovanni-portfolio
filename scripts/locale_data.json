@@ -254,7 +254,9 @@
       "Partecipazione": "Participation",
       "Attestato universitario firmato dal Delegato del Rettore all'ICT e alla Transizione Digitale. Non è una certificazione professionale Google.": "University participation certificate signed by the Rector's Delegate for ICT and Digital Transition. Not a professional Google certification.",
       "Documento originale non ancora pubblicato": "Original document not yet published",
-      "Università di Salerno": "University of Salerno"
+      "Università di Salerno": "University of Salerno",
+      "VEDI DETTAGLI": "VIEW DETAILS",
+      "Dettagli attestato": "Certificate details"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -291,7 +293,8 @@
       "Progetto precedente": "Previous project",
       "Progetto successivo": "Next project",
       "Progetti personali, scorri orizzontalmente": "Personal projects, swipe horizontally",
-      "Progetti universitari, scorri orizzontalmente": "University projects, swipe horizontally"
+      "Progetti universitari, scorri orizzontalmente": "University projects, swipe horizontally",
+      "aria-label=\"Apri dettagli dell’attestato di partecipazione NotebookLM\"": "aria-label=\"Open NotebookLM participation certificate details\""
     }
   },
   "legacybridge": {
