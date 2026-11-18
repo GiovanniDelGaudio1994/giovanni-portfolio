@@ -213,7 +213,7 @@ def main() -> int:
         content = path.read_text(encoding="utf-8")
         if "projects/fit-zone/source" in content or "codice PHP consultabile" in content:
             errors.append(f"{path}: stale public Fit Zone source references")
-        if 'href="/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf" target="_blank"' not in content:
+        if 'href="/cv/CV_Giovanni_Del_Gaudio.pdf" target="_blank"' not in content:
             errors.append(f"{path}: missing direct CV PDF link opening in new tab")
     # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
     # local links; preserve the original GitHub portrait and progressive shader.
@@ -242,17 +242,17 @@ def main() -> int:
         errors.append("Missing approved portrait JPEG")
     if not shader.is_file():
         errors.append("Missing local WebGL shader file")
-    # The approved Italian CV v4 is a self-contained A4 document with a native
+    # The approved Italian CV is a self-contained A4 document with a native
     # print control and a real downloadable PDF. The English CV retains the old
     # toolbar until it receives its separate editorial review.
     cv_it = SITE / "cv/index.html"
     cv_en = SITE / "cv/en/index.html"
-    cv_pdf = SITE / "cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf"
+    cv_pdf = SITE / "cv/CV_Giovanni_Del_Gaudio.pdf"
     if not cv_it.is_file():
         errors.append(f"{cv_it}: missing approved Italian CV")
     else:
         it = cv_it.read_text(encoding="utf-8")
-        if not all(x in it for x in ('onclick="window.print()"', 'CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf', 'Giovanni Del Gaudio')):
+        if not all(x in it for x in ('onclick="window.print()"', 'CV_Giovanni_Del_Gaudio.pdf', 'Giovanni Del Gaudio')):
             errors.append(f"{cv_it}: print/PDF or identity control missing")
         if any(x in it for x in ("Profilo LinkedIn", "14 percorsi documentati", "Verifica attestati:")):
             errors.append(f"{cv_it}: superseded CV wording found")
