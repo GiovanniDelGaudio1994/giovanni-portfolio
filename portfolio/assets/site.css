@@ -1630,3 +1630,114 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
  .project-tree-edition .project-slider>article:is(:hover,:focus-within) .tree-node {box-shadow:0 0 0 7px rgba(88,213,251,.23),0 0 28px #46dfff}
  .project-tree-edition .project-slider>article:is(:hover,:focus-within) .tree-bud {box-shadow:inset 0 0 5px white,0 0 20px #69f5df}
 }
+
+
+/* Portfolio polish · 2026-11-18
+   Preserve existing project tree and cards; improve academic header legibility
+   and prevent closely clustered decorative buds on narrow/landscape layouts. */
+@media (max-width:700px) {
+  .project-tree-edition .projects-showcase .dg-academic-heading {
+    padding:23px 14px 18px;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading > div {
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading > div > div {
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading .eyebrow {
+    display:block;
+    font-size:9px;
+    font-weight:650;
+    line-height:1.55;
+    letter-spacing:.015em;
+    white-space:normal;
+    overflow-wrap:break-word;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading h3 {
+    margin-top:10px;
+    line-height:1.22;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading > span {
+    flex:0 0 auto;
+    align-self:flex-start;
+    padding-top:3px;
+  }
+}
+@media (max-width:380px) {
+  .project-tree-edition .projects-showcase .dg-academic-heading {
+    grid-template-columns:minmax(0,1fr) auto;
+    padding:22px 11px 17px;
+    gap:10px;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading .dg-unisa-small {
+    flex:0 0 31px;
+    width:31px;
+    height:31px;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading .eyebrow {
+    font-size:8.5px;
+    letter-spacing:0;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading h3 {
+    font-size:clamp(17px,5vw,20px);
+  }
+}
+@media (min-width:901px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:108px;
+    padding-block:54px 66px;
+  }
+  .project-tree-edition .project-slider > article:nth-child(odd) .tree-bud {
+    top:calc(50% - 65px);
+    left:calc(100% + 9px);
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-twig {
+    top:calc(50% + 44px);
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-node {
+    top:calc(50% + 36px);
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-bud {
+    top:calc(50% + 69px);
+    right:calc(100% + 9px);
+  }
+}
+@media (min-width:701px) and (max-width:900px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:86px;
+  }
+}
+@media (max-width:700px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:84px;
+  }
+}
+@media (max-width:420px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:91px;
+  }
+}
+@media (max-width:900px) {
+  .project-tree-edition .project-slider > article:nth-child(odd) .tree-bud {
+    top:8px;
+  }
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-bud {
+    top:25px;
+  }
+}
