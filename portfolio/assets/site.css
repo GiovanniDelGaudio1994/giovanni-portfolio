@@ -1057,3 +1057,90 @@ html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
   :root[data-theme="light"] .gdg-cursor-aura::before{border-color:rgba(42,104,163,.45);box-shadow:none}
   :root[data-theme="light"] .gdg-cursor-aura::after{border-color:rgba(44,105,175,.23)}
 }
+
+
+/* Developer graph / project explorer: semantic links, scroll-aware progress.
+   Source project cards are kept intact as accessible content. */
+#progetti [id^="project-"]{scroll-margin-top:100px}
+.devgraph{
+  --graph-active:#64d9fa;
+  --graph-progress:0%;
+  position:relative;isolation:isolate;margin:32px 0 clamp(42px,5vw,72px);
+  border:1px solid rgba(110,181,252,.38);border-radius:24px;overflow:hidden;
+  background:linear-gradient(150deg,rgba(8,23,43,.98),rgba(9,20,36,.96));
+  color:#d8ecff;box-shadow:0 18px 52px rgba(3,10,29,.32);
+  font:500 12px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace
+}
+.devgraph::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background-image:linear-gradient(rgba(82,150,203,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(82,150,203,.055) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.devgraph-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 22px;
+  border-bottom:1px solid rgba(120,181,238,.2);background:rgba(25,47,73,.54)}
+.devgraph-identity{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.1em;color:#e6f8ff}
+.devgraph-signal{width:8px;height:8px;border-radius:50%;background:#5ef3be;box-shadow:0 0 14px rgba(54,232,174,.8)}
+.devgraph-version{color:#8eabc9;font-weight:500}
+.devgraph-readout{display:flex;align-items:center;gap:14px;font-size:10px;color:#78d8f8}
+.devgraph-live{color:#85ba9b;letter-spacing:.04em}
+.devgraph-body{padding:22px clamp(14px,2.5vw,34px) 25px}
+.devgraph-guide{display:flex;align-items:center;gap:12px;color:#a5c4e1;margin:0 0 23px}
+.devgraph-guide-arrow{color:#66dcee;font-weight:800}
+.devgraph-guide-note{margin-left:auto;color:#82a1bd;font-size:10px}
+.devgraph-lanes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,3fr);gap:22px}
+.devgraph-lane{position:relative;min-width:0}
+.devgraph-lane-label{display:flex;align-items:center;gap:8px;color:#8cc7f3;letter-spacing:.09em;font-weight:750;font-size:10px;margin-bottom:16px;white-space:nowrap}
+.devgraph-lane-count{margin-left:auto;color:#567b9e}
+.devgraph-branch-symbol{font-size:17px;color:#7deaca;line-height:1}
+.devgraph-nodes{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 13px;padding-left:22px}
+.devgraph-lane-university .devgraph-nodes{grid-template-columns:1fr}
+.devgraph-nodes::before{content:"";position:absolute;top:-11px;bottom:18px;left:7px;width:1px;
+  background:linear-gradient(#3581b8,#49d4d1 50%,rgba(61,119,179,.22))}
+.devgraph-node{position:relative;display:flex;align-items:center;gap:8px;min-width:0;min-height:48px;
+  text-decoration:none;color:#cedff5;border:1px solid rgba(102,159,210,.36);border-radius:11px;
+  padding:10px 12px;background:rgba(15,40,68,.84);
+  transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
+.devgraph-node::before{content:"";position:absolute;left:-16px;top:50%;width:16px;height:1px;background:#3e729f}
+.devgraph-node::after{content:"";position:absolute;left:-18px;top:calc(50% - 3px);width:7px;height:7px;
+  border-radius:50%;background:#355e88;border:1px solid #7bb8e1}
+.devgraph-node:hover,.devgraph-node:focus-visible,.devgraph-node.is-active{
+  border-color:var(--graph-active);background:rgba(22,83,122,.68);
+  box-shadow:0 0 0 1px rgba(109,206,255,.11),0 0 24px rgba(70,156,250,.17);
+  color:white;text-decoration:none}
+.devgraph-node:hover{transform:translateY(-2px)}
+.devgraph-node.is-active::after{background:#72f4cc;border-color:white;box-shadow:0 0 12px #5ff0cf}
+.devgraph-node:focus-visible{outline:2px solid #ddf7ff;outline-offset:3px}
+.devgraph-index{color:#80dfcb;font-size:10px;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.devgraph-node-text{overflow-wrap:anywhere;font-size:11px;font-weight:700}
+.devgraph-track{height:3px;background:rgba(66,104,153,.32)}
+.devgraph-track span{display:block;width:var(--graph-progress);height:100%;background:linear-gradient(90deg,#3292fa,#75f5d3);
+  box-shadow:0 0 14px rgba(62,211,255,.72)}
+.devgraph-foot{display:flex;justify-content:space-between;gap:12px;padding:9px 20px;font-size:9px;
+  letter-spacing:.1em;color:#7395b8;background:rgba(7,15,28,.6)}
+html[data-theme="light"] .devgraph{box-shadow:0 17px 48px rgba(31,91,150,.16)}
+@media(max-width:900px){
+  .devgraph-lanes{grid-template-columns:1fr;gap:28px}
+  .devgraph-lane-university .devgraph-nodes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .devgraph{margin:24px 0 42px;border-radius:18px}
+  .devgraph-head{padding:12px 14px}
+  .devgraph-live,.devgraph-guide-note{display:none}
+  .devgraph-body{padding:18px 14px 22px}
+  .devgraph-guide{font-size:11px;margin-bottom:20px}
+  .devgraph-nodes,.devgraph-lane-university .devgraph-nodes{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .devgraph-node{min-height:46px;padding:8px 9px;gap:6px}
+  .devgraph-node-text{font-size:10px}
+  .devgraph-nodes{padding-left:17px}
+  .devgraph-nodes::before{left:6px}
+  .devgraph-node::before{left:-11px;width:11px}
+  .devgraph-node::after{left:-14px}
+}
+@media(max-width:390px){
+  .devgraph-nodes,.devgraph-lane-university .devgraph-nodes{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .devgraph-node{transition:none!important}
+  .devgraph-node:hover{transform:none}
+  .devgraph-track span{box-shadow:none}
+}
