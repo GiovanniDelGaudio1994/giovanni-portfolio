@@ -513,3 +513,63 @@
     update();
   }
 })();
+
+
+/* Developer Growth Tree — scroll progress and entrance choreography.
+   Native scroll only; no canvas/WebGL and no per-card repaint loops.
+   Runs only on desktop when the reader allows animation. */
+(() => {
+  'use strict';
+  const section = document.querySelector('#progetti.project-tree-edition');
+  if (!section) return;
+  const grids = [...section.querySelectorAll('.project-slider')];
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const desktop = matchMedia('(min-width: 901px)');
+  const cards = grids.flatMap(grid => [...grid.querySelectorAll(':scope > article')]);
+  let ticking = false;
+  let observer = null;
+  const measure = () => {
+    ticking = false;
+    if (!desktop.matches || motion.matches) return;
+    const viewportCheckpoint = window.innerHeight * 0.63;
+    for (const grid of grids) {
+      const rect = grid.getBoundingClientRect();
+      const fraction = Math.min(1, Math.max(0, (viewportCheckpoint - rect.top) / Math.max(1, rect.height)));
+      grid.style.setProperty('--tree-progress', (fraction * 100).toFixed(2) + '%');
+    }
+  };
+  const schedule = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(measure);
+  };
+  const configure = () => {
+    observer?.disconnect();
+    observer = null;
+    if (desktop.matches && !motion.matches && 'IntersectionObserver' in window) {
+      cards.forEach(card => {
+        card.classList.toggle('tree-visible',card.getBoundingClientRect().top < window.innerHeight * .97);
+      });
+      observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('tree-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {rootMargin:'0px 0px 120px 0px',threshold:0.01});
+      cards.filter(card => !card.classList.contains('tree-visible')).forEach(card => observer.observe(card));
+      document.documentElement.classList.add('tree-motion-ready');
+    } else {
+      document.documentElement.classList.remove('tree-motion-ready');
+      cards.forEach(card => card.classList.add('tree-visible'));
+      grids.forEach(grid => grid.style.setProperty('--tree-progress','100%'));
+    }
+    schedule();
+  };
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  desktop.addEventListener?.('change',configure);
+  motion.addEventListener?.('change',configure);
+  configure();
+})();
