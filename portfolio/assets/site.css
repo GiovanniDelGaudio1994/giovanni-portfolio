@@ -1432,3 +1432,164 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
   .project-tree-edition .tree-node {opacity:1!important;transform:none!important;transition:none!important}
   .project-tree-edition .tree-bud {opacity:.8!important;transition:none!important}
 }
+
+
+/* Project Tree 2.1: generous foliage spacing and a readable mobile journey. */
+@media (min-width:901px) {
+ .project-tree-edition .projects-showcase .project-slider,
+ .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+ .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+   row-gap:78px;
+   padding-block:44px 58px;
+ }
+ .project-tree-edition .project-slider>article:nth-child(odd) .tree-bud {
+   top:calc(50% - 48px);
+   left:calc(100% + 8px);
+ }
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-twig {
+   top:calc(50% + 38px);
+ }
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-node {
+   top:calc(50% + 30px);
+ }
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-bud {
+   top:calc(50% + 53px);
+   right:calc(100% + 8px);
+ }
+}
+@media (max-width:900px) {
+  /* Vertical mobile timeline: no overlapping leaves, no sideways carousel. */
+  .project-tree-edition .project-slider-controls {display:none!important}
+  .project-tree-edition .projects-showcase-guide::after {content:" · scorri verso il basso"}
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    gap:64px;
+    width:100%;
+    min-width:0;
+    overflow:visible;
+    padding:30px 0 45px 58px;
+    scroll-snap-type:none;
+    scroll-padding:0;
+    scrollbar-width:none;
+    isolation:isolate;
+    --tree-progress:0%;
+  }
+  .project-tree-edition .projects-showcase .project-slider::before,
+  .project-tree-edition .projects-showcase .project-slider::after {
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    left:18px;
+    width:3px;
+    border-radius:10px;
+    pointer-events:none;
+    z-index:0;
+  }
+  .project-tree-edition .projects-showcase .project-slider::before {
+    height:100%;
+    background:linear-gradient(180deg,rgba(56,157,231,.24),rgba(110,101,235,.48),rgba(56,157,231,.12));
+  }
+  .project-tree-edition .projects-showcase .project-slider::after {
+    height:var(--tree-progress);
+    max-height:100%;
+    background:linear-gradient(#54e5ff,#548eff 60%,#a98aff);
+    box-shadow:0 0 14px rgba(77,211,255,.55);
+    transition:height .12s linear;
+  }
+  .project-tree-edition .projects-showcase .project-slider>article,
+  .project-tree-edition .projects-showcase .dg-academic-grid>article {
+    position:relative;
+    display:flex;
+    grid-column:1!important;
+    grid-row:auto!important;
+    flex-direction:column;
+    width:100%;
+    min-width:0;
+    max-width:none;
+    height:auto;
+    margin:0;
+    scroll-snap-align:none;
+    flex:none;
+    align-self:start;
+    overflow:visible;
+    border-radius:22px;
+    opacity:1;
+    transform:none;
+    z-index:1;
+  }
+  .project-tree-edition .projects-showcase .project-slider>article::before,
+  .project-tree-edition .projects-showcase .project-slider>article::after {
+    display:none!important;
+  }
+  /* The existing desktop decorations are reused, but laid out on the left spine. */
+  .project-tree-edition .tree-twig,
+  .project-tree-edition .project-slider>article:nth-child(even) .tree-twig {
+    display:block;
+    top:62px;
+    left:auto;
+    right:100%;
+    width:38px;
+    height:62px;
+    transform:translateY(-50%) scaleX(-1);
+  }
+  .project-tree-edition .tree-node,
+  .project-tree-edition .project-slider>article:nth-child(even) .tree-node {
+    display:block;
+    top:54px;
+    left:auto;
+    right:calc(100% + 30px);
+    width:16px;
+    height:16px;
+  }
+  .project-tree-edition .tree-bud,
+  .project-tree-edition .project-slider>article:nth-child(even) .tree-bud {
+    display:block;
+    top:17px;
+    left:auto;
+    right:calc(100% + 15px);
+    transform:rotate(120deg) scale(.5);
+    transform-origin:20% 90%;
+  }
+  .project-tree-edition .project-slider>article.tree-visible .tree-bud,
+  .project-tree-edition .project-slider>article:nth-child(even).tree-visible .tree-bud {
+    transform:rotate(120deg) scale(1);
+  }
+  .project-tree-edition .projects-showcase .project-slider>article:is(:hover,:focus-within) {
+    box-shadow:0 18px 44px rgba(3,12,31,.31),0 0 0 1px rgba(98,217,249,.2);
+  }
+  html.tree-motion-ready .project-tree-edition .projects-showcase .project-slider>article:not(.tree-visible) {
+    opacity:.1;
+    transform:translateY(16px);
+  }
+  html.tree-motion-ready .project-tree-edition .projects-showcase .project-slider>article {
+    transition:opacity .5s ease,transform .55s ease,box-shadow .25s ease;
+  }
+}
+@media(max-width:420px) {
+ .project-tree-edition .projects-showcase .project-slider,
+ .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+ .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+   gap:73px;
+   padding-left:46px;
+ }
+ .project-tree-edition .projects-showcase .project-slider::before,
+ .project-tree-edition .projects-showcase .project-slider::after {left:12px}
+ .project-tree-edition .tree-twig,
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-twig {width:34px}
+ .project-tree-edition .tree-node,
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-node {right:calc(100% + 27px)}
+ .project-tree-edition .tree-bud,
+ .project-tree-edition .project-slider>article:nth-child(even) .tree-bud {right:calc(100% + 10px)}
+}
+@media(prefers-reduced-motion:reduce) {
+ .project-tree-edition .projects-showcase .project-slider::after {height:100%!important;transition:none!important}
+ .project-tree-edition .tree-twig path {stroke-dashoffset:0!important}
+ .project-tree-edition .project-slider>article,
+ .project-tree-edition .project-slider>article:hover {opacity:1!important;transform:none!important;transition:none!important}
+}
