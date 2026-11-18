@@ -524,7 +524,6 @@
   if (!section) return;
   const grids = [...section.querySelectorAll('.project-slider')];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const desktop = matchMedia('(min-width: 901px)');
   const cards = grids.flatMap(grid => [...grid.querySelectorAll(':scope > article')]);
   const svgNS = 'http://www.w3.org/2000/svg';
   let ticking = false;
@@ -553,7 +552,7 @@
 
   const measure = () => {
     ticking = false;
-    if (!desktop.matches || motion.matches) return;
+    if (motion.matches) return;
     const checkpoint = window.innerHeight * 0.63;
     for (const grid of grids) {
       const rect = grid.getBoundingClientRect();
@@ -569,7 +568,7 @@
   const configure = () => {
     observer?.disconnect();
     observer = null;
-    const animate = desktop.matches && !motion.matches;
+    const animate = !motion.matches;
     if (animate && 'IntersectionObserver' in window) {
       cards.forEach(card => {
         card.classList.toggle('tree-visible', card.classList.contains('tree-visible') ||
@@ -595,7 +594,6 @@
   };
   window.addEventListener('scroll', schedule, {passive:true});
   window.addEventListener('resize', schedule, {passive:true});
-  desktop.addEventListener?.('change', configure);
   motion.addEventListener?.('change', configure);
   configure();
 })();
