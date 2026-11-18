@@ -1741,3 +1741,25 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
     top:25px;
   }
 }
+
+
+/* 2026-11-18: remove legacy decorative caption duplicated over the
+   actual UNISA eyebrow in the academic heading on narrow screens. */
+.projects-showcase .dg-academic-heading::before,
+.project-tree-edition .projects-showcase .dg-academic-heading::before {
+  content:none;
+  display:none;
+}
+@media (max-width:700px) {
+  .project-tree-edition .projects-showcase .dg-academic-heading {
+    position:relative;
+    overflow:hidden;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading > div {
+    align-items:center;
+  }
+  .project-tree-edition .projects-showcase .dg-academic-heading .eyebrow {
+    position:relative;
+    z-index:1;
+  }
+}
