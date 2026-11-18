@@ -240,7 +240,11 @@
       "PERSONAL_BRANCH": "PERSONAL_BRANCH",
       "UNIVERSITY_BRANCH": "UNIVERSITY_BRANCH",
       "10 NODES · 2 BRANCHES": "10 NODES · 2 BRANCHES",
-      "CLICK / SCROLL / EXPLORE": "CLICK / SCROLL / EXPLORE"
+      "CLICK / SCROLL / EXPLORE": "CLICK / SCROLL / EXPLORE",
+      "portfolio.root / project_tree": "portfolio.root / project_tree",
+      "Esplora i rami del mio percorso": "Explore the branches of my journey",
+      "Scorri per far crescere l'albero e scoprire i progetti.": "Scroll to grow the tree and discover the projects.",
+      "↓ SCROLL": "↓ SCROLL"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -270,7 +274,8 @@
       "Comando del terminale": "Terminal command",
       "Scrivi un comando: help, about, skills, projects, contact, cv oppure clear": "Enter a command: help, about, skills, projects, contact, cv or clear",
       "Esegui comando": "Run command",
-      "Mappa interattiva dei progetti": "Interactive project graph"
+      "Mappa interattiva dei progetti": "Interactive project graph",
+      "Albero dei progetti": "Project tree"
     }
   },
   "legacybridge": {
