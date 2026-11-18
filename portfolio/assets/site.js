@@ -52,9 +52,11 @@
     }
     // Native reveal animation: no third-party JavaScript required.
     const threshold = window.innerHeight * .88;
-    revealItems.forEach(el => {
-      if (!el.classList.contains('is-visible') && el.getBoundingClientRect().top < threshold) el.classList.add('is-visible');
-    });
+    if (!('IntersectionObserver' in window)) {
+      revealItems.forEach(el => {
+        if (!el.classList.contains('is-visible') && el.getBoundingClientRect().top < threshold) el.classList.add('is-visible');
+      });
+    }
     let active = '';
     sections.forEach(section => { if (section.getBoundingClientRect().top <= window.innerHeight * .36) active = section.id; });
     allNavLinks.forEach(link => {
@@ -64,8 +66,20 @@
   };
   const requestScroll = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(updateScroll); } };
 
+  // Reveal only elements crossing the viewport; avoids scanning all cards on every scroll.
+  if ('IntersectionObserver' in window && !reduceMotion.matches) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      for (const item of entries) {
+        if (item.isIntersecting) {
+          item.target.classList.add('is-visible');
+          observer.unobserve(item.target);
+        }
+      }
+    }, {rootMargin:'0px 0px 100px 0px',threshold:0.01});
+    revealItems.forEach(el => revealObserver.observe(el));
+  }
   // Enable entrance transitions only after initialization so content never disappears if JS fails.
-  if (!reduceMotion.matches) {
+  if (!reduceMotion.matches && window.innerWidth > 700) {
     revealItems.forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight * .88) el.classList.add('is-visible');
     });
@@ -393,7 +407,7 @@
     widget.setAttribute('aria-label', detail);
   };
   tick();
-  window.setInterval(tick, 1000);
+  window.setInterval(tick, 30000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
 })();
 
@@ -462,65 +476,40 @@
 
 
 
-/* Project tree: animated branch and leaf reveals, scroll-driven.
-   No external jQuery dependency: lightweight native effects, same visual idea.
-   Without JS the full cards and all links remain visible. */
+/* Project slider — native CSS snap + optional arrows; no autoplay or third-party JS. */
 (() => {
   'use strict';
-  const tree = document.querySelector('[data-project-tree]');
-  if (!tree) return;
-  const cards = [...tree.querySelectorAll('.dg-personal-grid > article, .dg-academic-grid > article')];
-  if (!cards.length) return;
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const show = card => card.classList.add('is-tree-visible');
-  if (!('IntersectionObserver' in window) || motion.matches) {
-    cards.forEach(show);
-    tree.style.setProperty('--tree-growth','100%');
-    return;
+  const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  for (const slider of document.querySelectorAll('.project-slider')) {
+    const buttons = [...document.querySelectorAll('[data-slide-target="' + slider.id + '"]')];
+    const cards = [...slider.querySelectorAll(':scope > article')];
+    if (!cards.length) continue;
+    let pending = false;
+    const update = () => {
+      pending = false;
+      const max = Math.max(0,slider.scrollWidth - slider.clientWidth);
+      for(const button of buttons){
+        button.disabled = button.dataset.slideDir === '-1'
+          ? slider.scrollLeft < 5
+          : slider.scrollLeft >= max - 5;
+      }
+    };
+    const request = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(update);
+    };
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const dir = Number(button.dataset.slideDir) || 1;
+      const current = slider.scrollLeft;
+      const next = dir > 0
+        ? cards.find(card => card.offsetLeft - cards[0].offsetLeft > current + 10)
+        : [...cards].reverse().find(card => card.offsetLeft - cards[0].offsetLeft < current - 10);
+      const target = next ? next.offsetLeft - cards[0].offsetLeft : (dir>0?slider.scrollWidth:0);
+      slider.scrollTo({left:Math.max(0,target),behavior:isReduced.matches?'instant':'smooth'});
+    }));
+    slider.addEventListener('scroll',request,{passive:true});
+    window.addEventListener('resize',request,{passive:true});
+    update();
   }
-  // Cards exist and are readable immediately; enhancement starts only when observer works.
-  tree.classList.add('js-tree');
-  const watcher = new IntersectionObserver((entries,observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      show(entry.target);
-      observer.unobserve(entry.target);
-    });
-  }, {rootMargin:'0px 0px 110px 0px',threshold:0.06});
-  cards.forEach(card => watcher.observe(card));
-  // Animate the luminous trunk only while its section is near the viewport.
-  const treeVisibility = new IntersectionObserver(entries => {
-    tree.classList.toggle('is-tree-engaged',entries.some(entry => entry.isIntersecting));
-  },{rootMargin:'120px 0px 120px 0px',threshold:0});
-  treeVisibility.observe(tree);
-
-  let pending = false;
-  function updateTree() {
-    pending = false;
-    const box = tree.getBoundingClientRect();
-    const start = 98;
-    const end = Math.max(start,tree.offsetHeight - 110);
-    const viewportLine = Math.min(window.innerHeight * .62,window.innerHeight - 60);
-    const grown = Math.max(0,Math.min(end - start,viewportLine - box.top - start));
-    tree.style.setProperty('--tree-growth',Math.round(grown) + 'px');
-  }
-  function schedule() {
-    if (pending) return;
-    pending = true;
-    window.requestAnimationFrame(updateTree);
-  }
-  window.addEventListener('scroll',schedule,{passive:true});
-  window.addEventListener('resize',schedule,{passive:true});
-  window.addEventListener('hashchange',schedule);
-  motion.addEventListener?.('change',event => {
-    if (event.matches) {
-      cards.forEach(show);
-      tree.classList.remove('js-tree');
-      watcher.disconnect();
-      treeVisibility.disconnect();
-      tree.classList.remove('is-tree-engaged');
-      tree.style.setProperty('--tree-growth','100%');
-    }
-  });
-  updateTree();
 })();
