@@ -92,6 +92,11 @@ def main() -> int:
         if page.canonical != expected_canonical:
             errors.append(f"{path}: canonical must be {expected_canonical}")
         html = path.read_text(encoding="utf-8")
+        # The recruiter-facing link must use the stable, unversioned PDF URL.
+        if '/cv/CV_Giovanni_Del_Gaudio.pdf' not in html:
+            errors.append(f"{path}: current CV link missing")
+        if 'CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf' in html:
+            errors.append(f"{path}: obsolete CV filename found")
         if f'<html lang="{"en" if english else "it"}">' not in html:
             errors.append(f"{path}: incorrect document language")
         if 'hreflang="it"' not in html or 'hreflang="en"' not in html:
