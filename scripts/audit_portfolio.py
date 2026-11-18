@@ -92,6 +92,11 @@ def main() -> int:
         if page.canonical != expected_canonical:
             errors.append(f"{path}: canonical must be {expected_canonical}")
         html = path.read_text(encoding="utf-8")
+        # Confirm the new participation record is represented on both locales.
+        if 'id="certificate-notebooklm-unisa"' not in html:
+            errors.append(f"{path}: NotebookLM participation card missing")
+        if 'class="credential-total">15</span>' not in html:
+            errors.append(f"{path}: credential counter must be 15")
         # The recruiter-facing link must use the stable, unversioned PDF URL.
         if '/cv/CV_Giovanni_Del_Gaudio.pdf' not in html:
             errors.append(f"{path}: current CV link missing")
