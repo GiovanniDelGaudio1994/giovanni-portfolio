@@ -1761,14 +1761,7 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
 }
 /* Standard operating-system pointer; interactive links retain their normal hand cursor. */
 
-/* 2026-11-18 · Restore the original card-hover interaction.
-   Never render the circular target at the center of the project tree.
-   The branch and leaf details remain decorative; the pointer remains native. */
-.project-tree-edition .tree-node,
-.project-tree-edition .project-slider > article .tree-node,
-.project-tree-edition .project-slider > article:is(:hover,:focus-within) .tree-node {
-  display:none !important;
-}
+/* 2026-11-18 · Original card hover remains active for project cards. */
 @media (hover:hover) and (pointer:fine) {
   .project-tree-edition .dg-feature-card:hover,
   .project-tree-edition .dg-wide-card:hover,
@@ -1791,24 +1784,55 @@ html[data-theme="light"] .project-slider-btn:hover{background:#d4e7fa}
   }
 }
 
-/* 2026-11-18: shift the timeline ornaments lower for the last four
-   personal projects (Fit Zone, SignalScope, Meteo Bash 2D, LegacyBridge).
-   Keep the earlier cards, responsive grid and card hover unchanged. */
+/* 2026-11-18 · Unified project timeline.
+   All personal and academic cards use the same gap and connector geometry.
+   Restore one dot and its leaf, not overlapping rings or cursor followers. */
 @media (min-width:901px) {
-  .project-tree-edition .projects-showcase
-  .dg-personal-grid.project-slider > article:nth-child(n+4) .tree-twig {
-    top:calc(50% + 52px);
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:clamp(148px,13vw,208px);
+    padding-block:66px 86px;
   }
-  .project-tree-edition .projects-showcase
-  .dg-personal-grid.project-slider > article:nth-child(even):nth-child(n+4) .tree-twig {
-    top:calc(50% + 96px);
+  .project-tree-edition .project-slider > article .tree-twig,
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-twig {
+    top:calc(50% - 31px);
   }
-  .project-tree-edition .projects-showcase
-  .dg-personal-grid.project-slider > article:nth-child(odd):nth-child(n+4) .tree-bud {
-    top:calc(50% - 30px);
+  .project-tree-edition .project-slider > article .tree-node,
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-node {
+    top:calc(50% - 8px);
   }
-  .project-tree-edition .projects-showcase
-  .dg-personal-grid.project-slider > article:nth-child(even):nth-child(n+4) .tree-bud {
-    top:calc(50% + 141px);
+  .project-tree-edition .project-slider > article:nth-child(odd) .tree-bud,
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-bud {
+    top:calc(50% - 32px);
+  }
+  /* Avoid the old fallback pseudo-dots when SVG decorations are active. */
+  .project-tree-edition.tree-embellished .projects-showcase .project-slider > article::after {
+    display:none;
+  }
+}
+@media (min-width:701px) and (max-width:900px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:124px;
+  }
+}
+@media (max-width:700px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:114px;
+  }
+  .project-tree-edition .project-slider > article:nth-child(odd) .tree-bud,
+  .project-tree-edition .project-slider > article:nth-child(even) .tree-bud {
+    top:17px;
+  }
+}
+@media (max-width:420px) {
+  .project-tree-edition .projects-showcase .project-slider,
+  .project-tree-edition .projects-showcase .dg-personal-grid.project-slider,
+  .project-tree-edition .projects-showcase .dg-academic-grid.project-slider {
+    row-gap:122px;
   }
 }
