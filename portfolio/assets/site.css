@@ -1003,3 +1003,57 @@ html[lang="en"] .dg-cover-inner::after{content:"Open project ↗"}
   .dg-cover-link::before{display:none!important}
   .stack-icon{transition:none!important;transform:none!important}
 }
+
+
+/* Interactive hero terminal — minimal and accessible; preserves existing glass portrait. */
+.hero-terminal{pointer-events:auto;cursor:default;transition:border-color .25s,box-shadow .25s,transform .25s}
+.hero-terminal:focus-within{border-color:rgba(119,212,255,.86);box-shadow:0 20px 50px #0008,0 0 0 2px rgba(95,190,250,.15);transform:rotate(0deg)}
+.hero-terminal .hero-code-content{white-space:normal;padding:11px 13px 12px}
+.terminal-intro{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px}
+.terminal-output{max-height:88px;min-height:30px;overflow:auto;overscroll-behavior:contain;padding:5px 0;line-height:1.55;color:#b6d3ec;font-size:10.5px;scrollbar-width:thin;white-space:pre-wrap;overflow-wrap:anywhere}
+.terminal-output strong{color:#77e9be}
+.terminal-output a{color:#83dbff;text-decoration:underline;text-underline-offset:2px}
+.terminal-line{margin:2px 0}.terminal-line.command{color:#aabff7}.terminal-line.error{color:#ffa6a6}
+.terminal-form{display:flex;align-items:center;gap:6px;margin:5px 0 0;background:rgba(5,15,32,.6);border:1px solid rgba(140,205,250,.29);border-radius:8px;padding:4px 5px 4px 8px}
+.terminal-form:focus-within{border-color:#83cbff}
+.terminal-prompt{color:#70e4c6;font-weight:800;user-select:none}
+.terminal-form input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#f0f9ff;font:inherit;font-size:11px;letter-spacing:0;caret-color:#76eaca}
+.terminal-form input::placeholder{color:#91b2cf;opacity:.85}
+.terminal-run{background:rgba(87,155,232,.17);border:1px solid rgba(139,202,255,.36);border-radius:6px;color:#bee7ff;padding:1px 6px;font:inherit;font-size:13px;cursor:pointer}
+.terminal-run:hover,.terminal-run:focus-visible{background:#2466a8;color:white;outline:2px solid #8ecfff;outline-offset:1px}
+.terminal-hint{display:block;margin-top:5px;color:#8eabc5;font-size:9px;letter-spacing:0}
+.hero-terminal .code-caret{display:none}
+@media(max-width:700px){
+  .hero-terminal{right:0;bottom:-12px;width:clamp(144px,40vw,170px);font-size:9px}
+  .hero-terminal .hero-code-content{padding:7px 8px 9px}
+  .hero-terminal .terminal-intro{font-size:8px}
+  .hero-terminal .terminal-output{min-height:24px;max-height:38px;font-size:8px}
+  .hero-terminal .terminal-form{padding:3px 4px;margin-top:4px}
+  .hero-terminal .terminal-form input{font-size:10px}
+  .hero-terminal .terminal-hint{font-size:7px}
+  .hero-terminal:focus-within{width:min(88vw,300px);right:0;bottom:-13px;z-index:12;box-shadow:0 24px 60px #000c}
+  .hero-terminal:focus-within .terminal-output{max-height:118px;font-size:11px}
+  .hero-terminal:focus-within .terminal-intro{font-size:10px}
+  .hero-terminal:focus-within .terminal-hint{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-terminal{animation:none!important;transition:none!important}
+}
+
+/* Evolve the existing subtle cursor glow into a circuit reticle.
+   Never replace the operating-system pointer or capture clicks. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .gdg-cursor-aura{filter:none;opacity:0;background:radial-gradient(circle,rgba(71,165,245,.13) 0%,rgba(79,157,240,.045) 53%,transparent 73%)}
+  .gdg-cursor-aura::before{
+    content:"";position:absolute;inset:23px;border:1px solid rgba(112,208,250,.53);border-radius:50%;
+    background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(123,217,249,.28) 50%,transparent calc(50% + .5px)),
+               linear-gradient(0deg,transparent calc(50% - .5px),rgba(123,217,249,.28) 50%,transparent calc(50% + .5px));
+    box-shadow:0 0 14px rgba(68,182,255,.14)
+  }
+  .gdg-cursor-aura::after{
+    content:"";position:absolute;inset:13px;border:1px dashed rgba(119,203,255,.26);border-radius:50%
+  }
+  .gdg-cursor-aura.is-over-action::before{border-color:#88e8fa;box-shadow:0 0 16px rgba(77,210,255,.35)}
+  :root[data-theme="light"] .gdg-cursor-aura::before{border-color:rgba(42,104,163,.45);box-shadow:none}
+  :root[data-theme="light"] .gdg-cursor-aura::after{border-color:rgba(44,105,175,.23)}
+}
