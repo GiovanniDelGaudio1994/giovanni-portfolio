@@ -244,7 +244,9 @@
       "portfolio.root / project_tree": "portfolio.root / project_tree",
       "Esplora i rami del mio percorso": "Explore the branches of my journey",
       "Scorri per far crescere l'albero e scoprire i progetti.": "Scroll to grow the tree and discover the projects.",
-      "↓ SCROLL": "↓ SCROLL"
+      "↓ SCROLL": "↓ SCROLL",
+      "SELECTED WORK / 2026": "SELECTED WORK / 2026",
+      "Scorri le schede, oppure usa le frecce per esplorare i progetti": "Swipe the cards or use the arrows to browse the projects"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -275,7 +277,13 @@
       "Scrivi un comando: help, about, skills, projects, contact, cv oppure clear": "Enter a command: help, about, skills, projects, contact, cv or clear",
       "Esegui comando": "Run command",
       "Mappa interattiva dei progetti": "Interactive project graph",
-      "Albero dei progetti": "Project tree"
+      "Albero dei progetti": "Project tree",
+      "Vetrina dei progetti": "Projects showcase",
+      "Navigazione schede dei progetti": "Project carousel navigation",
+      "Progetto precedente": "Previous project",
+      "Progetto successivo": "Next project",
+      "Progetti personali, scorri orizzontalmente": "Personal projects, swipe horizontally",
+      "Progetti universitari, scorri orizzontalmente": "University projects, swipe horizontally"
     }
   },
   "legacybridge": {
