@@ -246,7 +246,10 @@
       "Scorri per far crescere l'albero e scoprire i progetti.": "Scroll to grow the tree and discover the projects.",
       "↓ SCROLL": "↓ SCROLL",
       "SELECTED WORK / 2026": "SELECTED WORK / 2026",
-      "Scorri le schede, oppure usa le frecce per esplorare i progetti": "Swipe the cards or use the arrows to browse the projects"
+      "Scorri le schede, oppure usa le frecce per esplorare i progetti": "Swipe the cards or use the arrows to browse the projects",
+      "Il mio percorso.": "My journey.",
+      "Un percorso che cresce a ogni release. Esplora i rami dedicati alle applicazioni personali e ai progetti universitari: dal codice alle demo, fino alle scelte progettuali.": "A journey that grows with each release. Explore branches for personal apps and university work: from code and demos to design decisions.",
+      "Segui i rami, apri le demo e scopri come lavoro": "Follow the branches, explore demos, and see how I work"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
