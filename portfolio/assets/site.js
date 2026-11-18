@@ -227,57 +227,6 @@
   }, {passive:true});
 })();
 
-/* Portfolio 2.2 — small, accessible glow following the real mouse cursor. */
-(() => {
-  'use strict';
-  const mouse = window.matchMedia('(hover: hover) and (pointer: fine)');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!mouse.matches || reduced.matches) return;
-
-  const aura = document.createElement('div');
-  aura.className = 'gdg-cursor-aura';
-  aura.setAttribute('aria-hidden', 'true');
-  document.body.append(aura);
-
-  let positionX = -150;
-  let positionY = -150;
-  let pending = false;
-  const hide = () => document.body.classList.remove('gdg-mouse-active');
-
-  document.addEventListener('pointermove', event => {
-    if ((event.pointerType && event.pointerType !== 'mouse') ||
-        !mouse.matches || reduced.matches ||
-        event.target.closest('dialog[open]')) {
-      hide();
-      return;
-    }
-    positionX = event.clientX - 48;
-    positionY = event.clientY - 48;
-    aura.classList.toggle('is-over-action', Boolean(
-      event.target.closest('a,button,[role="button"],.dg-feature-card,.dg-academic-card,.credential-card')
-    ));
-    document.body.classList.add('gdg-mouse-active');
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(() => {
-      aura.style.transform = 'translate3d(' +
-        Math.round(positionX) + 'px,' + Math.round(positionY) + 'px,0)';
-      pending = false;
-    });
-  }, {passive:true});
-
-  document.addEventListener('pointerout', event => {
-    if (!event.relatedTarget) hide();
-  }, {passive:true});
-  window.addEventListener('blur', hide);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) hide();
-  });
-  if (reduced.addEventListener) reduced.addEventListener('change', hide);
-  if (mouse.addEventListener) mouse.addEventListener('change', hide);
-})();
-
-
 /* Visual-only progressive enhancement: evidence-based stack bars. */
 (() => {
   'use strict';
