@@ -141,7 +141,6 @@
       "Tutte le credenziali su LinkedIn": "View all credentials on LinkedIn",
       "Tutte": "All",
       "Altro": "Other",
-      "14 attestazioni": "14 credentials",
       "VEDI ATTESTATO": "VIEW CERTIFICATE",
       "Intelligenza artificiale": "Artificial intelligence",
       "Percorso professionale di 7 corsi": "Seven-course professional program",
@@ -249,7 +248,13 @@
       "Scorri le schede, oppure usa le frecce per esplorare i progetti": "Swipe the cards or use the arrows to browse the projects",
       "Il mio percorso.": "My journey.",
       "Un percorso che cresce a ogni release. Esplora i rami dedicati alle applicazioni personali e ai progetti universitari: dal codice alle demo, fino alle scelte progettuali.": "A journey that grows with each release. Explore branches for personal apps and university work: from code and demos to design decisions.",
-      "Segui i rami, apri le demo e scopri come lavoro": "Follow the branches, explore demos, and see how I work"
+      "Segui i rami, apri le demo e scopri come lavoro": "Follow the branches, explore demos, and see how I work",
+      "15 attestazioni": "15 credentials",
+      "NotebookLM — Attestato di partecipazione": "NotebookLM — Participation Certificate",
+      "Partecipazione": "Participation",
+      "Attestato universitario firmato dal Delegato del Rettore all'ICT e alla Transizione Digitale. Non è una certificazione professionale Google.": "University participation certificate signed by the Rector's Delegate for ICT and Digital Transition. Not a professional Google certification.",
+      "Documento originale non ancora pubblicato": "Original document not yet published",
+      "Università di Salerno": "University of Salerno"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
