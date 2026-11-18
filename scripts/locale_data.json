@@ -231,7 +231,16 @@
       "Digita": "Type",
       "e premi Invio.": "and press Enter.",
       "Digita help e premi Invio.": "Type help and press Enter.",
-      "help · projects · skills · cv": "help · projects · skills · cv"
+      "help · projects · skills · cv": "help · projects · skills · cv",
+      "PROJECT_GRAPH": "PROJECT_GRAPH",
+      "SCROLL LINK ACTIVE": "SCROLL LINK ACTIVE",
+      "graph.root": "graph.root",
+      "select_node()": "select_node()",
+      "Seleziona un nodo o scorri per esplorare": "Select a node or scroll to explore",
+      "PERSONAL_BRANCH": "PERSONAL_BRANCH",
+      "UNIVERSITY_BRANCH": "UNIVERSITY_BRANCH",
+      "10 NODES · 2 BRANCHES": "10 NODES · 2 BRANCHES",
+      "CLICK / SCROLL / EXPLORE": "CLICK / SCROLL / EXPLORE"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
@@ -260,7 +269,8 @@
       "Terminale interattivo del portfolio": "Interactive portfolio terminal",
       "Comando del terminale": "Terminal command",
       "Scrivi un comando: help, about, skills, projects, contact, cv oppure clear": "Enter a command: help, about, skills, projects, contact, cv or clear",
-      "Esegui comando": "Run command"
+      "Esegui comando": "Run command",
+      "Mappa interattiva dei progetti": "Interactive project graph"
     }
   },
   "legacybridge": {
