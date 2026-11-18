@@ -396,3 +396,66 @@
   window.setInterval(tick, 1000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
 })();
+
+
+/* Keyboard-accessible, entirely local portfolio command panel.
+   Commands are a fixed allowlist; input never runs JavaScript or shell code. */
+(() => {
+  'use strict';
+  const root = document.querySelector('[data-portfolio-terminal]');
+  if (!root) return;
+  const form = root.querySelector('[data-terminal-form]');
+  const field = root.querySelector('[data-terminal-input]');
+  const output = root.querySelector('[data-terminal-output]');
+  if (!form || !field || !output) return;
+  const en = document.documentElement.lang === 'en';
+  const lines = {
+    help: en ? 'Commands: help, about, skills, projects, contact, cv, clear.' :
+      'Comandi: help, about, skills, projects, contact, cv, clear.',
+    about: en ? 'Giovanni — Computer Science student and junior software developer.' :
+      'Giovanni — studente di Informatica e junior software developer.',
+    skills: 'Flutter · Dart · Java · Python · SQL · Web',
+    projects: en ? 'Open the projects section:' : 'Vai ai progetti:',
+    contact: en ? 'Go to the contact section:' : 'Vai ai contatti:',
+    cv: en ? 'Open my CV (PDF):' : 'Apri il curriculum (PDF):',
+    unknown: en ? 'Unknown command. Type help.' : 'Comando sconosciuto. Digita help.'
+  };
+  const whitelist = new Set(['help','about','skills','projects','contact','cv','clear']);
+  const destinations = {
+    projects: {href:'#progetti', text: en ? 'View projects ↗' : 'Vedi progetti ↗'},
+    contact: {href:'#contatti', text: en ? 'Contact ↗' : 'Contatti ↗'},
+    cv: {href:'/cv/CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf', text:'CV PDF ↗'}
+  };
+  const addLine = (message, className, link) => {
+    const row = document.createElement('div');
+    row.className = 'terminal-line' + (className ? ' ' + className : '');
+    row.appendChild(document.createTextNode(message));
+    if (link) {
+      row.appendChild(document.createTextNode(' '));
+      const anchor = document.createElement('a');
+      anchor.href = link.href;
+      anchor.textContent = link.text;
+      row.appendChild(anchor);
+    }
+    output.appendChild(row);
+    while (output.children.length > 8) output.firstElementChild.remove();
+    output.scrollTop = output.scrollHeight;
+  };
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const command = field.value.trim().toLowerCase();
+    field.value = '';
+    if (!command) return;
+    if (command === 'clear') {
+      output.textContent = en ? 'Terminal cleared. Type help.' : 'Terminale pulito. Digita help.';
+      return;
+    }
+    addLine('> ' + command, 'command');
+    if (!whitelist.has(command)) { addLine(lines.unknown, 'error'); return; }
+    addLine(lines[command], '', destinations[command]);
+  });
+  // Stop page-level keyboard shortcuts while the visitor is entering commands.
+  field.addEventListener('keydown', event => {
+    if (event.key === 'Escape') field.blur();
+  });
+})();
