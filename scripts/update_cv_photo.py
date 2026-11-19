@@ -47,7 +47,7 @@ def update_cv(cv_dir: Path, photo_file: Path) -> None:
     # Keep the contact heading and all sidebar copy untouched.
     page.draw_rect(fitz.Rect(31, 6, 141, 124),
                    fill=(0.925, 0.963, 0.990), color=None, overlay=True)
-    frame = fitz.Rect(36, 9, 136, 119)
+    frame = fitz.Rect(36, 9, 136, 113)  # Leave a clear gap above Contatti
     page.insert_image(frame, stream=jpeg, keep_proportion=True, overlay=True)
     page.draw_rect(frame, color=(0.73, 0.83, 0.91), width=0.7, overlay=True)
 
@@ -77,9 +77,26 @@ def update_cv(cv_dir: Path, photo_file: Path) -> None:
         raise ValueError("CV preview portrait element missing")
     html = html.replace(
         ".photo{height:36.5mm;width:36.5mm;border-radius:50%;margin:0 auto 6.7mm;overflow:hidden;border:3px solid white;",
-        ".photo{height:42mm;width:38mm;border-radius:7px;margin:0 auto 3mm;overflow:hidden;border:2px solid white;"
+        ".photo{height:40mm;width:38mm;border-radius:5px;margin:0 auto 5mm;overflow:hidden;border:2px solid white;"
     )
-    if "height:42mm;width:38mm" not in html:
+    # The photo is a rectangular portrait, never cropped into another circle.
+    html = html.replace("object-fit:cover;object-position:center",
+                        "object-fit:contain;object-position:center")
+    # Keep the original contact icons, but avoid awkward multiline URLs.
+    html = html.replace(
+        ".contact{display:flex;align-items:flex-start;gap:6px;font-size:7.5pt;",
+        ".contact{display:flex;align-items:flex-start;gap:3px;font-size:6.9pt;"
+    ).replace(
+        ".contact .ico{height:12px;width:12px;margin-top:1px}",
+        ".contact .ico{height:10px;width:10px;margin-top:1px}"
+    )
+    html = html.replace(
+        '>github.com/GiovanniDelGaudio1994</a>',
+        '>GitHub: GiovanniDelGaudio1994</a>'
+    )
+    if 'GitHub: GiovanniDelGaudio1994</a>' not in html:
+        raise ValueError("GitHub contact label not updated")
+    if "height:40mm;width:38mm" not in html:
         raise ValueError("CV preview portrait styling missing")
     if "3456109046" in html or "+39 345" in html:
         raise ValueError("Private phone detected in public CV HTML")
