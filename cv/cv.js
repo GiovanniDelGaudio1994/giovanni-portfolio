@@ -1,1 +1,0 @@
-document.querySelectorAll("[data-print]").forEach(function(control){control.addEventListener("click",function(){window.print()})});
