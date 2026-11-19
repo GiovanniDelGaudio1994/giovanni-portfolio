@@ -19,6 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Install PDF build dependency
+        run: python3 -m pip install --user "pymupdf>=1.24,<2"
       - name: Build portfolio and all public demos
         run: python3 scripts/build_pages.py
       - name: Audit all public pages and local links
