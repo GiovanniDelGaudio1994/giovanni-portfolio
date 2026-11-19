@@ -17,6 +17,7 @@ from urllib.parse import unquote, urlsplit
 
 from translate_pages import translate_portfolio, translate_legacybridge
 from render_updates import inject_updates
+from update_cv_photo import update_cv
 
 SOURCE = Path(__file__).resolve().parents[1]
 OUTPUT = SOURCE / "_site"
@@ -170,6 +171,9 @@ def build() -> None:
         src = SOURCE / name
         if src.is_file():
             shutil.copy2(src, OUTPUT / name)
+
+    # Replace only the public Italian CV portrait; never include private contact details.
+    update_cv(OUTPUT / "cv", SOURCE / "cv/photo_professional_2026.b64")
 
     template = (SOURCE / "portfolio/index.html").read_text(encoding="utf-8")
     (OUTPUT / "index.html").write_text(inject_updates(adapt_portfolio(template, root=True)), encoding="utf-8")
