@@ -47,7 +47,7 @@ class PortfolioAudit(HTMLParser):
             src = data.get("src")
             if src:
                 self.js_sources.add(src)
-                if "://" in src or not src.endswith(("/site.js", "/theme-init.js", "/hero-shader.js")):
+                if "://" in src or not src.endswith(("/site.js", "/theme-init.js", "/hero-shader.js", "/logo-preloader.js")):
                     self.errors.append(f"Unapproved script source: {src}")
             elif data.get("type") != "application/ld+json":
                 self.errors.append("Executable inline <script>")
@@ -58,7 +58,7 @@ class PortfolioAudit(HTMLParser):
         if tag == "link" and data.get("rel") == "stylesheet":
             href = data.get("href") or ""
             self.css_sources.add(href)
-            if "://" in href or not href.endswith("/site.css"):
+            if "://" in href or not href.endswith(("/site.css", "/logo-preloader.css")):
                 self.errors.append(f"Unapproved stylesheet: {href}")
         if tag == "a" and data.get("target") == "_blank":
             rel = set((data.get("rel") or "").split())
