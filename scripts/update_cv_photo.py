@@ -21,8 +21,8 @@ def update_cv(cv_dir: Path, photo_file: Path) -> None:
 
     pdf_path = cv_dir / "CV_Giovanni_Del_Gaudio.pdf"
     doc = fitz.open(pdf_path)
-    if len(doc) != 1:
-        raise ValueError("Expected one-page CV")
+    if len(doc) < 1:
+        raise ValueError("Missing CV pages")
     page = doc[0]
     if page.rect.width < 590:
         raise ValueError("Unexpected CV page size")
