@@ -27,12 +27,41 @@ def update_cv(cv_dir: Path, photo_file: Path) -> None:
     if page.rect.width < 590:
         raise ValueError("Unexpected CV page size")
 
-    # Clear the previous circular cropped photo. No sidebar text is covered.
-    page.draw_rect(fitz.Rect(20, 5, 149, 123),
-                   fill=(0.916, 0.957, 0.992), color=None, overlay=True)
-    frame = fitz.Rect(27, 10, 143, 120)
+    # IMPORTANT: remove the existing photo image objects, not just cover them.
+    # Covering only with a rectangle had left the old circular photo visible
+    # under the new portrait in iOS PDF previews.
+    old_photo_xrefs = set()
+    for image in page.get_images(full=True):
+        xref = image[0]
+        for rect in page.get_image_rects(xref):
+            if (rect.x0 >= 18 and rect.x1 <= 180
+                    and rect.y0 < 130 and rect.y1 <= 135
+                    and rect.width > 40 and rect.height > 40):
+                old_photo_xrefs.add(xref)
+    if not old_photo_xrefs:
+        raise ValueError("Existing CV portrait not located; refusing to overlay")
+    for xref in old_photo_xrefs:
+        page.delete_image(xref)  # replaces original image object with transparent pixel
+
+    # Erase the old circular border and shadow within the photo area only.
+    # Keep the contact heading and all sidebar copy untouched.
+    page.draw_rect(fitz.Rect(31, 6, 141, 124),
+                   fill=(0.925, 0.963, 0.990), color=None, overlay=True)
+    frame = fitz.Rect(36, 9, 136, 119)
     page.insert_image(frame, stream=jpeg, keep_proportion=True, overlay=True)
-    page.draw_rect(frame, color=(0.78, 0.85, 0.93), width=0.75, overlay=True)
+    page.draw_rect(frame, color=(0.73, 0.83, 0.91), width=0.7, overlay=True)
+
+    visible_photo_count = 0
+    for image in page.get_images(full=True):
+        xref, width, height = image[0], image[2], image[3]
+        if width <= 1 or height <= 1:
+            continue
+        rects = page.get_image_rects(xref)
+        if any(q.x0 >= 18 and q.x1 <= 180 and q.y0 < 130 and
+               q.y1 <= 135 and q.width > 40 for q in rects):
+            visible_photo_count += 1
+    if visible_photo_count != 1:
+        raise ValueError(f"Expected one portrait image, found {visible_photo_count}")
     data = doc.tobytes(garbage=4, deflate=True)
     doc.close()
     if b"+39 345" in data or b"3456109046" in data:
