@@ -75,29 +75,6 @@
       "evidence_url": "https://github.com/GiovanniDelGaudio1994/giovanni-portfolio/commit/dd2ce6074cddf404b563bba0edecdeb334c870de"
     },
     {
-      "date": "2026-11-16",
-      "project": "portfolio",
-      "project_name": "Portfolio",
-      "version": "CV HR v4 · 16.11.2026",
-      "type": "release",
-      "title": {
-        "it": "Curriculum HR v4: PDF originale consultabile nel browser",
-        "en": "HR résumé v4: original PDF opens in the browser"
-      },
-      "changes": {
-        "it": [
-          "Pubblicato il CV HR v4 approvato con la fotografia e i progetti documentati, in PDF A4 su due pagine.",
-          "Dal pulsante CV accanto a «Esplora i progetti» il documento si apre direttamente in una nuova scheda, senza download automatico."
-        ],
-        "en": [
-          "Published the approved two-page A4 HR résumé v4 with portrait and documented software projects.",
-          "The CV button next to Explore Projects opens the original PDF in a new browser tab, without forcing a download."
-        ]
-      },
-      "url": "https://www.giovannidelgaudio.it/cv/CV_Giovanni_Del_Gaudio.pdf",
-      "evidence_url": "https://github.com/GiovanniDelGaudio1994/giovanni-portfolio/commit/86464ce7641ae5a407b63115e6100d1fde0d96ca"
-    },
-    {
       "date": "2026-11-15",
       "project": "headset-studio",
       "project_name": "Headset Studio",
