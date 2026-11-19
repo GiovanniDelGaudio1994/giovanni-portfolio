@@ -97,11 +97,8 @@ def main() -> int:
             errors.append(f"{path}: NotebookLM participation card missing")
         if 'class="credential-total">15</span>' not in html:
             errors.append(f"{path}: credential counter must be 15")
-        # The recruiter-facing link must use the stable, unversioned PDF URL.
-        if '/cv/CV_Giovanni_Del_Gaudio.pdf' not in html:
-            errors.append(f"{path}: current CV link missing")
-        if 'CV_Giovanni_Del_Gaudio_HR_2026_v4.pdf' in html:
-            errors.append(f"{path}: obsolete CV filename found")
+        if '/cv/' in html or 'CV_Giovanni_Del_Gaudio.pdf' in html:
+            errors.append(f"{path}: public CV link must be removed")
         if f'<html lang="{"en" if english else "it"}">' not in html:
             errors.append(f"{path}: incorrect document language")
         if 'hreflang="it"' not in html or 'hreflang="en"' not in html:
@@ -218,8 +215,8 @@ def main() -> int:
         content = path.read_text(encoding="utf-8")
         if "projects/fit-zone/source" in content or "codice PHP consultabile" in content:
             errors.append(f"{path}: stale public Fit Zone source references")
-        if 'href="/cv/CV_Giovanni_Del_Gaudio.pdf" target="_blank"' not in content:
-            errors.append(f"{path}: missing direct CV PDF link opening in new tab")
+        if '/cv/' in content:
+            errors.append(f"{path}: public CV link exposed")
     # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
     # local links; preserve the original GitHub portrait and progressive shader.
     required_cover_targets = (
@@ -247,24 +244,8 @@ def main() -> int:
         errors.append("Missing approved portrait JPEG")
     if not shader.is_file():
         errors.append("Missing local WebGL shader file")
-    # The approved Italian CV is a self-contained A4 document with a native
-    # print control and a real downloadable PDF. The English CV retains the old
-    # toolbar until it receives its separate editorial review.
-    cv_it = SITE / "cv/index.html"
-    cv_en = SITE / "cv/en/index.html"
-    cv_pdf = SITE / "cv/CV_Giovanni_Del_Gaudio.pdf"
-    if not cv_it.is_file():
-        errors.append(f"{cv_it}: missing approved Italian CV")
-    else:
-        it = cv_it.read_text(encoding="utf-8")
-        if not all(x in it for x in ('onclick="window.print()"', 'CV_Giovanni_Del_Gaudio.pdf', 'Giovanni Del Gaudio')):
-            errors.append(f"{cv_it}: print/PDF or identity control missing")
-        if any(x in it for x in ("Profilo LinkedIn", "14 percorsi documentati", "Verifica attestati:")):
-            errors.append(f"{cv_it}: superseded CV wording found")
-    if not cv_pdf.is_file() or not cv_pdf.read_bytes().startswith(b"%PDF-"):
-        errors.append(f"{cv_pdf}: missing or invalid approved PDF")
-    if not cv_en.is_file() or "data-print" not in cv_en.read_text(encoding="utf-8") or "cv.js" not in cv_en.read_text(encoding="utf-8"):
-        errors.append(f"{cv_en}: English printable résumé missing")
+    if (SITE / "cv").exists():
+        errors.append("Public CV folder must not be deployed")
 
     for error in errors:
         print("SECURITY AUDIT FAILED:", error, file=sys.stderr)
