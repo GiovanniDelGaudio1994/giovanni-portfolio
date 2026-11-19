@@ -1,0 +1,12 @@
+/* Portfolio navbar-logo preloader: reuses the exact GDG SVG. */
+.dg-preloader{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:radial-gradient(circle at 50% 44%,rgba(30,79,150,.19),transparent 48%),#080c16;opacity:1;visibility:visible;transition:opacity .48s ease,visibility .48s ease;pointer-events:auto}
+.dg-preloader.is-done{opacity:0;visibility:hidden;pointer-events:none}
+.dg-preloader-stage{position:relative;display:grid;place-items:center;width:min(44vw,220px);aspect-ratio:1}
+.dg-preloader-stage:before{content:"";position:absolute;inset:2%;border:1px solid rgba(104,212,255,.2);border-radius:50%;box-shadow:0 0 70px rgba(22,112,255,.13);animation:dg-loader-halo 1.7s ease-in-out infinite}
+.dg-preloader-stage:after{content:"";position:absolute;inset:-12%;border-radius:50%;border:1px solid transparent;border-top-color:rgba(104,212,255,.76);transform:rotate(-35deg);animation:dg-loader-orbit 1.6s linear infinite}
+.dg-preloader-logo{display:block;width:56%;height:auto;filter:drop-shadow(0 0 23px rgba(104,212,255,.4));animation:dg-loader-reveal 1.12s cubic-bezier(.2,.7,.2,1) both}
+.dg-preloader-label{position:absolute;top:95%;font-size:10px;font-weight:650;letter-spacing:.3em;color:#96b8d9;text-transform:uppercase;white-space:nowrap}
+@keyframes dg-loader-reveal{0%{opacity:0;transform:scale(.68) rotate(-12deg);filter:blur(9px)}65%{opacity:1;filter:blur(0) drop-shadow(0 0 25px rgba(104,212,255,.52))}100%{opacity:1;transform:scale(1) rotate(0);filter:drop-shadow(0 0 23px rgba(104,212,255,.4))}}
+@keyframes dg-loader-orbit{to{transform:rotate(325deg)}}
+@keyframes dg-loader-halo{50%{opacity:.42;transform:scale(1.055)}}
+@media(prefers-reduced-motion:reduce){.dg-preloader,.dg-preloader *{animation:none!important;transition:none!important}.dg-preloader-logo{opacity:1;filter:none}}
