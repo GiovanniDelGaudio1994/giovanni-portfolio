@@ -1,47 +1,58 @@
-"""Update the public CV portrait in the GitHub Pages output only."""
+"""Add a full-bust photo to the published CV PDF and web preview.
+
+Public CV only: the private telephone is never added to this build.
+The canonical source PDF is retained; the rendered Pages copy is adjusted.
+"""
 from __future__ import annotations
 import base64
 from pathlib import Path
 import re
+import fitz
+
 
 def update_cv(cv_dir: Path, photo_file: Path) -> None:
     photo_b64 = photo_file.read_text(encoding="ascii").strip()
     jpeg = base64.b64decode(photo_b64, validate=True)
-    if not jpeg.startswith(b"\xff\xd8\xff"):
-        raise ValueError("Invalid CV portrait")
+    if not jpeg.startswith(b"\xff\xd8\xff") or not jpeg.endswith(b"\xff\xd9"):
+        raise ValueError("Invalid or incomplete CV JPEG image")
+    pic = fitz.Pixmap(jpeg)
+    if pic.width < 140 or pic.height < 150:
+        raise ValueError("Portrait resolution too small")
+
     pdf_path = cv_dir / "CV_Giovanni_Del_Gaudio.pdf"
-    pdf = pdf_path.read_bytes()
-    # Image XObject 11 is the original portrait in the approved public CV.
-    obj_id = 11
-    m = re.search(rb"(?m)^11 0 obj\s*(<<[\s\S]{0,450}?>>)\s*stream", pdf)
-    if not m or b"/Subtype /Image" not in m.group(1):
-        raise ValueError("Expected CV photo XObject missing")
-    xrefs = list(re.finditer(rb"startxref\s+(\d+)\s+%%EOF", pdf))
-    trailers = list(re.finditer(rb"trailer\s*<<(.*?)>>", pdf, flags=re.S))
-    if not xrefs or not trailers:
-        raise ValueError("PDF trailer/xref missing")
-    previous = int(xrefs[-1].group(1))
-    trailer = trailers[-1].group(1)
-    size = re.search(rb"/Size\s+(\d+)", trailer)
-    root = re.search(rb"/Root\s+(\d+\s+\d+\s+R)", trailer)
-    if not size or not root:
-        raise ValueError("PDF Root/Size missing")
-    # Add a new image object version via a standard incremental PDF update.
-    header = (f"11 0 obj\n<< /Type /XObject /Subtype /Image /Width 144 /Height 144 "
-              f"/ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode "
-              f"/Length {len(jpeg)} >>\nstream\n").encode()
-    offset = len(pdf)
-    image_obj = header + jpeg + b"\nendstream\nendobj\n"
-    new_xref = offset + len(image_obj)
-    xref = (f"xref\n11 1\n{offset:010d} 00000 n \ntrailer\n"
-            f"<< /Size {size.group(1).decode()} /Root {root.group(1).decode()} /Prev {previous} >>\n"
-            f"startxref\n{new_xref}\n%%EOF\n").encode()
-    pdf_path.write_bytes(pdf + image_obj + xref)
+    doc = fitz.open(pdf_path)
+    if len(doc) != 1:
+        raise ValueError("Expected one-page CV")
+    page = doc[0]
+    if page.rect.width < 590:
+        raise ValueError("Unexpected CV page size")
+
+    # Clear the previous circular cropped photo. No sidebar text is covered.
+    page.draw_rect(fitz.Rect(20, 5, 149, 123),
+                   fill=(0.916, 0.957, 0.992), color=None, overlay=True)
+    frame = fitz.Rect(27, 10, 143, 120)
+    page.insert_image(frame, stream=jpeg, keep_proportion=True, overlay=True)
+    page.draw_rect(frame, color=(0.78, 0.85, 0.93), width=0.75, overlay=True)
+    data = doc.tobytes(garbage=4, deflate=True)
+    doc.close()
+    if b"+39 345" in data or b"3456109046" in data:
+        raise ValueError("Private phone detected in public PDF")
+    pdf_path.write_bytes(data)
+
+    # Browser CV mirrors the rectangular full-bust framing instead of the old circle.
     html_path = cv_dir / "index.html"
     html = html_path.read_text(encoding="utf-8")
     pattern = r'(class="photo"><img src="data:image/jpeg;base64,)[A-Za-z0-9+/=]+'
     html, count = re.subn(pattern, lambda m: m.group(1) + photo_b64, html, count=1)
     if count != 1:
-        raise ValueError("CV web preview photo missing")
+        raise ValueError("CV preview portrait element missing")
+    html = html.replace(
+        ".photo{height:36.5mm;width:36.5mm;border-radius:50%;margin:0 auto 6.7mm;overflow:hidden;border:3px solid white;",
+        ".photo{height:42mm;width:38mm;border-radius:7px;margin:0 auto 3mm;overflow:hidden;border:2px solid white;"
+    )
+    if "height:42mm;width:38mm" not in html:
+        raise ValueError("CV preview portrait styling missing")
+    if "3456109046" in html or "+39 345" in html:
+        raise ValueError("Private phone detected in public CV HTML")
     html_path.write_text(html, encoding="utf-8")
-    print("CV public portrait updated in generated PDF and HTML")
+    print("Full-bust, earring-free portrait published in PDF and HTML preview")
