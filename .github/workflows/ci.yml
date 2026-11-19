@@ -19,6 +19,8 @@ jobs:
           node --check portfolio/assets/hero-shader.js
           node --check legacybridge-demo/site.js
           node --check portfolio/assets/theme-init.js
+      - name: Install PDF build dependency
+        run: python3 -m pip install --user "pymupdf>=1.24,<2"
       - name: Build and audit
         run: |
           python3 scripts/build_pages.py
