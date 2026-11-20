@@ -22,6 +22,10 @@ Il workflow `.github/workflows/pages.yml` pubblica automaticamente i commit su `
 
 `python3 scripts/build_pages.py` generates `_site/`, including `/en/`, `/forma-ai-demo/`, `/driveglass-demo/` and the other public demo routes. Run `python3 scripts/audit_portfolio.py` before publishing. Do **not** commit `_site/` or any private application code.
 
+## Documentazione dei progetti
+
+- GestioneFarmacia · [Relazione di Basi di Dati (PDF)](gestione-farmacia-demo/documentazione.pdf)
+
 ## Project ownership and licensing
 
 This repository publishes **demonstrations**, not the complete proprietary applications. Original portfolio components and presentation material remain reserved to their author unless explicitly licensed otherwise. Software dependencies and third-party assets retain their respective licenses. This notice does not revoke permissions granted under earlier licenses to earlier versions in `forma-ai`; it does not relicense the historical public LegacyBridge AGPLv3 probe.
