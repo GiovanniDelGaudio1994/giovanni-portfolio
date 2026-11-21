@@ -35,7 +35,12 @@ PUBLIC_DIRS = (
     "driveglass-demo",
     "headset-studio-demo",
 )
-PUBLIC_FILES = (".nojekyll", "atlante-3d.html", "privacy.html")
+PUBLIC_FILES = (
+    ".nojekyll",
+    "atlante-3d.html",
+    "privacy.html",
+    "google31f755aa81561fca.html",
+)
 
 
 def adapt_portfolio(html: str, root: bool) -> str:
