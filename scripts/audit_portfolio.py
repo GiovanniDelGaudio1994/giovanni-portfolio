@@ -220,7 +220,7 @@ def main() -> int:
     # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
     # local links; preserve the original GitHub portrait and progressive shader.
     required_cover_targets = (
-        "/driveglass-demo/", "/forma-ai-demo/", "/headset-studio-demo/",
+        "/driveglass-demo/", "/forma-ai-demo/", "/headset-studio-demo/", "/measurecraft-demo/",
         "/fit-zone-demo/", "/signalscope-demo/", "/meteo-bash2d-demo/",
         "/legacybridge-demo/", "/gestione-farmacia-demo/",
         "/portfolio/demos/irem/", "/ewine-demo/",
