@@ -257,7 +257,15 @@
       "Documento originale non ancora pubblicato": "Original document not yet published",
       "Università di Salerno": "University of Salerno",
       "VEDI DETTAGLI": "VIEW DETAILS",
-      "Dettagli attestato": "Certificate details"
+      "Dettagli attestato": "Certificate details",
+      "Scopri il progetto": "Explore the project",
+      "CONCEPT · MVP FLUTTER IN SVILUPPO": "CONCEPT · FLUTTER MVP IN DEVELOPMENT",
+      "Dashboard e cantieri": "Dashboard and work sites",
+      "Roadmap 3D / AR": "3D / AR roadmap",
+      "Gestionale professionale per geometri: cantieri e rilievi sul campo con iPad e Apple Pencil. Starter Flutter v0.1 predisposto; GPS, planimetrie avanzate, 3D e ARKit sono funzionalità in roadmap. Codice sorgente privato.": "Professional surveyors' workspace for work sites and field surveys with iPad and Apple Pencil. Initial Flutter v0.1 starter prepared; GPS, advanced floor plans, 3D and ARKit are on the roadmap. Source code is private.",
+      "Nuovo progetto in sviluppo:": "New project in development:",
+      "Scopri la vetrina e la roadmap di MeasureCraft": "Explore the MeasureCraft showcase and roadmap",
+      "Il codice Flutter resta privato; la presentazione usa solo dati fittizi.": "Flutter source code stays private; the showcase uses sample data only."
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
