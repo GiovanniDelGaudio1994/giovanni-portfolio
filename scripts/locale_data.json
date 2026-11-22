@@ -89,8 +89,6 @@
       "presentati": "showcased",
       "SQL e database": "SQL & databases",
       "Persistenza e modellazione dati": "Persistence & data modelling",
-      "5 progetti su 10": "5 of 10 projects",
-      "2 progetti su 10": "2 of 10 projects",
       "1 progetto su 10": "1 of 10 projects",
       "Vedi un progetto": "View a project",
       "App mobile e multipiattaforma": "Mobile & cross-platform apps",
@@ -101,7 +99,6 @@
       "C++ / sistemi": "C++ / systems",
       "Analisi CPU e diagnostica nativa": "CPU analysis & native diagnostics",
       "Percentuali trasparenti:": "Transparent percentages:",
-      "rappresentano la presenza di ogni tecnologia nei 10 progetti esposti,": "show how often each technology appears across the 10 showcased projects,",
       "non la mia padronanza personale": "not my personal proficiency",
       "né una certificazione. Le competenze crescono continuamente con lo studio e la pratica.": "or a certification. My skills continue to grow through study and hands-on work.",
       "Applicazioni multipiattaforma, interfacce responsive e attenzione all'esperienza quotidiana.": "Cross-platform apps, responsive interfaces and care for everyday user experience.",
@@ -265,7 +262,12 @@
       "Gestionale professionale per geometri: cantieri e rilievi sul campo con iPad e Apple Pencil. Starter Flutter v0.1 predisposto; GPS, planimetrie avanzate, 3D e ARKit sono funzionalità in roadmap. Codice sorgente privato.": "Professional surveyors' workspace for work sites and field surveys with iPad and Apple Pencil. Initial Flutter v0.1 starter prepared; GPS, advanced floor plans, 3D and ARKit are on the roadmap. Source code is private.",
       "Nuovo progetto in sviluppo:": "New project in development:",
       "Scopri la vetrina e la roadmap di MeasureCraft": "Explore the MeasureCraft showcase and roadmap",
-      "Il codice Flutter resta privato; la presentazione usa solo dati fittizi.": "Flutter source code stays private; the showcase uses sample data only."
+      "Il codice Flutter resta privato; la presentazione usa solo dati fittizi.": "Flutter source code stays private; the showcase uses sample data only.",
+      "5 progetti su 11": "5 of 11 projects",
+      "3 progetti su 11": "3 of 11 projects",
+      "2 progetti su 11": "2 of 11 projects",
+      "1 progetto su 11": "1 of 11 projects",
+      "rappresentano la presenza di ogni tecnologia negli 11 progetti esposti,": "show how often each technology appears across the 11 showcased projects,"
     },
     "attributes": {
       "aria-label=\"Navigazione principale\"": "aria-label=\"Main navigation\"",
