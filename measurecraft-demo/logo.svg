@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="MeasureCraft">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0d5668"/><stop offset="1" stop-color="#082a43"/></linearGradient></defs>
+<rect width="128" height="128" rx="30" fill="url(#bg)"/>
+<g fill="none" stroke="#f5ffff" stroke-width="5" stroke-linejoin="round"><path d="M20 28h58v28M20 28v46h42M34 74V53h26V28"/><path d="M34 53a18 18 0 0 1 18 18" stroke-width="2"/></g>
+<path d="M27 100 65 62l37 38Z" fill="#20d1c1" fill-opacity=".9" stroke="#81fff2" stroke-width="3"/>
+<path d="m80 46 25 13v29L80 75 55 88V59Z" fill="#30b9c8" fill-opacity=".45" stroke="#c7fffa" stroke-width="2"/>
+</svg>
