@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow"><meta name="theme-color" content="#082a43">
+<meta name="description" content="MeasureCraft: gestionale per geometri in sviluppo. Dashboard, cantieri, rilievi 2D e roadmap per fotocamera AR e modelli 3D.">
+<title>MeasureCraft — Gestionale geometri · Progetto in sviluppo</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="canonical" href="https://giovannidelgaudio.it/measurecraft-demo/">
+<style>
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edfaff;background:#061823}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 75% 10%,#0c5260 0,transparent 45%),#061823;line-height:1.65}
+a{color:#76efe5}header,main,footer{max-width:1120px;margin:auto;padding:26px}
+header{display:flex;align-items:center;gap:14px;border-bottom:1px solid #ffffff22}header img{width:46px;height:46px}header strong{font-size:21px}header a{margin-left:auto;text-decoration:none;font-weight:700}
+h1{font-size:clamp(36px,7vw,70px);letter-spacing:-.055em;line-height:1.03;margin:28px 0 20px}h2{font-size:26px}
+small,.muted{color:#a1bfca}.eyebrow{color:#6feadf;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:32px;align-items:center;padding:48px 0}.hero p{max-width:580px;color:#b9d1d7}
+.badge{display:inline-block;border:1px solid #4d9f9a;background:#0a3b42;padding:7px 13px;border-radius:30px;color:#a8fff6;font-size:12px;font-weight:750}
+.dashboard{border:1px solid #33616d;border-radius:24px;background:#eaf3f5;color:#11303d;padding:18px;box-shadow:0 32px 100px #0005}
+.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-weight:850}
+.statrow,.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{padding:16px;background:white;border-radius:13px}.stat b{display:block;font-size:30px}.stat span{font-size:12px;color:#56717b}
+.dash-panel{margin-top:12px;border-radius:14px;background:white;padding:20px}.blueprint{width:100%;height:auto}.features{margin:24px 0 38px}.feature{background:#0b2a37;border:1px solid #2b4e5b;border-radius:18px;padding:22px}.feature h3{margin:0 0 6px}.feature p{color:#bed0d7;font-size:14px;margin:0}
+.note{border-left:3px solid #6aeadd;padding:14px 18px;background:#0b2c39;color:#bed2d7;border-radius:0 12px 12px 0}
+footer{border-top:1px solid #ffffff22;font-size:13px;color:#b3cad3}
+@media(max-width:750px){.hero{grid-template-columns:1fr;padding:25px 0}.features{grid-template-columns:1fr}.statrow{gap:7px}.stat{padding:10px}header a{font-size:12px}}
+</style>
+</head>
+<body>
+<header><img src="logo.svg" alt="Logo MeasureCraft"><strong>MeasureCraft</strong><a href="/">← Torna al portfolio</a></header>
+<main>
+<section class="hero">
+<div><span class="eyebrow">Flutter · iPadOS · macOS · prototipo</span><h1>Il cantiere.<br>In un solo iPad.</h1><p>MeasureCraft è un gestionale offline-first per geometri e piccoli studi tecnici: cantieri, clienti, rilievi, documenti e — nelle prossime versioni — geometria 3D e fotocamera AR.</p><span class="badge">v0.1 · sviluppo iniziale · codice privato</span><p><small>Anteprima concettuale con dati fittizi. Non è una versione pubblicamente utilizzabile dell'app Flutter.</small></p></div>
+<div class="dashboard" aria-label="Mockup della dashboard MeasureCraft">
+<div class="dash-head"><span>⌗ MeasureCraft</span><span>◉ Studio</span></div>
+<div class="statrow"><div class="stat"><span>Cantieri</span><b>12</b></div><div class="stat"><span>Sopralluoghi</span><b>5</b></div><div class="stat"><span>Documenti</span><b>28</b></div></div>
+<div class="dash-panel"><strong>Planimetria dimostrativa</strong>
+<svg class="blueprint" viewBox="0 0 430 230" xmlns="http://www.w3.org/2000/svg" aria-label="Planimetria 2D illustrativa">
+<rect x="40" y="26" width="340" height="180" fill="#f5fbfc" stroke="#1b6b77" stroke-width="5"/>
+<path d="M205 26V112M205 148V206M40 124H155M190 124H380M305 124V206" stroke="#1b6b77" stroke-width="5" fill="none"/>
+<path d="M155 124a35 35 0 0 1 35 35" stroke="#3eb4b9" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+<g fill="#3b6973" font-size="12" text-anchor="middle"><text x="120" y="79">Soggiorno</text><text x="290" y="79">Camera</text><text x="120" y="171">Ingresso</text><text x="340" y="170">Bagno</text><text x="215" y="18">7,80 m</text></g></svg>
+<small>Anteprima grafica, non rilievo certificato</small></div>
+</div>
+</section>
+<h2>Un progetto costruito in fasi</h2>
+<div class="features">
+<div class="feature"><h3>01 · Gestionale</h3><p>Dashboard e gestione cantieri nel primo starter Flutter. Database SQLite previsto nella prossima iterazione.</p></div>
+<div class="feature"><h3>02 · GeoSurvey</h3><p>Coordinate, mappe e foto georeferenziate. Localizzazione approssimativa sul modello Wi-Fi del 2017.</p></div>
+<div class="feature"><h3>03 · 2D e 3D</h3><p>Planimetrie, misure guidate e futuri modelli tridimensionali con rendering nativo ottimizzato.</p></div>
+<div class="feature"><h3>04 · AR camera</h3><p>ARKit e Metal sui dispositivi compatibili; funzioni LiDAR soltanto dove è presente il sensore.</p></div>
+<div class="feature"><h3>05 · Rapporti</h3><p>Documenti di sopralluogo, note fotografiche e report esportabili in PDF nella roadmap.</p></div>
+<div class="feature"><h3>06 · Commerciale</h3><p>Versione free iniziale e piani professional dopo validazione con tecnici sul campo.</p></div>
+</div>
+<p class="note">Il codice Flutter è proprietario e conservato separatamente. Questa pagina mostra esclusivamente una presentazione statica con dati dimostrativi. GPS, 3D e AR sono obiettivi di sviluppo, non funzionalità già rilasciate.</p>
+</main><footer>MeasureCraft — concept e sviluppo di Giovanni Del Gaudio · 2026 · <a href="/">Portfolio</a></footer>
+</body></html>
