@@ -218,12 +218,13 @@ def main() -> int:
         if '/cv/' in content:
             errors.append(f"{path}: public CV link exposed")
     # Portfolio 2.4: every project cover is an explicit, keyboard-accessible
-    # local links; preserve the original GitHub portrait and progressive shader.
+    # keyboard-accessible links (local demo or public repository); preserve the original GitHub portrait and shader.
     required_cover_targets = (
         "/driveglass-demo/", "/forma-ai-demo/", "/headset-studio-demo/", "/measurecraft-demo/",
         "/fit-zone-demo/", "/signalscope-demo/", "/meteo-bash2d-demo/",
         "/legacybridge-demo/", "/gestione-farmacia-demo/",
         "/portfolio/demos/irem/", "/ewine-demo/",
+        "https://github.com/GiovanniDelGaudio1994/ActionsRingLiquidGlass",
     )
     for path in (SITE / "index.html", SITE / "en/index.html",
                  SITE / "portfolio/index.html", SITE / "portfolio/en/index.html"):
