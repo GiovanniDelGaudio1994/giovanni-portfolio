@@ -23,6 +23,16 @@ jobs:
         run: python3 -m pip install --user "pymupdf>=1.24,<2"
       - name: Build portfolio and all public demos
         run: python3 scripts/build_pages.py
+      - name: Verify GlassRing appears in generated portfolio
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for page in [Path('_site/index.html'), Path('_site/portfolio/index.html'), Path('_site/en/index.html')]:
+              content = page.read_text(encoding='utf-8')
+              assert 'project-glassring' in content, f'GlassRing assente da {page}'
+              assert 'ActionsRingLiquidGlass' in content, f'Link repository assente da {page}'
+              print(f'GlassRing OK: {page}')
+          PY
       - name: Audit all public pages and local links
         run: |
           python3 scripts/audit_portfolio.py
